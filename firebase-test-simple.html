@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase简易连接测试</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        button {
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 20px 0;
+        }
+        button:hover {
+            background-color: #3367D6;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            min-height: 100px;
+        }
+        .success {
+            border: 2px solid green;
+            background-color: rgba(0, 128, 0, 0.1);
+        }
+        .error {
+            border: 2px solid red;
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Firebase简易连接测试</h1>
+    <div class="container">
+        <p>点击下面的按钮测试与Firebase项目的连接：</p>
+        <button id="testButton">开始测试</button>
+        <div id="result" class="hidden">
+            <h2 id="status"></h2>
+            <p id="message"></p>
+            <div id="details" class="hidden">
+                <h3>详细信息：</h3>
+                <pre id="errorDetails"></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        // 获取DOM元素
+        const testButton = document.getElementById('testButton');
+        const resultDiv = document.getElementById('result');
+        const statusElement = document.getElementById('status');
+        const messageElement = document.getElementById('message');
+        const detailsDiv = document.getElementById('details');
+        const errorDetailsElement = document.getElementById('errorDetails');
+
+        // Firebase配置
+        const firebaseConfig = {
+            apiKey: "AIzaSyAMjArPuGb61Sq2g9KhoW0_YqibywsJUx4",
+            authDomain: "filterbubble-260ea.firebaseapp.com",
+            projectId: "filterbubble-260ea",
+            storageBucket: "filterbubble-260ea.appspot.com",
+            messagingSenderId: "377672244422",
+            appId: "1:377672244422:web:59a7987c23d06e161a8bc7",
+            measurementId: "G-R2E669RD7P"
+        };
+
+        // 测试Firebase连接
+        async function testFirebaseConnection() {
+            console.log("开始测试Firebase连接...");
+            
+            try {
+                // 初始化Firebase
+                firebase.initializeApp(firebaseConfig);
+                console.log("Firebase应用初始化成功");
+                
+                // 初始化Firestore
+                const db = firebase.firestore();
+                console.log("Firestore初始化成功");
+                
+                // 尝试读取一个集合
+                console.log("尝试读取数据...");
+                const snapshot = await db.collection("user_events").limit(1).get();
+                
+                if (snapshot.empty) {
+                    console.log("成功连接到Firestore，但集合为空或不存在");
+                    return {
+                        success: true,
+                        message: "成功连接到Firestore，但集合为空或不存在"
+                    };
+                } else {
+                    console.log("成功连接到Firestore并读取数据");
+                    console.log(`读取到${snapshot.size}条数据`);
+                    return {
+                        success: true,
+                        message: `成功连接到Firestore并读取到${snapshot.size}条数据`
+                    };
+                }
+            } catch (error) {
+                console.error("Firebase连接测试失败:", error);
+                
+                // 提供更详细的错误信息
+                let errorDetails = "未知错误";
+                
+                if (error.code) {
+                    switch(error.code) {
+                        case 'permission-denied':
+                            errorDetails = "权限被拒绝，请检查Firebase规则设置";
+                            break;
+                        case 'unavailable':
+                            errorDetails = "Firebase服务不可用，可能是网络问题";
+                            break;
+                        case 'not-found':
+                            errorDetails = "请求的资源不存在";
+                            break;
+                        case 'invalid-argument':
+                            errorDetails = "提供了无效参数";
+                            break;
+                        default:
+                            errorDetails = `错误代码: ${error.code}`;
+                    }
+                }
+                
+                return {
+                    success: false,
+                    message: "Firebase连接测试失败",
+                    error: error.message,
+                    details: errorDetails
+                };
+            }
+        }
+
+        // 添加按钮点击事件
+        testButton.addEventListener('click', async () => {
+            // 更改按钮状态
+            testButton.disabled = true;
+            testButton.textContent = '测试中...';
+            
+            // 隐藏之前的结果
+            resultDiv.className = 'hidden';
+            
+            try {
+                // 执行测试
+                const result = await testFirebaseConnection();
+                
+                // 显示结果
+                statusElement.textContent = result.success ? '✅ 连接成功' : '❌ 连接失败';
+                messageElement.textContent = result.message;
+                
+                // 设置结果样式
+                resultDiv.className = result.success ? 'success' : 'error';
+                
+                // 如果有错误，显示详细信息
+                if (!result.success) {
+                    errorDetailsElement.textContent = JSON.stringify({
+                        error: result.error,
+                        details: result.details
+                    }, null, 2);
+                    detailsDiv.className = '';
+                } else {
+                    detailsDiv.className = 'hidden';
+                }
+                
+                // 显示结果区域
+                resultDiv.className = result.success ? 'success' : 'error';
+            } catch (error) {
+                // 处理意外错误
+                statusElement.textContent = '❌ 测试过程中发生错误';
+                messageElement.textContent = '执行测试时发生意外错误';
+                errorDetailsElement.textContent = JSON.stringify(error, null, 2);
+                resultDiv.className = 'error';
+                detailsDiv.className = '';
+            }
+            
+            // 恢复按钮状态
+            testButton.disabled = false;
+            testButton.textContent = '重新测试';
+        });
+    </script>
+</body>
+</html>

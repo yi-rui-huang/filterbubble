@@ -1,0 +1,62 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 允许所有用户读写所有集合
+    // 注意：这是为了研究目的，在生产环境中应该更加严格
+    match /{document=**} {
+      allow read, write: if true;
+    }
+    
+    // 以下是建议的生产环境规则，当前已注释以避免权限错误
+    // 当应用程序完全兼容时，可以取消注释并删除上面的规则
+    /*
+    // 基本函数：检查请求是否来自有效客户端
+    function isValidClient() {
+      // 在开发环境中不检查 userId
+      return true;
+      // 在生产环境中应该使用以下规则
+      // return request.resource.data.userId != null;
+    }
+    
+    // 基本函数：检查时间戳是否合理
+    function hasValidTimestamp() {
+      return true;
+      // 在生产环境中应该使用以下规则
+      // return request.resource.data.clientTimestamp != null;
+    }
+    
+    // 用户事件集合
+    match /user_events/{eventId} {
+      allow read: if true;
+      allow create: if isValidClient() && hasValidTimestamp();
+      allow update, delete: if false; // 不允许修改或删除事件
+    }
+    
+    // 系统事件集合
+    match /system_events/{eventId} {
+      allow read: if true;
+      allow create: if isValidClient() && hasValidTimestamp();
+      allow update, delete: if false;
+    }
+    
+    // 对话集合
+    match /conversations/{messageId} {
+      allow read: if true;
+      allow create: if isValidClient() && hasValidTimestamp();
+      allow update, delete: if false;
+    }
+    
+    // 问卷回答集合
+    match /questionnaire_responses/{responseId} {
+      allow read: if true;
+      allow create: if isValidClient() && hasValidTimestamp();
+      allow update, delete: if false;
+    }
+    
+    // 测试连接集合
+    match /test_connection/{docId} {
+      allow read, write: if true;
+    }
+    */
+  }
+}

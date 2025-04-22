@@ -1,0 +1,7 @@
+[
+  {
+    "origin": ["http://localhost:3000", "http://localhost:3001", "https://filterbubble-260ea.web.app"],
+    "method": ["GET", "PUT", "POST", "DELETE", "HEAD"],
+    "maxAgeSeconds": 3600
+  }
+]

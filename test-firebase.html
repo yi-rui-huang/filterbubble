@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Firebase简易测试</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .result { margin: 20px 0; padding: 15px; border-radius: 5px; }
+        .success { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .error { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        button { padding: 10px 20px; background-color: #4285F4; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        pre { background-color: #f8f9fa; padding: 10px; border-radius: 4px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Firebase连接测试</h1>
+    <button id="testBtn">测试连接</button>
+    <div id="output"></div>
+
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <!-- Firebase Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        document.getElementById('testBtn').addEventListener('click', testFirebase);
+
+        function testFirebase() {
+            const output = document.getElementById('output');
+            output.innerHTML = '<p>正在测试Firebase连接...</p>';
+
+            try {
+                // Firebase配置
+                const firebaseConfig = {
+                    apiKey: "AIzaSyAMjArPuGb61Sq2g9KhoW0_YqibywsJUx4",
+                    authDomain: "filterbubble-260ea.firebaseapp.com",
+                    projectId: "filterbubble-260ea",
+                    storageBucket: "filterbubble-260ea.appspot.com",
+                    messagingSenderId: "377672244422",
+                    appId: "1:377672244422:web:59a7987c23d06e161a8bc7",
+                    measurementId: "G-R2E669RD7P"
+                };
+
+                // 初始化Firebase
+                if (!firebase.apps.length) {
+                    firebase.initializeApp(firebaseConfig);
+                }
+                
+                const db = firebase.firestore();
+                
+                // 尝试读取数据
+                db.collection('user_events').limit(1).get()
+                    .then(snapshot => {
+                        const resultDiv = document.createElement('div');
+                        resultDiv.className = 'result success';
+                        
+                        if (snapshot.empty) {
+                            resultDiv.innerHTML = `
+                                <h3>✅ 连接成功</h3>
+                                <p>成功连接到Firebase，但集合为空或不存在。</p>
+                            `;
+                        } else {
+                            resultDiv.innerHTML = `
+                                <h3>✅ 连接成功</h3>
+                                <p>成功连接到Firebase并读取到${snapshot.size}条数据。</p>
+                            `;
+                        }
+                        
+                        output.innerHTML = '';
+                        output.appendChild(resultDiv);
+                    })
+                    .catch(error => {
+                        const resultDiv = document.createElement('div');
+                        resultDiv.className = 'result error';
+                        
+                        let errorDetails = '';
+                        if (error.code === 'permission-denied') {
+                            errorDetails = '权限被拒绝，请检查Firebase规则设置';
+                        } else if (error.code === 'unavailable') {
+                            errorDetails = 'Firebase服务不可用，可能是网络问题';
+                        } else {
+                            errorDetails = `错误代码: ${error.code || '未知'}`;
+                        }
+                        
+                        resultDiv.innerHTML = `
+                            <h3>❌ 连接失败</h3>
+                            <p>错误信息: ${error.message}</p>
+                            <p>详细信息: ${errorDetails}</p>
+                        `;
+                        
+                        output.innerHTML = '';
+                        output.appendChild(resultDiv);
+                        console.error('Firebase测试失败:', error);
+                    });
+            } catch (error) {
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <h3>❌ 初始化失败</h3>
+                    <p>Firebase初始化过程中发生错误:</p>
+                    <pre>${error.toString()}</pre>
+                `;
+                
+                output.innerHTML = '';
+                output.appendChild(resultDiv);
+                console.error('Firebase初始化失败:', error);
+            }
+        }
+    </script>
+</body>
+</html>

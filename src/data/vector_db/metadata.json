@@ -1,0 +1,9999 @@
+[
+  {
+    "title": "Life Stinks",
+    "rating": 3.57,
+    "year": 1991.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Bait",
+    "rating": 3.0,
+    "year": 2012.0,
+    "genres": [
+      "Action",
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 24
+  },
+  {
+    "title": "Titanic",
+    "rating": 6.11,
+    "year": 1996.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 38
+  },
+  {
+    "title": "Daddy",
+    "rating": 5.38,
+    "year": 1995.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Sunday",
+    "rating": 5.5,
+    "year": 1997.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "It Had to Be You",
+    "rating": 4.43,
+    "year": 2000.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Over Her Dead Body",
+    "rating": 3.65,
+    "year": 2008.0,
+    "genres": [
+      "Comedy",
+      "Fantasy",
+      "Romance"
+    ],
+    "review_count": 49
+  },
+  {
+    "title": "Shakthi: The Power",
+    "rating": 6.85,
+    "year": 2002.0,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "review_count": 13
+  },
+  {
+    "title": "Lady Death",
+    "rating": 4.43,
+    "year": 2004.0,
+    "genres": [
+      "Action",
+      "Animation",
+      "Horror"
+    ],
+    "review_count": 21
+  },
+  {
+    "title": "We're Back! A Dinosaur's Story",
+    "rating": 5.86,
+    "year": 1993.0,
+    "genres": [
+      "Adventure",
+      "Animation",
+      "Children",
+      "Fantasy"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "House of Games",
+    "rating": 6.64,
+    "year": 1987.0,
+    "genres": [
+      "Crime",
+      "Film-Noir",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 36
+  },
+  {
+    "title": "Bruce Almighty",
+    "rating": 6.79,
+    "year": 2003.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Fantasy",
+      "Romance"
+    ],
+    "review_count": 34
+  },
+  {
+    "title": "China O'Brien",
+    "rating": 3.3,
+    "year": 1990.0,
+    "genres": [
+      "Action"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Doc Savage: The Man of Bronze",
+    "rating": 4.42,
+    "year": 1975.0,
+    "genres": [
+      "Adventure"
+    ],
+    "review_count": 26
+  },
+  {
+    "title": "Trio",
+    "rating": 6.86,
+    "year": 1950.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 7
+  },
+  {
+    "title": "Watch on the Rhine",
+    "rating": 5.92,
+    "year": 1943.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 26
+  },
+  {
+    "title": "Before Sunrise",
+    "rating": 9.3,
+    "year": 1995.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Rånarna",
+    "rating": 2.27,
+    "year": 2003.0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 11
+  },
+  {
+    "title": "Saving Grace",
+    "rating": 5.92,
+    "year": 2000.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 39
+  },
+  {
+    "title": "Emma",
+    "rating": 6.08,
+    "year": 1996.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 64
+  },
+  {
+    "title": "Nothing",
+    "rating": 8.16,
+    "year": 2003.0,
+    "genres": [
+      "Comedy",
+      "Fantasy",
+      "Mystery",
+      "Sci-Fi"
+    ],
+    "review_count": 31
+  },
+  {
+    "title": "Footlight Parade",
+    "rating": 8.46,
+    "year": 1933.0,
+    "genres": [
+      "Comedy",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 28
+  },
+  {
+    "title": "Passport to Pimlico",
+    "rating": 8.73,
+    "year": 1949.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 11
+  },
+  {
+    "title": "Detention",
+    "rating": 3.35,
+    "year": 2003.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Jeopardy",
+    "rating": 6.46,
+    "year": 1953.0,
+    "genres": [
+      "Film-Noir",
+      "Thriller"
+    ],
+    "review_count": 13
+  },
+  {
+    "title": "Birthday Girl",
+    "rating": 6.67,
+    "year": 2001.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 36
+  },
+  {
+    "title": "Europa",
+    "rating": 9.03,
+    "year": 1991.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 31
+  },
+  {
+    "title": "SpaceCamp",
+    "rating": 5.78,
+    "year": 1986.0,
+    "genres": [
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "review_count": 32
+  },
+  {
+    "title": "9/11",
+    "rating": 9.33,
+    "year": 2002.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Once Upon a Crime...",
+    "rating": 6.4,
+    "year": 1992.0,
+    "genres": [
+      "Comedy",
+      "Mystery"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Mr. Blandings Builds His Dream House",
+    "rating": 8.73,
+    "year": 1948.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "For the Moment",
+    "rating": 9.0,
+    "year": 1994.0,
+    "genres": [
+      "Romance",
+      "War"
+    ],
+    "review_count": 9
+  },
+  {
+    "title": "Still Crazy",
+    "rating": 9.43,
+    "year": 1998.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Cut",
+    "rating": 4.09,
+    "year": 2000.0,
+    "genres": [
+      "Comedy",
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 46
+  },
+  {
+    "title": "Surviving Christmas",
+    "rating": 3.58,
+    "year": 2004.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 48
+  },
+  {
+    "title": "Grey Gardens",
+    "rating": 8.06,
+    "year": 1975.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 32
+  },
+  {
+    "title": "Cypher",
+    "rating": 6.72,
+    "year": 2002.0,
+    "genres": [
+      "Action",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 36
+  },
+  {
+    "title": "Stanley & Iris",
+    "rating": 6.44,
+    "year": 1990.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "Bombardier",
+    "rating": 5.71,
+    "year": 1943.0,
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "review_count": 7
+  },
+  {
+    "title": "Cliffhanger",
+    "rating": 5.12,
+    "year": 1993.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Thriller"
+    ],
+    "review_count": 40
+  },
+  {
+    "title": "Revolver",
+    "rating": 4.02,
+    "year": 2005.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 45
+  },
+  {
+    "title": "HealtH",
+    "rating": 6.17,
+    "year": 1980.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "52 Pick-Up",
+    "rating": 7.07,
+    "year": 1986.0,
+    "genres": [
+      "Action",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Midnight Cowboy",
+    "rating": 8.84,
+    "year": 1969.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 31
+  },
+  {
+    "title": "Incubus",
+    "rating": 3.0,
+    "year": 1966.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Pet Sematary",
+    "rating": 6.38,
+    "year": 1989.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 37
+  },
+  {
+    "title": "Buddy",
+    "rating": 3.85,
+    "year": 1997.0,
+    "genres": [
+      "Adventure",
+      "Children",
+      "Drama"
+    ],
+    "review_count": 13
+  },
+  {
+    "title": "Shallow Grave",
+    "rating": 4.88,
+    "year": 1994.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Tarzan and His Mate",
+    "rating": 8.74,
+    "year": 1934.0,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "review_count": 23
+  },
+  {
+    "title": "Ossessione",
+    "rating": 8.57,
+    "year": 1943.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 23
+  },
+  {
+    "title": "Soapdish",
+    "rating": 9.0,
+    "year": 1991.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Alibi",
+    "rating": 3.56,
+    "year": 1929.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 9
+  },
+  {
+    "title": "Splatter University",
+    "rating": 2.76,
+    "year": 1984.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 34
+  },
+  {
+    "title": "Citizen X",
+    "rating": 8.97,
+    "year": 1995.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Chocolat",
+    "rating": 6.26,
+    "year": 2000.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 23
+  },
+  {
+    "title": "Twice Upon a Time",
+    "rating": 8.71,
+    "year": 1983.0,
+    "genres": [
+      "Animation",
+      "Fantasy"
+    ],
+    "review_count": 7
+  },
+  {
+    "title": "Rivers and Tides",
+    "rating": 9.24,
+    "year": 2001.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 21
+  },
+  {
+    "title": "Zero Day",
+    "rating": 7.82,
+    "year": 2002.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 33
+  },
+  {
+    "title": "Magicians",
+    "rating": 7.4,
+    "year": 2007.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Mirage",
+    "rating": 6.38,
+    "year": 1995.0,
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Picture Bride",
+    "rating": 8.22,
+    "year": 1994.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 9
+  },
+  {
+    "title": "Red Eye",
+    "rating": 6.17,
+    "year": 2005.0,
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 36
+  },
+  {
+    "title": "Against All Flags",
+    "rating": 8.2,
+    "year": 1952.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 5
+  },
+  {
+    "title": "Tony Arzenta (Big Guns)",
+    "rating": 7.75,
+    "year": 1973.0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Down to Earth",
+    "rating": 3.44,
+    "year": 2001.0,
+    "genres": [
+      "Comedy",
+      "Fantasy",
+      "Romance"
+    ],
+    "review_count": 50
+  },
+  {
+    "title": "Guyana Tragedy: The Story of Jim Jones",
+    "rating": 8.5,
+    "year": 1980.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Dick Tracy",
+    "rating": 6.67,
+    "year": 1990.0,
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "review_count": 36
+  },
+  {
+    "title": "Spirit: Stallion of the Cimarron",
+    "rating": 6.21,
+    "year": 2002.0,
+    "genres": [
+      "Adventure",
+      "Animation",
+      "Children",
+      "Western"
+    ],
+    "review_count": 38
+  },
+  {
+    "title": "Scarface",
+    "rating": 7.68,
+    "year": 1983.0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 34
+  },
+  {
+    "title": "Loulou",
+    "rating": 8.0,
+    "year": 1980.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Spine Tingler! The William Castle Story",
+    "rating": 8.8,
+    "year": 2007.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 5
+  },
+  {
+    "title": "Nemesis 2: Nebula",
+    "rating": 3.08,
+    "year": 1995.0,
+    "genres": [
+      "Action",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Angels in the Outfield",
+    "rating": 7.39,
+    "year": 1994.0,
+    "genres": [
+      "Children",
+      "Comedy"
+    ],
+    "review_count": 33
+  },
+  {
+    "title": "Scoop",
+    "rating": 6.6,
+    "year": 2006.0,
+    "genres": [
+      "Comedy",
+      "Fantasy",
+      "Mystery"
+    ],
+    "review_count": 35
+  },
+  {
+    "title": "Full House",
+    "rating": 5.62,
+    "year": 1952.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 40
+  },
+  {
+    "title": "Insignificance",
+    "rating": 7.0,
+    "year": 1985.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Care Bears Movie II: A New Generation",
+    "rating": 8.33,
+    "year": 1986.0,
+    "genres": [
+      "Animation",
+      "Children"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "My Name Is Julia Ross",
+    "rating": 8.08,
+    "year": 1945.0,
+    "genres": [
+      "Drama",
+      "Film-Noir",
+      "Mystery"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Of Human Bondage",
+    "rating": 7.41,
+    "year": 1934.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 32
+  },
+  {
+    "title": "What's the Matter with Helen?",
+    "rating": 5.8,
+    "year": 1971.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Horror",
+      "Musical"
+    ],
+    "review_count": 15
+  },
+  {
+    "title": "Frownland",
+    "rating": 7.14,
+    "year": 2007.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 7
+  },
+  {
+    "title": "True Crime",
+    "rating": 5.62,
+    "year": 1996.0,
+    "genres": [
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Lili Marleen",
+    "rating": 4.5,
+    "year": 1981.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Hôtel du Nord",
+    "rating": 9.29,
+    "year": 1938.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 7
+  },
+  {
+    "title": "Anna Christie",
+    "rating": 8.0,
+    "year": 1930.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 5
+  },
+  {
+    "title": "Going Overboard",
+    "rating": 1.81,
+    "year": 1989.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 58
+  },
+  {
+    "title": "Liliom",
+    "rating": 5.0,
+    "year": 1934.0,
+    "genres": [
+      "Drama",
+      "Fantasy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Prison",
+    "rating": 6.94,
+    "year": 1988.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Playing God",
+    "rating": 5.17,
+    "year": 1997.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 23
+  },
+  {
+    "title": "Nana",
+    "rating": 4.75,
+    "year": 2005.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "When in Rome",
+    "rating": 3.52,
+    "year": 2010.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 21
+  },
+  {
+    "title": "Poison",
+    "rating": 2.69,
+    "year": 1991.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 13
+  },
+  {
+    "title": "Stealing a Nation",
+    "rating": 6.5,
+    "year": 2004.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Just Cause",
+    "rating": 5.45,
+    "year": 1995.0,
+    "genres": [
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 42
+  },
+  {
+    "title": "Morning Glory",
+    "rating": 5.12,
+    "year": 2010.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "I, the Jury",
+    "rating": 9.5,
+    "year": 1982.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Blank Check",
+    "rating": 3.48,
+    "year": 1994.0,
+    "genres": [
+      "Children",
+      "Comedy"
+    ],
+    "review_count": 23
+  },
+  {
+    "title": "Chori Chori Chupke Chupke",
+    "rating": 4.93,
+    "year": 2001.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 15
+  },
+  {
+    "title": "Anne of Green Gables",
+    "rating": 9.25,
+    "year": 1934.0,
+    "genres": [
+      "Children",
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Party Girl",
+    "rating": 7.37,
+    "year": 1958.0,
+    "genres": [
+      "Drama",
+      "Film-Noir"
+    ],
+    "review_count": 19
+  },
+  {
+    "title": "Puppet Master: The Legacy",
+    "rating": 8.5,
+    "year": 2004.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Hollow Man",
+    "rating": 3.33,
+    "year": 2000.0,
+    "genres": [
+      "Horror",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 51
+  },
+  {
+    "title": "Earth",
+    "rating": 6.41,
+    "year": 1998.0,
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "review_count": 37
+  },
+  {
+    "title": "City Hall",
+    "rating": 6.11,
+    "year": 1996.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 36
+  },
+  {
+    "title": "Saint Joan",
+    "rating": 8.2,
+    "year": 1957.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 5
+  },
+  {
+    "title": "Rosenstrasse",
+    "rating": 6.41,
+    "year": 2003.0,
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "review_count": 22
+  },
+  {
+    "title": "Moonstruck",
+    "rating": 7.09,
+    "year": 1987.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 35
+  },
+  {
+    "title": "Blonde and Blonder",
+    "rating": 3.04,
+    "year": 2008.0,
+    "genres": [
+      "Comedy",
+      "Crime"
+    ],
+    "review_count": 23
+  },
+  {
+    "title": "Up the Academy",
+    "rating": 5.05,
+    "year": 1980.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 21
+  },
+  {
+    "title": "Artemisia",
+    "rating": 4.24,
+    "year": 1997.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 33
+  },
+  {
+    "title": "Spaced Invaders",
+    "rating": 7.29,
+    "year": 1990.0,
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Sci-Fi"
+    ],
+    "review_count": 35
+  },
+  {
+    "title": "Protocol",
+    "rating": 4.48,
+    "year": 1984.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 21
+  },
+  {
+    "title": "Stroker Ace",
+    "rating": 3.31,
+    "year": 1983.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Evening",
+    "rating": 4.74,
+    "year": 2007.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 43
+  },
+  {
+    "title": "All Dogs Go to Heaven",
+    "rating": 8.39,
+    "year": 1989.0,
+    "genres": [
+      "Animation",
+      "Children",
+      "Comedy",
+      "Drama",
+      "Fantasy"
+    ],
+    "review_count": 31
+  },
+  {
+    "title": "St. Ives",
+    "rating": 4.86,
+    "year": 1976.0,
+    "genres": [
+      "Crime",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 7
+  },
+  {
+    "title": "Police Python 357",
+    "rating": 9.0,
+    "year": 1976.0,
+    "genres": [
+      "Thriller"
+    ],
+    "review_count": 3
+  },
+  {
+    "title": "Show People",
+    "rating": 8.63,
+    "year": 1928.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 19
+  },
+  {
+    "title": "Antwone Fisher",
+    "rating": 9.13,
+    "year": 2002.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Arthur",
+    "rating": 7.63,
+    "year": 1981.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 35
+  },
+  {
+    "title": "Endgame",
+    "rating": 6.43,
+    "year": 2009.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 7
+  },
+  {
+    "title": "Basic Instinct 2",
+    "rating": 5.87,
+    "year": 2006.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 38
+  },
+  {
+    "title": "Oliver!",
+    "rating": 7.94,
+    "year": 1968.0,
+    "genres": [
+      "Drama",
+      "Musical"
+    ],
+    "review_count": 34
+  },
+  {
+    "title": "Higher and Higher",
+    "rating": 7.88,
+    "year": 1943.0,
+    "genres": [
+      "Comedy",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "The Tenant of Wildfell Hall",
+    "rating": 7.27,
+    "year": 1997.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 15
+  },
+  {
+    "title": "Creep",
+    "rating": 3.34,
+    "year": 2004.0,
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 50
+  },
+  {
+    "title": "Scarecrow",
+    "rating": 3.48,
+    "year": 1973.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 50
+  },
+  {
+    "title": "Largo Winch",
+    "rating": 4.4,
+    "year": 2008.0,
+    "genres": [
+      "Adventure",
+      "Thriller"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Impulse",
+    "rating": 5.9,
+    "year": 1984.0,
+    "genres": [
+      "Mystery",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Unholy",
+    "rating": 4.07,
+    "year": 2007.0,
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Brigham Young",
+    "rating": 6.75,
+    "year": 1940.0,
+    "genres": [
+      "Romance",
+      "Western"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Sarafina!",
+    "rating": 5.18,
+    "year": 1992.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 11
+  },
+  {
+    "title": "Mother Night",
+    "rating": 8.48,
+    "year": 1996.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 31
+  },
+  {
+    "title": "Puss in Boots",
+    "rating": 7.8,
+    "year": 1969.0,
+    "genres": [
+      "Adventure",
+      "Animation",
+      "Children",
+      "Comedy",
+      "Fantasy",
+      "Romance"
+    ],
+    "review_count": 5
+  },
+  {
+    "title": "Macbeth in Manhattan",
+    "rating": 6.25,
+    "year": 1999.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Ned Kelly",
+    "rating": 5.36,
+    "year": 1970.0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Western"
+    ],
+    "review_count": 42
+  },
+  {
+    "title": "The Dark Horse",
+    "rating": 7.33,
+    "year": 1932.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 3
+  },
+  {
+    "title": "Going Berserk",
+    "rating": 7.0,
+    "year": 1983.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 11
+  },
+  {
+    "title": "Once in the Life",
+    "rating": 8.0,
+    "year": 2000.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 7
+  },
+  {
+    "title": "Fighter",
+    "rating": 7.22,
+    "year": 2007.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 9
+  },
+  {
+    "title": "Hamlet",
+    "rating": 7.58,
+    "year": 2000.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Romance",
+      "Thriller"
+    ],
+    "review_count": 40
+  },
+  {
+    "title": "Running Mates",
+    "rating": 4.0,
+    "year": 1992.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Moon Child",
+    "rating": 8.16,
+    "year": 2003.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "Sci-Fi"
+    ],
+    "review_count": 32
+  },
+  {
+    "title": "Sayonara",
+    "rating": 7.83,
+    "year": 1957.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "K-911",
+    "rating": 4.58,
+    "year": 1999.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Crime"
+    ],
+    "review_count": 19
+  },
+  {
+    "title": "Superman and the Mole-Men",
+    "rating": 5.0,
+    "year": 1951.0,
+    "genres": [
+      "Children",
+      "Mystery",
+      "Sci-Fi"
+    ],
+    "review_count": 13
+  },
+  {
+    "title": "Wilder Napalm",
+    "rating": 6.06,
+    "year": 1993.0,
+    "genres": [
+      "Comedy",
+      "Fantasy",
+      "Romance"
+    ],
+    "review_count": 17
+  },
+  {
+    "title": "Ulysses",
+    "rating": 9.4,
+    "year": 1954.0,
+    "genres": [
+      "Adventure"
+    ],
+    "review_count": 5
+  },
+  {
+    "title": "Live!",
+    "rating": 4.83,
+    "year": 2007.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Good Time Max",
+    "rating": 5.43,
+    "year": 2007.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 7
+  },
+  {
+    "title": "I Woke Up Early the Day I Died",
+    "rating": 9.56,
+    "year": 1998.0,
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 9
+  },
+  {
+    "title": "Caged Heat",
+    "rating": 6.25,
+    "year": 1974.0,
+    "genres": [
+      "Action"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "In Cold Blood",
+    "rating": 7.61,
+    "year": 1967.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 38
+  },
+  {
+    "title": "David and Bathsheba",
+    "rating": 7.08,
+    "year": 1951.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 13
+  },
+  {
+    "title": "Bend It Like Beckham",
+    "rating": 8.45,
+    "year": 2002.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 31
+  },
+  {
+    "title": "Zandalee",
+    "rating": 5.25,
+    "year": 1991.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "New York, I Love You",
+    "rating": 4.59,
+    "year": 2009.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 32
+  },
+  {
+    "title": "Cinderella",
+    "rating": 8.07,
+    "year": 1950.0,
+    "genres": [
+      "Animation",
+      "Children",
+      "Fantasy",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 41
+  },
+  {
+    "title": "They All Laughed",
+    "rating": 5.4,
+    "year": 1981.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 35
+  },
+  {
+    "title": "BASEketball",
+    "rating": 8.0,
+    "year": 1998.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 32
+  },
+  {
+    "title": "Stella",
+    "rating": 5.4,
+    "year": 1990.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Confidential Agent",
+    "rating": 6.72,
+    "year": 1945.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "MacArthur",
+    "rating": 6.25,
+    "year": 1977.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Panic",
+    "rating": 7.29,
+    "year": 2001.0,
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "review_count": 34
+  },
+  {
+    "title": "Lucy",
+    "rating": 5.5,
+    "year": 2003.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Happy Go Lovely",
+    "rating": 4.92,
+    "year": 1951.0,
+    "genres": [
+      "Musical"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "The Beaver Trilogy",
+    "rating": 6.91,
+    "year": 2000.0,
+    "genres": [
+      "Comedy",
+      "Documentary",
+      "Drama"
+    ],
+    "review_count": 11
+  },
+  {
+    "title": "Trailer Park Boys",
+    "rating": 10.0,
+    "year": 1999.0,
+    "genres": [
+      "Comedy",
+      "Crime"
+    ],
+    "review_count": 3
+  },
+  {
+    "title": "Soldier",
+    "rating": 8.53,
+    "year": 1998.0,
+    "genres": [
+      "Action",
+      "Sci-Fi",
+      "War"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Disorganized Crime",
+    "rating": 9.27,
+    "year": 1989.0,
+    "genres": [
+      "Action",
+      "Comedy"
+    ],
+    "review_count": 11
+  },
+  {
+    "title": "Chances Are",
+    "rating": 6.85,
+    "year": 1989.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 27
+  },
+  {
+    "title": "Paperhouse",
+    "rating": 6.37,
+    "year": 1988.0,
+    "genres": [
+      "Fantasy",
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 35
+  },
+  {
+    "title": "Fever Pitch",
+    "rating": 7.25,
+    "year": 1997.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 32
+  },
+  {
+    "title": "Man with the Gun",
+    "rating": 7.57,
+    "year": 1955.0,
+    "genres": [
+      "Western"
+    ],
+    "review_count": 7
+  },
+  {
+    "title": "Soylent Green",
+    "rating": 7.75,
+    "year": 1973.0,
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 32
+  },
+  {
+    "title": "Keep the River on Your Right: A Modern Cannibal Tale",
+    "rating": 4.78,
+    "year": 2000.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 9
+  },
+  {
+    "title": "Valentine",
+    "rating": 4.76,
+    "year": 2001.0,
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "review_count": 45
+  },
+  {
+    "title": "Blindsight",
+    "rating": 9.4,
+    "year": 2006.0,
+    "genres": [
+      "Adventure",
+      "Documentary"
+    ],
+    "review_count": 5
+  },
+  {
+    "title": "Descent",
+    "rating": 4.24,
+    "year": 2007.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 38
+  },
+  {
+    "title": "Raising Victor Vargas",
+    "rating": 4.93,
+    "year": 2002.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 42
+  },
+  {
+    "title": "Phantom Lady",
+    "rating": 8.14,
+    "year": 1944.0,
+    "genres": [
+      "Crime",
+      "Film-Noir",
+      "Mystery"
+    ],
+    "review_count": 21
+  },
+  {
+    "title": "Guys and Dolls",
+    "rating": 7.7,
+    "year": 1955.0,
+    "genres": [
+      "Comedy",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 33
+  },
+  {
+    "title": "Girlfight",
+    "rating": 7.97,
+    "year": 2000.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 31
+  },
+  {
+    "title": "Tigerland",
+    "rating": 7.29,
+    "year": 2000.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 35
+  },
+  {
+    "title": "Forgotten",
+    "rating": 10.0,
+    "year": 2012.0,
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 3
+  },
+  {
+    "title": "Bill & Ted's Bogus Journey",
+    "rating": 8.32,
+    "year": 1991.0,
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Fantasy",
+      "Sci-Fi"
+    ],
+    "review_count": 31
+  },
+  {
+    "title": "Our Song",
+    "rating": 8.0,
+    "year": 2000.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 11
+  },
+  {
+    "title": "Esther Kahn",
+    "rating": 3.74,
+    "year": 2000.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 19
+  },
+  {
+    "title": "Eddie Izzard: Dress to Kill",
+    "rating": 9.73,
+    "year": 1999.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Carmen",
+    "rating": 9.25,
+    "year": 1983.0,
+    "genres": [
+      "Drama",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Young Mr. Lincoln",
+    "rating": 6.85,
+    "year": 1939.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 26
+  },
+  {
+    "title": "Airport '77",
+    "rating": 2.5,
+    "year": 1977.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Interiors",
+    "rating": 2.25,
+    "year": 1978.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Good Advice",
+    "rating": 2.75,
+    "year": 2001.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Five Star Final",
+    "rating": 4.0,
+    "year": 1931.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Bright Leaves",
+    "rating": 2.0,
+    "year": 2003.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Grease 2",
+    "rating": 2.5,
+    "year": 1982.0,
+    "genres": [
+      "Comedy",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "East Side, West Side",
+    "rating": 2.5,
+    "year": 1949.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Peter & the Wolf",
+    "rating": 1.5,
+    "year": 2006.0,
+    "genres": [
+      "Animation",
+      "Musical"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Rich and Strange",
+    "rating": 2.75,
+    "year": 1931.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Batman and Robin",
+    "rating": 2.5,
+    "year": 1949.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Crime",
+      "Drama",
+      "Sci-Fi"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Flight of Fury",
+    "rating": 1.82,
+    "year": 2007.0,
+    "genres": [
+      "Action"
+    ],
+    "review_count": 44
+  },
+  {
+    "title": "Virginia City",
+    "rating": 1.75,
+    "year": 1940.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "Romance",
+      "Western"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Bubble",
+    "rating": 3.25,
+    "year": 2006.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "There Goes My Baby",
+    "rating": 1.8,
+    "year": 1994.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Major League: Back to the Minors",
+    "rating": 1.58,
+    "year": 1998.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Betsy's Wedding",
+    "rating": 1.75,
+    "year": 1990.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Murder by Numbers",
+    "rating": 2.46,
+    "year": 2002.0,
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 26
+  },
+  {
+    "title": "Trash",
+    "rating": 2.67,
+    "year": 2014.0,
+    "genres": [
+      "Adventure",
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Soldier Blue",
+    "rating": 2.9,
+    "year": 1970.0,
+    "genres": [
+      "Western"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Fire Over England",
+    "rating": 2.75,
+    "year": 1937.0,
+    "genres": [
+      "Adventure",
+      "Romance",
+      "War"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Ghost Dog: The Way of the Samurai",
+    "rating": 2.5,
+    "year": 1999.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Don't Bother to Knock",
+    "rating": 3.0,
+    "year": 1952.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Captivity",
+    "rating": 2.25,
+    "year": 2007.0,
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Forgiving Dr. Mengele",
+    "rating": 2.5,
+    "year": 2006.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "For Love or Money",
+    "rating": 2.0,
+    "year": 1993.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "End of the World",
+    "rating": 2.1,
+    "year": 1977.0,
+    "genres": [
+      "Mystery",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Monster in the Closet",
+    "rating": 1.5,
+    "year": 1986.0,
+    "genres": [
+      "Comedy",
+      "Horror"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Open House",
+    "rating": 2.3,
+    "year": 2010.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Morvern Callar",
+    "rating": 1.94,
+    "year": 2002.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "There's Something About Mary",
+    "rating": 1.5,
+    "year": 1998.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Kiss Me Deadly",
+    "rating": 2.5,
+    "year": 1955.0,
+    "genres": [
+      "Film-Noir"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Adam Had Four Sons",
+    "rating": 3.5,
+    "year": 1941.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "To Have and Have Not",
+    "rating": 3.5,
+    "year": 1944.0,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Romance",
+      "Thriller",
+      "War"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Alice in Wonderland",
+    "rating": 3.0,
+    "year": 1951.0,
+    "genres": [
+      "Adventure",
+      "Animation",
+      "Children",
+      "Fantasy",
+      "Musical"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Coming Home",
+    "rating": 2.17,
+    "year": 1978.0,
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "My Wrongs 8245-8249 and 117",
+    "rating": 2.0,
+    "year": 2002.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "American Psycho",
+    "rating": 3.0,
+    "year": 2000.0,
+    "genres": [
+      "Crime",
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Tremors 4: The Legend Begins",
+    "rating": 2.75,
+    "year": 2004.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Horror",
+      "Sci-Fi",
+      "Thriller",
+      "Western"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Watership Down",
+    "rating": 2.2,
+    "year": 1978.0,
+    "genres": [
+      "Adventure",
+      "Animation",
+      "Children",
+      "Drama",
+      "Fantasy"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Stella Dallas",
+    "rating": 1.5,
+    "year": 1937.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Brewster McCloud",
+    "rating": 2.5,
+    "year": 1970.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Snakes on a Plane",
+    "rating": 1.62,
+    "year": 2006.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 40
+  },
+  {
+    "title": "I Am Trying to Break Your Heart",
+    "rating": 1.5,
+    "year": 2002.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Empire",
+    "rating": 2.83,
+    "year": 2002.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Madison",
+    "rating": 2.5,
+    "year": 2001.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Picnic",
+    "rating": 2.5,
+    "year": 1955.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Campfire Tales",
+    "rating": 3.0,
+    "year": 1997.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Festival in Cannes",
+    "rating": 1.7,
+    "year": 2001.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Stella Street",
+    "rating": 3.0,
+    "year": 2004.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "No End in Sight",
+    "rating": 1.0,
+    "year": 2007.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Universal Soldier: The Return",
+    "rating": 1.96,
+    "year": 1999.0,
+    "genres": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "review_count": 46
+  },
+  {
+    "title": "Moonbase",
+    "rating": 1.25,
+    "year": 1998.0,
+    "genres": [
+      "Sci-Fi"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Nothing But the Night",
+    "rating": 2.5,
+    "year": 1973.0,
+    "genres": [
+      "Crime",
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Curdled",
+    "rating": 2.12,
+    "year": 1996.0,
+    "genres": [
+      "Crime"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "End Game",
+    "rating": 2.24,
+    "year": 2006.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery"
+    ],
+    "review_count": 50
+  },
+  {
+    "title": "Christopher Strong",
+    "rating": 2.5,
+    "year": 1933.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Crackerjack",
+    "rating": 2.25,
+    "year": 2002.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Baby Mama",
+    "rating": 2.75,
+    "year": 2008.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Pharaoh's Curse",
+    "rating": 3.25,
+    "year": 1957.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "4",
+    "rating": 2.14,
+    "year": 2005.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 28
+  },
+  {
+    "title": "Mabel at the Wheel",
+    "rating": 2.5,
+    "year": 1914.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Food of the Gods II",
+    "rating": 2.25,
+    "year": 1989.0,
+    "genres": [
+      "Horror",
+      "Sci-Fi"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Within the Woods",
+    "rating": 2.33,
+    "year": 1978.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Homefront",
+    "rating": 2.0,
+    "year": 2013.0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "I, Robot",
+    "rating": 2.62,
+    "year": 2004.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "America's Sweethearts",
+    "rating": 2.71,
+    "year": 2001.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 28
+  },
+  {
+    "title": "Brothers of the Head",
+    "rating": 3.5,
+    "year": 2005.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Kazaam",
+    "rating": 1.71,
+    "year": 1996.0,
+    "genres": [
+      "Children",
+      "Comedy",
+      "Fantasy"
+    ],
+    "review_count": 38
+  },
+  {
+    "title": "Jane Eyre",
+    "rating": 2.31,
+    "year": 1996.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 42
+  },
+  {
+    "title": "Magnolia",
+    "rating": 1.88,
+    "year": 1999.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 26
+  },
+  {
+    "title": "Suzy",
+    "rating": 2.5,
+    "year": 1936.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Cradle of Fear",
+    "rating": 1.69,
+    "year": 2001.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 32
+  },
+  {
+    "title": "Stroszek",
+    "rating": 2.0,
+    "year": 1977.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Rosetta",
+    "rating": 1.67,
+    "year": 1999.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Bloodstone: Subspecies II",
+    "rating": 3.0,
+    "year": 1993.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Christmas on Mars",
+    "rating": 3.0,
+    "year": 2008.0,
+    "genres": [
+      "Sci-Fi"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Elektra",
+    "rating": 2.33,
+    "year": 2005.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Intermission",
+    "rating": 1.92,
+    "year": 2003.0,
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Marilyn Hotchkiss' Ballroom Dancing & Charm School",
+    "rating": 1.5,
+    "year": 2005.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Loaded",
+    "rating": 2.29,
+    "year": 2008.0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 24
+  },
+  {
+    "title": "Hallam Foe",
+    "rating": 2.83,
+    "year": 2007.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Dillinger",
+    "rating": 3.2,
+    "year": 1945.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Film-Noir"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Messiah of Evil",
+    "rating": 2.5,
+    "year": 1973.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Music Within",
+    "rating": 2.0,
+    "year": 2007.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance",
+      "War"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Dahmer",
+    "rating": 1.92,
+    "year": 2002.0,
+    "genres": [
+      "Drama",
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 26
+  },
+  {
+    "title": "Tyson",
+    "rating": 2.33,
+    "year": 2008.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Claire Dolan",
+    "rating": 2.5,
+    "year": 1998.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "High Art",
+    "rating": 1.83,
+    "year": 1998.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "White Men Can't Jump",
+    "rating": 2.83,
+    "year": 1992.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Native Son",
+    "rating": 2.33,
+    "year": 1986.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Mayerling",
+    "rating": 2.0,
+    "year": 1968.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "DarkWolf",
+    "rating": 2.26,
+    "year": 2003.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 50
+  },
+  {
+    "title": "Music of the Heart",
+    "rating": 1.83,
+    "year": 1999.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Nacho Libre",
+    "rating": 1.94,
+    "year": 2006.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "People I Know",
+    "rating": 2.79,
+    "year": 2002.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 24
+  },
+  {
+    "title": "Royal Flash",
+    "rating": 2.5,
+    "year": 1975.0,
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Dr. Jekyll and Mr. Hyde",
+    "rating": 3.5,
+    "year": 2008.0,
+    "genres": [
+      "Drama",
+      "Horror",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Sky Captain and the World of Tomorrow",
+    "rating": 2.21,
+    "year": 2004.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "review_count": 38
+  },
+  {
+    "title": "No Nukes",
+    "rating": 3.0,
+    "year": 1980.0,
+    "genres": [
+      "Documentary",
+      "Musical"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Nightmares",
+    "rating": 2.0,
+    "year": 1983.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Challenge to Lassie",
+    "rating": 2.0,
+    "year": 1949.0,
+    "genres": [
+      "Children",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Knights",
+    "rating": 2.07,
+    "year": 1993.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Giant",
+    "rating": 2.75,
+    "year": 1956.0,
+    "genres": [
+      "Drama",
+      "Romance",
+      "Western"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Mo' Better Blues",
+    "rating": 2.0,
+    "year": 1990.0,
+    "genres": [
+      "Drama",
+      "Musical"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "101 Dalmatians II: Patch's London Adventure",
+    "rating": 2.5,
+    "year": 2003.0,
+    "genres": [
+      "Animation",
+      "Children"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Cult of the Cobra",
+    "rating": 1.88,
+    "year": 1955.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Fly Me to the Moon",
+    "rating": 2.57,
+    "year": 2008.0,
+    "genres": [
+      "Adventure",
+      "Animation",
+      "Children",
+      "IMAX"
+    ],
+    "review_count": 28
+  },
+  {
+    "title": "Akira",
+    "rating": 3.0,
+    "year": 1988.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Animation",
+      "Sci-Fi"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Wild Side",
+    "rating": 1.75,
+    "year": 2004.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Tickets",
+    "rating": 1.75,
+    "year": 2005.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Serendipity",
+    "rating": 3.33,
+    "year": 2001.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Dead & Buried",
+    "rating": 1.0,
+    "year": 1981.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "St. Elmo's Fire",
+    "rating": 2.39,
+    "year": 1985.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "Gray Matters",
+    "rating": 1.97,
+    "year": 2006.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 32
+  },
+  {
+    "title": "Hot Rod",
+    "rating": 2.11,
+    "year": 2007.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 28
+  },
+  {
+    "title": "Oxford Blues",
+    "rating": 3.25,
+    "year": 1984.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Hum Tum",
+    "rating": 2.5,
+    "year": 2004.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Bully",
+    "rating": 1.5,
+    "year": 2001.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Swept Away",
+    "rating": 1.57,
+    "year": 1975.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 28
+  },
+  {
+    "title": "Tank",
+    "rating": 2.0,
+    "year": 1984.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Spider-Man",
+    "rating": 2.33,
+    "year": 2002.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "The Little Kidnappers",
+    "rating": 1.5,
+    "year": 1953.0,
+    "genres": [
+      "Drama",
+      "Romance",
+      "War"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Straightheads",
+    "rating": 2.38,
+    "year": 2007.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 26
+  },
+  {
+    "title": "7 Men from Now",
+    "rating": 1.0,
+    "year": 1956.0,
+    "genres": [
+      "Western"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Peggy Sue Got Married",
+    "rating": 3.25,
+    "year": 1986.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "What Would Jesus Buy?",
+    "rating": 1.75,
+    "year": 2007.0,
+    "genres": [
+      "Comedy",
+      "Documentary"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Silent Night",
+    "rating": 2.0,
+    "year": 2012.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Goodnight, Mister Tom",
+    "rating": 1.88,
+    "year": 1999.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Keys to Tulsa",
+    "rating": 2.06,
+    "year": 1997.0,
+    "genres": [
+      "Crime"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Drive, He Said",
+    "rating": 1.2,
+    "year": 1971.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Horrorvision",
+    "rating": 2.14,
+    "year": 2001.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Lady in Cement",
+    "rating": 2.2,
+    "year": 1968.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Joshua",
+    "rating": 1.7,
+    "year": 2007.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Postal",
+    "rating": 2.56,
+    "year": 2007.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Thriller"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Scary Movie 2",
+    "rating": 2.64,
+    "year": 2001.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 22
+  },
+  {
+    "title": "Alive",
+    "rating": 2.6,
+    "year": 2002.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "Horror",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "White Chicks",
+    "rating": 2.0,
+    "year": 2004.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Crime"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Local Color",
+    "rating": 2.6,
+    "year": 1977.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Inside Man",
+    "rating": 2.18,
+    "year": 2006.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 28
+  },
+  {
+    "title": "Thinner",
+    "rating": 2.92,
+    "year": 1996.0,
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 26
+  },
+  {
+    "title": "Arch of Triumph",
+    "rating": 2.75,
+    "year": 1948.0,
+    "genres": [
+      "Drama",
+      "Romance",
+      "War"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Sweet Movie",
+    "rating": 3.5,
+    "year": 1974.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "The Merry Widow",
+    "rating": 3.5,
+    "year": 2007.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Tombstone",
+    "rating": 1.0,
+    "year": 1993.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "Western"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Hey Arnold! The Movie",
+    "rating": 2.07,
+    "year": 2002.0,
+    "genres": [
+      "Adventure",
+      "Animation",
+      "Children",
+      "Comedy"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Shaka Zulu: The Citadel",
+    "rating": 1.88,
+    "year": 2001.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Phat Beach",
+    "rating": 2.12,
+    "year": 1996.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Fire",
+    "rating": 2.5,
+    "year": 1996.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Double Indemnity",
+    "rating": 2.17,
+    "year": 1944.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Film-Noir"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "Detroit 9000",
+    "rating": 2.5,
+    "year": 1973.0,
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Aprile",
+    "rating": 2.25,
+    "year": 1998.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Flushed Away",
+    "rating": 2.64,
+    "year": 2006.0,
+    "genres": [
+      "Animation",
+      "Comedy"
+    ],
+    "review_count": 22
+  },
+  {
+    "title": "Satin Rouge",
+    "rating": 3.25,
+    "year": 2002.0,
+    "genres": [
+      "Drama",
+      "Musical"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "She's Out of My League",
+    "rating": 1.88,
+    "year": 2010.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Haiku Tunnel",
+    "rating": 1.77,
+    "year": 2001.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 22
+  },
+  {
+    "title": "Last Night",
+    "rating": 2.0,
+    "year": 1998.0,
+    "genres": [
+      "Drama",
+      "Sci-Fi"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Eddie Izzard: Circle",
+    "rating": 4.0,
+    "year": 2002.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Vigilante",
+    "rating": 2.33,
+    "year": 1983.0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Land of Plenty",
+    "rating": 2.5,
+    "year": 2004.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Fatty Drives the Bus",
+    "rating": 1.4,
+    "year": 1999.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Psycho II",
+    "rating": 2.5,
+    "year": 1983.0,
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Doctor Detroit",
+    "rating": 2.75,
+    "year": 1983.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Memories of Me",
+    "rating": 3.0,
+    "year": 1988.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Zulu Dawn",
+    "rating": 2.5,
+    "year": 1979.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "Thriller",
+      "War"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Personal Best",
+    "rating": 3.5,
+    "year": 1982.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Tears of the Sun",
+    "rating": 2.88,
+    "year": 2003.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Spring Breakdown",
+    "rating": 2.83,
+    "year": 2009.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Just Looking",
+    "rating": 1.0,
+    "year": 1999.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Western",
+    "rating": 3.0,
+    "year": 1997.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "A Cry in the Wild",
+    "rating": 2.3,
+    "year": 1990.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Thriller"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Salaam-E-Ishq",
+    "rating": 2.57,
+    "year": 2007.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Alex in Wonderland",
+    "rating": 3.5,
+    "year": 1970.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Troy",
+    "rating": 2.0,
+    "year": 2004.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "War"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Year of the Comet",
+    "rating": 1.0,
+    "year": 1992.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "To Die For",
+    "rating": 2.5,
+    "year": 1995.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Reversal of Fortune",
+    "rating": 2.12,
+    "year": 1990.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Kinjite: Forbidden Subjects",
+    "rating": 2.08,
+    "year": 1989.0,
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "While She Was Out",
+    "rating": 2.22,
+    "year": 2008.0,
+    "genres": [
+      "Thriller"
+    ],
+    "review_count": 54
+  },
+  {
+    "title": "Freddy vs. Jason",
+    "rating": 2.25,
+    "year": 2003.0,
+    "genres": [
+      "Action",
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Religulous",
+    "rating": 2.57,
+    "year": 2008.0,
+    "genres": [
+      "Comedy",
+      "Documentary"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Albino Alligator",
+    "rating": 2.4,
+    "year": 1996.0,
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "3 Ninjas",
+    "rating": 2.38,
+    "year": 1992.0,
+    "genres": [
+      "Action",
+      "Children",
+      "Comedy"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "The Man Who Could Cheat Death",
+    "rating": 2.5,
+    "year": 1959.0,
+    "genres": [
+      "Horror",
+      "Sci-Fi"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Officer Down",
+    "rating": 1.5,
+    "year": 2013.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Trancers II",
+    "rating": 2.5,
+    "year": 1991.0,
+    "genres": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Cape Fear",
+    "rating": 2.7,
+    "year": 1962.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Rambo: First Blood Part II",
+    "rating": 2.1,
+    "year": 1985.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Thriller"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Death on the Nile",
+    "rating": 2.75,
+    "year": 1978.0,
+    "genres": [
+      "Crime",
+      "Mystery"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Yentl",
+    "rating": 1.86,
+    "year": 1983.0,
+    "genres": [
+      "Drama",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Two Guys Talkin' About Girls",
+    "rating": 3.0,
+    "year": 1995.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "My Girl 2",
+    "rating": 2.0,
+    "year": 1994.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Oblivion",
+    "rating": 1.5,
+    "year": 2013.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi",
+      "IMAX"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Sgt. Bilko",
+    "rating": 1.86,
+    "year": 1996.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 22
+  },
+  {
+    "title": "Pipe Dream",
+    "rating": 1.0,
+    "year": 2002.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Waking the Dead",
+    "rating": 1.42,
+    "year": 2000.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Private Lessons",
+    "rating": 1.58,
+    "year": 1981.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "French Kiss",
+    "rating": 2.62,
+    "year": 1995.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Transylvania 6-5000",
+    "rating": 2.67,
+    "year": 1985.0,
+    "genres": [
+      "Comedy",
+      "Horror"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "G.I. Jane",
+    "rating": 1.96,
+    "year": 1997.0,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "review_count": 26
+  },
+  {
+    "title": "Planet of the Apes",
+    "rating": 2.29,
+    "year": 2001.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Sci-Fi"
+    ],
+    "review_count": 52
+  },
+  {
+    "title": "All Over the Guy",
+    "rating": 3.0,
+    "year": 2001.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Alice",
+    "rating": 2.5,
+    "year": 1990.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Fantasy",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "I Bury the Living",
+    "rating": 2.5,
+    "year": 1958.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "It's All Gone Pete Tong",
+    "rating": 2.5,
+    "year": 2004.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Musical"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Red Riding Hood",
+    "rating": 1.75,
+    "year": 2011.0,
+    "genres": [
+      "Fantasy",
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Class of 1984",
+    "rating": 2.0,
+    "year": 1982.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Lipstick",
+    "rating": 2.62,
+    "year": 1976.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Underneath",
+    "rating": 2.25,
+    "year": 1995.0,
+    "genres": [
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Andy Hardy Meets Debutante",
+    "rating": 2.5,
+    "year": 1940.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Muppet Treasure Island",
+    "rating": 2.5,
+    "year": 1996.0,
+    "genres": [
+      "Adventure",
+      "Children",
+      "Comedy",
+      "Musical"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Georgia",
+    "rating": 2.25,
+    "year": 1995.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Home Alone 3",
+    "rating": 1.63,
+    "year": 1997.0,
+    "genres": [
+      "Children",
+      "Comedy"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Bronco Billy",
+    "rating": 2.88,
+    "year": 1980.0,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Wonder Woman",
+    "rating": 2.17,
+    "year": 2009.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Animation",
+      "Fantasy"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Looking for Richard",
+    "rating": 2.0,
+    "year": 1996.0,
+    "genres": [
+      "Documentary",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Quo Vadis, Baby?",
+    "rating": 3.5,
+    "year": 2005.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Syriana",
+    "rating": 1.61,
+    "year": 2005.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 28
+  },
+  {
+    "title": "Deathstalker",
+    "rating": 2.5,
+    "year": 1983.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "review_count": 24
+  },
+  {
+    "title": "Grand Canyon",
+    "rating": 2.17,
+    "year": 1991.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Bleak House",
+    "rating": 1.5,
+    "year": 2005.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Rob Roy",
+    "rating": 1.5,
+    "year": 1995.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "Romance",
+      "War"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Ride with the Devil",
+    "rating": 2.36,
+    "year": 1999.0,
+    "genres": [
+      "Drama",
+      "Romance",
+      "War"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Reckless",
+    "rating": 2.0,
+    "year": 1984.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Collision Course",
+    "rating": 1.92,
+    "year": 1989.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Thriller"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Switching Goals",
+    "rating": 3.0,
+    "year": 1999.0,
+    "genres": [
+      "Children",
+      "Comedy"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "What Is It?",
+    "rating": 2.6,
+    "year": 2005.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Hot Millions",
+    "rating": 3.12,
+    "year": 1968.0,
+    "genres": [
+      "Comedy",
+      "Crime"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Johnny Dangerously",
+    "rating": 2.17,
+    "year": 1984.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Babylon 5: The River of Souls",
+    "rating": 2.17,
+    "year": 1998.0,
+    "genres": [
+      "Drama",
+      "Sci-Fi"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "North Shore",
+    "rating": 4.0,
+    "year": 1987.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "10 Items or Less",
+    "rating": 3.14,
+    "year": 2006.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Man's Castle",
+    "rating": 1.5,
+    "year": 1933.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Creature Comforts",
+    "rating": 2.0,
+    "year": 1989.0,
+    "genres": [
+      "Animation",
+      "Comedy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "King Solomon's Mines",
+    "rating": 2.15,
+    "year": 1937.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Romance",
+      "Thriller"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Now and Forever",
+    "rating": 2.0,
+    "year": 1934.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Urban Cowboy",
+    "rating": 1.5,
+    "year": 1980.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Hitler: The Rise of Evil",
+    "rating": 2.16,
+    "year": 2003.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 38
+  },
+  {
+    "title": "Indian Summer",
+    "rating": 1.5,
+    "year": 1996.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Men in White",
+    "rating": 1.67,
+    "year": 1998.0,
+    "genres": [
+      "(no genres listed)"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Top Gun",
+    "rating": 2.5,
+    "year": 1986.0,
+    "genres": [
+      "Action",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Nothing Personal",
+    "rating": 3.25,
+    "year": 1995.0,
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Pecker",
+    "rating": 2.1,
+    "year": 1998.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Ice Bound",
+    "rating": 2.25,
+    "year": 2003.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Gunga Din",
+    "rating": 2.0,
+    "year": 1939.0,
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "War"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Class Reunion",
+    "rating": 1.93,
+    "year": 1982.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Che: Part Two",
+    "rating": 2.3,
+    "year": 2008.0,
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "April Love",
+    "rating": 2.5,
+    "year": 1957.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Musical"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Traces of Red",
+    "rating": 3.5,
+    "year": 1992.0,
+    "genres": [
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Whipped",
+    "rating": 1.73,
+    "year": 2000.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 40
+  },
+  {
+    "title": "Extremities",
+    "rating": 2.5,
+    "year": 1986.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Wonderland",
+    "rating": 2.5,
+    "year": 2003.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Freeway",
+    "rating": 2.5,
+    "year": 1996.0,
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Saps at Sea",
+    "rating": 2.5,
+    "year": 1940.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "That Lady in Ermine",
+    "rating": 2.62,
+    "year": 1948.0,
+    "genres": [
+      "Comedy",
+      "Fantasy",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Bonhoeffer: Agent of Grace",
+    "rating": 1.0,
+    "year": 2000.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Sleepwalkers",
+    "rating": 2.55,
+    "year": 1992.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 38
+  },
+  {
+    "title": "A Connecticut Yankee in King Arthur's Court",
+    "rating": 2.5,
+    "year": 1989.0,
+    "genres": [
+      "Adventure",
+      "Children",
+      "Comedy",
+      "Fantasy"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Trick or Treat",
+    "rating": 3.0,
+    "year": 1986.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Istanbul",
+    "rating": 2.5,
+    "year": 1985.0,
+    "genres": [
+      "(no genres listed)"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Zabriskie Point",
+    "rating": 2.8,
+    "year": 1970.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Othello",
+    "rating": 4.0,
+    "year": 1965.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Envy",
+    "rating": 2.38,
+    "year": 2004.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 42
+  },
+  {
+    "title": "Jack Frost",
+    "rating": 2.21,
+    "year": 1998.0,
+    "genres": [
+      "Children",
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 28
+  },
+  {
+    "title": "Fay Grim",
+    "rating": 2.0,
+    "year": 2006.0,
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Follow the Fleet",
+    "rating": 4.0,
+    "year": 1936.0,
+    "genres": [
+      "Comedy",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Grass: A Nation's Battle for Life",
+    "rating": 3.0,
+    "year": 1925.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Once Upon a Time",
+    "rating": 1.25,
+    "year": 1922.0,
+    "genres": [
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "If You Only Knew",
+    "rating": 1.92,
+    "year": 2000.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Welcome to Collinwood",
+    "rating": 2.33,
+    "year": 2002.0,
+    "genres": [
+      "Comedy",
+      "Crime"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "How the Grinch Stole Christmas",
+    "rating": 2.17,
+    "year": 2000.0,
+    "genres": [
+      "Children",
+      "Comedy",
+      "Fantasy"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Atlantis: The Lost Empire",
+    "rating": 2.7,
+    "year": 2001.0,
+    "genres": [
+      "Adventure",
+      "Animation",
+      "Children",
+      "Fantasy"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Men of Honor",
+    "rating": 2.5,
+    "year": 2000.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Renaissance",
+    "rating": 2.5,
+    "year": 2006.0,
+    "genres": [
+      "Action",
+      "Animation",
+      "Film-Noir",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Mystery Men",
+    "rating": 1.0,
+    "year": 1999.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Fantasy"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Labyrinth",
+    "rating": 1.0,
+    "year": 1986.0,
+    "genres": [
+      "Adventure",
+      "Fantasy",
+      "Musical"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Opening Night",
+    "rating": 2.0,
+    "year": 1977.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Dressed to Kill",
+    "rating": 2.17,
+    "year": 1980.0,
+    "genres": [
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Fanfan la Tulipe",
+    "rating": 2.5,
+    "year": 1952.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Romance",
+      "War"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "My Super Ex-Girlfriend",
+    "rating": 2.19,
+    "year": 2006.0,
+    "genres": [
+      "Comedy",
+      "Fantasy",
+      "Romance"
+    ],
+    "review_count": 32
+  },
+  {
+    "title": "Foxes",
+    "rating": 2.5,
+    "year": 1980.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Beat Street",
+    "rating": 3.83,
+    "year": 1984.0,
+    "genres": [
+      "Drama",
+      "Musical"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Seven Pounds",
+    "rating": 2.3,
+    "year": 2008.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Bye Bye Birdie",
+    "rating": 2.42,
+    "year": 1963.0,
+    "genres": [
+      "Comedy",
+      "Musical"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "War, Inc.",
+    "rating": 2.2,
+    "year": 2008.0,
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Cinderella II: Dreams Come True",
+    "rating": 2.83,
+    "year": 2002.0,
+    "genres": [
+      "Animation",
+      "Children",
+      "Fantasy"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "Three Smart Girls",
+    "rating": 2.5,
+    "year": 1936.0,
+    "genres": [
+      "Comedy",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Deathtrap",
+    "rating": 2.83,
+    "year": 1982.0,
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Curly Sue",
+    "rating": 1.5,
+    "year": 1991.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Crush",
+    "rating": 2.2,
+    "year": 2001.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Halloween",
+    "rating": 1.75,
+    "year": 1978.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Fire and Ice",
+    "rating": 2.83,
+    "year": 1983.0,
+    "genres": [
+      "Animation",
+      "Fantasy"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Vanilla Sky",
+    "rating": 2.0,
+    "year": 2001.0,
+    "genres": [
+      "Mystery",
+      "Romance",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Starstruck",
+    "rating": 2.0,
+    "year": 1982.0,
+    "genres": [
+      "Comedy",
+      "Musical"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Elvis",
+    "rating": 3.0,
+    "year": 1979.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Mr. Destiny",
+    "rating": 3.0,
+    "year": 1990.0,
+    "genres": [
+      "Comedy",
+      "Fantasy"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Shot in the Heart",
+    "rating": 2.0,
+    "year": 2001.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Scanners II: The New Order",
+    "rating": 3.0,
+    "year": 1991.0,
+    "genres": [
+      "Action",
+      "Horror",
+      "Sci-Fi"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Holly",
+    "rating": 2.5,
+    "year": 2006.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Forbidden Planet",
+    "rating": 3.0,
+    "year": 1956.0,
+    "genres": [
+      "Drama",
+      "Sci-Fi"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "After Dark, My Sweet",
+    "rating": 1.83,
+    "year": 1990.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Written on the Wind",
+    "rating": 3.17,
+    "year": 1956.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Ruby in Paradise",
+    "rating": 2.5,
+    "year": 1993.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Cry Freedom",
+    "rating": 2.0,
+    "year": 1987.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Reunion",
+    "rating": 2.25,
+    "year": 1989.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Freddy's Dead: The Final Nightmare",
+    "rating": 2.79,
+    "year": 1991.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 38
+  },
+  {
+    "title": "Star Wars: Episode VI - Return of the Jedi",
+    "rating": 2.0,
+    "year": 1983.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Even Cowgirls Get the Blues",
+    "rating": 1.82,
+    "year": 1993.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 34
+  },
+  {
+    "title": "Full Moon High",
+    "rating": 2.36,
+    "year": 1981.0,
+    "genres": [
+      "Comedy",
+      "Fantasy",
+      "Horror"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Hood of the Living Dead",
+    "rating": 1.88,
+    "year": 2005.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 24
+  },
+  {
+    "title": "God's Country",
+    "rating": 2.5,
+    "year": 1986.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Man on Fire",
+    "rating": 2.5,
+    "year": 2004.0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Sniper",
+    "rating": 2.25,
+    "year": 1993.0,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Things to Come",
+    "rating": 3.0,
+    "year": 1936.0,
+    "genres": [
+      "Sci-Fi"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Fear of a Black Hat",
+    "rating": 1.0,
+    "year": 1994.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Fido",
+    "rating": 2.33,
+    "year": 2006.0,
+    "genres": [
+      "Comedy",
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Wendigo",
+    "rating": 1.86,
+    "year": 2001.0,
+    "genres": [
+      "Drama",
+      "Horror"
+    ],
+    "review_count": 28
+  },
+  {
+    "title": "Bulletproof",
+    "rating": 2.0,
+    "year": 1996.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Crime"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Little Richard",
+    "rating": 1.75,
+    "year": 2000.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Sparkle",
+    "rating": 2.17,
+    "year": 2012.0,
+    "genres": [
+      "Drama",
+      "Musical"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "I.Q.",
+    "rating": 3.67,
+    "year": 1994.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Robot Jox",
+    "rating": 2.56,
+    "year": 1990.0,
+    "genres": [
+      "Sci-Fi"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Gung Ho",
+    "rating": 2.17,
+    "year": 1986.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "There's a Girl in My Soup",
+    "rating": 3.0,
+    "year": 1970.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Doppelganger",
+    "rating": 2.0,
+    "year": 1993.0,
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 24
+  },
+  {
+    "title": "102 Dalmatians",
+    "rating": 2.03,
+    "year": 2000.0,
+    "genres": [
+      "Children",
+      "Comedy"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Hollow Point",
+    "rating": 2.83,
+    "year": 1996.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Surrender, Dorothy",
+    "rating": 2.15,
+    "year": 2006.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Kalifornia",
+    "rating": 2.08,
+    "year": 1993.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Brokedown Palace",
+    "rating": 2.5,
+    "year": 1999.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Before the Devil Knows You're Dead",
+    "rating": 2.75,
+    "year": 2007.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Higher Learning",
+    "rating": 2.14,
+    "year": 1995.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 28
+  },
+  {
+    "title": "Starlift",
+    "rating": 2.5,
+    "year": 1951.0,
+    "genres": [
+      "(no genres listed)"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "How to Eat Fried Worms",
+    "rating": 2.38,
+    "year": 2006.0,
+    "genres": [
+      "Children",
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "D-War",
+    "rating": 2.15,
+    "year": 2007.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Fantasy"
+    ],
+    "review_count": 46
+  },
+  {
+    "title": "Purple Rain",
+    "rating": 2.0,
+    "year": 1984.0,
+    "genres": [
+      "Drama",
+      "Musical"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Night Terrors",
+    "rating": 2.5,
+    "year": 1993.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "Love Is All There Is",
+    "rating": 1.25,
+    "year": 1996.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Dream Machine",
+    "rating": 2.67,
+    "year": 1991.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Crime"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Chasers",
+    "rating": 3.0,
+    "year": 1994.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Mad Dog Time",
+    "rating": 2.2,
+    "year": 1996.0,
+    "genres": [
+      "Crime"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Reign Over Me",
+    "rating": 2.5,
+    "year": 2007.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Dan in Real Life",
+    "rating": 2.09,
+    "year": 2007.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 22
+  },
+  {
+    "title": "Road to Perdition",
+    "rating": 3.17,
+    "year": 2002.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Paris Is Burning",
+    "rating": 2.5,
+    "year": 1990.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Bug",
+    "rating": 2.5,
+    "year": 1975.0,
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Sci-Fi"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Broken Lullaby",
+    "rating": 3.0,
+    "year": 1932.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "How to Lose Friends & Alienate People",
+    "rating": 2.38,
+    "year": 2008.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Theodore Rex",
+    "rating": 1.82,
+    "year": 1995.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 44
+  },
+  {
+    "title": "Batman: Mystery of the Batwoman",
+    "rating": 3.75,
+    "year": 2003.0,
+    "genres": [
+      "Action",
+      "Animation",
+      "Children",
+      "Crime"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Presenting Lily Mars",
+    "rating": 2.5,
+    "year": 1943.0,
+    "genres": [
+      "Comedy",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Manufactured Landscapes",
+    "rating": 1.7,
+    "year": 2006.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Domino",
+    "rating": 1.79,
+    "year": 2005.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 34
+  },
+  {
+    "title": "How She Move",
+    "rating": 2.0,
+    "year": 2007.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Santa Claus",
+    "rating": 1.95,
+    "year": 1959.0,
+    "genres": [
+      "Children",
+      "Fantasy"
+    ],
+    "review_count": 44
+  },
+  {
+    "title": "Vanishing Point",
+    "rating": 1.56,
+    "year": 1971.0,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Boy Meets Boy",
+    "rating": 2.0,
+    "year": 2008.0,
+    "genres": [
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Malice",
+    "rating": 2.5,
+    "year": 1993.0,
+    "genres": [
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Jungle Fever",
+    "rating": 2.42,
+    "year": 1991.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "1408",
+    "rating": 2.33,
+    "year": 2007.0,
+    "genres": [
+      "Drama",
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Barenaked in America",
+    "rating": 3.0,
+    "year": 1999.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Dakota",
+    "rating": 2.5,
+    "year": 1945.0,
+    "genres": [
+      "Western"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Stripes",
+    "rating": 2.17,
+    "year": 1981.0,
+    "genres": [
+      "Comedy",
+      "War"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "If....",
+    "rating": 2.93,
+    "year": 1968.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Search and Destroy",
+    "rating": 1.5,
+    "year": 1995.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Faat Kiné",
+    "rating": 2.25,
+    "year": 2001.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Gardens of the Night",
+    "rating": 2.0,
+    "year": 2008.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Prospero's Books",
+    "rating": 2.07,
+    "year": 1991.0,
+    "genres": [
+      "Drama",
+      "Fantasy"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Conquest",
+    "rating": 2.62,
+    "year": 1983.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Gloria",
+    "rating": 1.25,
+    "year": 1999.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Power Play",
+    "rating": 1.9,
+    "year": 1978.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Motocrossed",
+    "rating": 2.75,
+    "year": 2001.0,
+    "genres": [
+      "Action",
+      "Children",
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Winter Break",
+    "rating": 1.83,
+    "year": 2003.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Bloodsuckers",
+    "rating": 2.15,
+    "year": 2005.0,
+    "genres": [
+      "Action",
+      "Horror",
+      "Sci-Fi"
+    ],
+    "review_count": 34
+  },
+  {
+    "title": "Life During Wartime",
+    "rating": 1.56,
+    "year": 2009.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Ghost Town",
+    "rating": 3.0,
+    "year": 2008.0,
+    "genres": [
+      "Comedy",
+      "Fantasy",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Mercy Streets",
+    "rating": 2.0,
+    "year": 2000.0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "44 Minutes: The North Hollywood Shoot-Out",
+    "rating": 2.71,
+    "year": 2003.0,
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Unlawful Entry",
+    "rating": 2.5,
+    "year": 1992.0,
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "One Magic Christmas",
+    "rating": 1.92,
+    "year": 1985.0,
+    "genres": [
+      "Drama",
+      "Fantasy"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Carlito's Way: Rise to Power",
+    "rating": 2.05,
+    "year": 2005.0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 42
+  },
+  {
+    "title": "Barricade",
+    "rating": 2.12,
+    "year": 2012.0,
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Juggernaut",
+    "rating": 2.67,
+    "year": 1974.0,
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Satan's Little Helper",
+    "rating": 2.0,
+    "year": 2004.0,
+    "genres": [
+      "Comedy",
+      "Horror"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Tapeheads",
+    "rating": 2.5,
+    "year": 1988.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Darkon",
+    "rating": 2.5,
+    "year": 2006.0,
+    "genres": [
+      "Documentary",
+      "Fantasy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Black Ice",
+    "rating": 2.5,
+    "year": 2007.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Chapter Two",
+    "rating": 3.0,
+    "year": 1979.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Tatie Danielle",
+    "rating": 2.0,
+    "year": 1990.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Habana Blues",
+    "rating": 2.5,
+    "year": 2005.0,
+    "genres": [
+      "Drama",
+      "Musical"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Sleeping with the Enemy",
+    "rating": 2.5,
+    "year": 1991.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Wuthering Heights",
+    "rating": 1.94,
+    "year": 1992.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "Until September",
+    "rating": 2.83,
+    "year": 1984.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Tension",
+    "rating": 2.0,
+    "year": 1949.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Film-Noir",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Memoirs of a Geisha",
+    "rating": 2.08,
+    "year": 2005.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 24
+  },
+  {
+    "title": "Swiss Family Robinson",
+    "rating": 3.0,
+    "year": 1960.0,
+    "genres": [
+      "Adventure",
+      "Children"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Sphinx",
+    "rating": 1.7,
+    "year": 1981.0,
+    "genres": [
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Split Second",
+    "rating": 2.25,
+    "year": 1992.0,
+    "genres": [
+      "Action",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Top Hat",
+    "rating": 4.0,
+    "year": 1935.0,
+    "genres": [
+      "Comedy",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "King of the Ants",
+    "rating": 3.12,
+    "year": 2003.0,
+    "genres": [
+      "Crime",
+      "Horror"
+    ],
+    "review_count": 24
+  },
+  {
+    "title": "Prizzi's Honor",
+    "rating": 2.25,
+    "year": 1985.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Downloading Nancy",
+    "rating": 2.83,
+    "year": 2008.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "An Alligator Named Daisy",
+    "rating": 2.5,
+    "year": 1955.0,
+    "genres": [
+      "Comedy",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Brief Encounter",
+    "rating": 3.33,
+    "year": 1946.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Washington Square",
+    "rating": 2.56,
+    "year": 1997.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Crimson Tide",
+    "rating": 2.22,
+    "year": 1995.0,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "War"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "One Hour Photo",
+    "rating": 2.0,
+    "year": 2002.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Nine to Five",
+    "rating": 3.0,
+    "year": 1980.0,
+    "genres": [
+      "Comedy",
+      "Crime"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Aquamarine",
+    "rating": 2.0,
+    "year": 2006.0,
+    "genres": [
+      "Children",
+      "Comedy",
+      "Fantasy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Azumi 2: Death or Love",
+    "rating": 2.33,
+    "year": 2005.0,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Tabu: A Story of the South Seas",
+    "rating": 2.0,
+    "year": 1931.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Sleuth",
+    "rating": 2.62,
+    "year": 1972.0,
+    "genres": [
+      "Comedy",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 24
+  },
+  {
+    "title": "Nine Dead",
+    "rating": 2.0,
+    "year": 2010.0,
+    "genres": [
+      "Crime",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Shoot to Kill",
+    "rating": 2.25,
+    "year": 1988.0,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Phantasm III: Lord of the Dead",
+    "rating": 2.33,
+    "year": 1994.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "Sasquatch: The Legend of Bigfoot",
+    "rating": 2.25,
+    "year": 1977.0,
+    "genres": [
+      "Adventure",
+      "Mystery"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Salsa",
+    "rating": 1.75,
+    "year": 1988.0,
+    "genres": [
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Cookers",
+    "rating": 1.5,
+    "year": 2001.0,
+    "genres": [
+      "Drama",
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Doctor Dolittle",
+    "rating": 2.81,
+    "year": 1967.0,
+    "genres": [
+      "Adventure",
+      "Children",
+      "Musical"
+    ],
+    "review_count": 26
+  },
+  {
+    "title": "Vixen!",
+    "rating": 3.5,
+    "year": 1968.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Love Story",
+    "rating": 2.83,
+    "year": 1970.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Dracula 2000",
+    "rating": 2.29,
+    "year": 2000.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Where Are My Children?",
+    "rating": 2.0,
+    "year": 1916.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Silent Night, Deadly Night 5: The Toy Maker",
+    "rating": 2.4,
+    "year": 1991.0,
+    "genres": [
+      "Horror",
+      "Sci-Fi"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Cavemen",
+    "rating": 1.95,
+    "year": 2013.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Christmas in July",
+    "rating": 2.0,
+    "year": 1940.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "The Mad Magician",
+    "rating": 4.0,
+    "year": 1954.0,
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Taboo",
+    "rating": 1.97,
+    "year": 1999.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 34
+  },
+  {
+    "title": "Running Time",
+    "rating": 1.0,
+    "year": 1997.0,
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Sweet Sixteen",
+    "rating": 2.8,
+    "year": 2002.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Platoon",
+    "rating": 2.5,
+    "year": 1986.0,
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Mikey and Nicky",
+    "rating": 2.33,
+    "year": 1976.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "The Last Station",
+    "rating": 2.5,
+    "year": 2009.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Facing the Giants",
+    "rating": 2.04,
+    "year": 2006.0,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "review_count": 24
+  },
+  {
+    "title": "Sundown",
+    "rating": 2.75,
+    "year": 1941.0,
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Scarecrows",
+    "rating": 2.43,
+    "year": 1988.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Avalon",
+    "rating": 2.83,
+    "year": 2001.0,
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Sci-Fi"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Toys",
+    "rating": 2.44,
+    "year": 1992.0,
+    "genres": [
+      "Comedy",
+      "Fantasy"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "Straw Dogs",
+    "rating": 1.0,
+    "year": 1971.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Brown Sugar",
+    "rating": 1.5,
+    "year": 2002.0,
+    "genres": [
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Weeds",
+    "rating": 2.75,
+    "year": 1987.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Faithful",
+    "rating": 3.25,
+    "year": 1996.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Serenity",
+    "rating": 2.0,
+    "year": 2005.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Auggie Rose",
+    "rating": 2.5,
+    "year": 2000.0,
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Role Models",
+    "rating": 1.9,
+    "year": 2008.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Sound and Fury",
+    "rating": 2.5,
+    "year": 2000.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "H6: Diario de un asesino",
+    "rating": 2.6,
+    "year": 2005.0,
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Who's Your Daddy?",
+    "rating": 1.8,
+    "year": 2004.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Persuasion",
+    "rating": 2.11,
+    "year": 1995.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "Permanent Record",
+    "rating": 2.0,
+    "year": 1988.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Doubt",
+    "rating": 2.12,
+    "year": 2008.0,
+    "genres": [
+      "Drama",
+      "Mystery"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Valkyrie",
+    "rating": 3.0,
+    "year": 2008.0,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "War"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Deceiver",
+    "rating": 2.33,
+    "year": 1997.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Bleak Moments",
+    "rating": 2.5,
+    "year": 1972.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Circle of Deceit",
+    "rating": 1.75,
+    "year": 1981.0,
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Four Eyed Monsters",
+    "rating": 2.88,
+    "year": 2005.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Fantasy",
+      "Romance"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Carriers",
+    "rating": 2.58,
+    "year": 2009.0,
+    "genres": [
+      "Drama",
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Love's Labour's Lost",
+    "rating": 2.0,
+    "year": 2000.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Foolish Wives",
+    "rating": 2.25,
+    "year": 1922.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Anne of Green Gables: The Sequel",
+    "rating": 1.0,
+    "year": 1987.0,
+    "genres": [
+      "Children",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Noise",
+    "rating": 3.17,
+    "year": 2004.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Mirror Mirror",
+    "rating": 2.0,
+    "year": 2012.0,
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Fantasy"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "In Which We Serve",
+    "rating": 1.75,
+    "year": 1942.0,
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Manslaughter",
+    "rating": 1.5,
+    "year": 1922.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Where Were You When the Lights Went Out?",
+    "rating": 3.75,
+    "year": 1968.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Late Night Shopping",
+    "rating": 2.7,
+    "year": 2001.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Class of Nuke 'Em High",
+    "rating": 2.43,
+    "year": 1986.0,
+    "genres": [
+      "Comedy",
+      "Horror"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Genova",
+    "rating": 2.9,
+    "year": 2008.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "My Favorite Martian",
+    "rating": 2.36,
+    "year": 1999.0,
+    "genres": [
+      "Comedy",
+      "Sci-Fi"
+    ],
+    "review_count": 42
+  },
+  {
+    "title": "Georgia Rule",
+    "rating": 2.35,
+    "year": 2007.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Revolt of the Zombies",
+    "rating": 2.48,
+    "year": 1936.0,
+    "genres": [
+      "Horror",
+      "War"
+    ],
+    "review_count": 48
+  },
+  {
+    "title": "Bed of Roses",
+    "rating": 2.67,
+    "year": 1996.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Man to Man",
+    "rating": 1.75,
+    "year": 2005.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Dracula",
+    "rating": 2.0,
+    "year": 1992.0,
+    "genres": [
+      "Fantasy",
+      "Horror",
+      "Romance",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Pandemonium",
+    "rating": 1.83,
+    "year": 1982.0,
+    "genres": [
+      "Comedy",
+      "Horror",
+      "Mystery"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Blood on the Moon",
+    "rating": 2.5,
+    "year": 1948.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "Western"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Laugh, Clown, Laugh",
+    "rating": 2.25,
+    "year": 1928.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Seed",
+    "rating": 1.5,
+    "year": 2006.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 42
+  },
+  {
+    "title": "National Treasure",
+    "rating": 2.0,
+    "year": 2004.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 30
+  },
+  {
+    "title": "Jesus of Nazareth",
+    "rating": 3.5,
+    "year": 1977.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Darkness",
+    "rating": 2.86,
+    "year": 2002.0,
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Balance",
+    "rating": 3.5,
+    "year": 1989.0,
+    "genres": [
+      "Animation",
+      "Drama",
+      "Mystery",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Heartburn",
+    "rating": 2.5,
+    "year": 1986.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Scary Movie 3",
+    "rating": 2.79,
+    "year": 2003.0,
+    "genres": [
+      "Comedy",
+      "Horror"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Elephants Dream",
+    "rating": 2.38,
+    "year": 2006.0,
+    "genres": [
+      "Animation",
+      "Fantasy",
+      "Sci-Fi"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Get on the Bus",
+    "rating": 1.5,
+    "year": 1996.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Rosemary's Baby",
+    "rating": 1.5,
+    "year": 1968.0,
+    "genres": [
+      "Drama",
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "The Devil Thumbs a Ride",
+    "rating": 4.0,
+    "year": 1947.0,
+    "genres": [
+      "Drama",
+      "Film-Noir"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Drawing Restraint 9",
+    "rating": 2.45,
+    "year": 2005.0,
+    "genres": [
+      "Fantasy"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Winter Kills",
+    "rating": 2.7,
+    "year": 1979.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Something New",
+    "rating": 3.17,
+    "year": 2006.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Rabbit Test",
+    "rating": 1.1,
+    "year": 1978.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "War and Peace",
+    "rating": 2.0,
+    "year": 1956.0,
+    "genres": [
+      "Drama",
+      "Romance",
+      "War"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "United",
+    "rating": 2.83,
+    "year": 2003.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Something to Sing About",
+    "rating": 3.5,
+    "year": 1937.0,
+    "genres": [
+      "Comedy",
+      "Musical"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Austin Powers: The Spy Who Shagged Me",
+    "rating": 2.42,
+    "year": 1999.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Killer: A Journal of Murder",
+    "rating": 2.75,
+    "year": 1995.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Leonard Cohen: I'm Your Man",
+    "rating": 2.56,
+    "year": 2005.0,
+    "genres": [
+      "Documentary",
+      "Musical"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Notorious",
+    "rating": 2.79,
+    "year": 1946.0,
+    "genres": [
+      "Film-Noir",
+      "Romance",
+      "Thriller"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Blood and Bone",
+    "rating": 2.17,
+    "year": 2009.0,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Liam",
+    "rating": 3.5,
+    "year": 2000.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Tarzan Escapes",
+    "rating": 2.5,
+    "year": 1936.0,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "The Brain",
+    "rating": 2.5,
+    "year": 1969.0,
+    "genres": [
+      "Comedy",
+      "Crime"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Coyote Ugly",
+    "rating": 2.73,
+    "year": 2000.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 22
+  },
+  {
+    "title": "Thunderbirds",
+    "rating": 2.23,
+    "year": 2004.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy",
+      "Sci-Fi"
+    ],
+    "review_count": 40
+  },
+  {
+    "title": "Cocoon",
+    "rating": 2.5,
+    "year": 1985.0,
+    "genres": [
+      "Comedy",
+      "Sci-Fi"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Left Behind",
+    "rating": 2.11,
+    "year": 2014.0,
+    "genres": [
+      "Action",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 54
+  },
+  {
+    "title": "The Legend of Bloody Jack",
+    "rating": 2.25,
+    "year": 2007.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Anamorph",
+    "rating": 2.1,
+    "year": 2007.0,
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "French Connection II",
+    "rating": 2.75,
+    "year": 1975.0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Vodka Lemon",
+    "rating": 3.0,
+    "year": 2003.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Tarzan the Ape Man",
+    "rating": 1.89,
+    "year": 1932.0,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "review_count": 44
+  },
+  {
+    "title": "Üvegtigris",
+    "rating": 2.5,
+    "year": 2001.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "By the Sword",
+    "rating": 1.83,
+    "year": 1991.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Hooper",
+    "rating": 1.75,
+    "year": 1978.0,
+    "genres": [
+      "Action",
+      "Comedy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Animal",
+    "rating": 4.0,
+    "year": 1977.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Broken Bridges",
+    "rating": 2.83,
+    "year": 2006.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Peter Pan",
+    "rating": 1.5,
+    "year": 1953.0,
+    "genres": [
+      "Animation",
+      "Children",
+      "Fantasy",
+      "Musical"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Into the Blue 2: The Reef",
+    "rating": 3.5,
+    "year": 2009.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "9",
+    "rating": 1.78,
+    "year": 2009.0,
+    "genres": [
+      "Adventure",
+      "Animation",
+      "Sci-Fi"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "Grand Theft Parsons",
+    "rating": 1.64,
+    "year": 2003.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Yu-Gi-Oh!",
+    "rating": 1.75,
+    "year": 2004.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Animation",
+      "Fantasy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Two Ninas",
+    "rating": 1.33,
+    "year": 1999.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Amazing Grace and Chuck",
+    "rating": 2.1,
+    "year": 1987.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Stunt Rock",
+    "rating": 3.0,
+    "year": 1980.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Melinda and Melinda",
+    "rating": 2.06,
+    "year": 2004.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 36
+  },
+  {
+    "title": "Bucktown",
+    "rating": 1.0,
+    "year": 1975.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Night of the Comet",
+    "rating": 2.88,
+    "year": 1984.0,
+    "genres": [
+      "Comedy",
+      "Horror",
+      "Sci-Fi"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Can I Do It 'Till I Need Glasses?",
+    "rating": 2.33,
+    "year": 1977.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Tinseltown",
+    "rating": 1.83,
+    "year": 1997.0,
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Fast, Cheap & Out of Control",
+    "rating": 2.5,
+    "year": 1997.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Stigmata",
+    "rating": 1.58,
+    "year": 1999.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "City of Joy",
+    "rating": 3.0,
+    "year": 1992.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Prom Night",
+    "rating": 2.07,
+    "year": 2008.0,
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 60
+  },
+  {
+    "title": "Dick",
+    "rating": 2.0,
+    "year": 1999.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Free Money",
+    "rating": 2.6,
+    "year": 1998.0,
+    "genres": [
+      "Comedy",
+      "Crime"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Slipstream",
+    "rating": 2.11,
+    "year": 2007.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Fantasy",
+      "Mystery",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 38
+  },
+  {
+    "title": "20 Dates",
+    "rating": 2.5,
+    "year": 1998.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "Women in Love",
+    "rating": 3.0,
+    "year": 1969.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Shadrach",
+    "rating": 1.83,
+    "year": 1998.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "March or Die",
+    "rating": 4.0,
+    "year": 1977.0,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Romance",
+      "War"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "The Raid",
+    "rating": 3.0,
+    "year": 1954.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "War"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "New Best Friend",
+    "rating": 2.44,
+    "year": 2002.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Take the High Ground!",
+    "rating": 2.0,
+    "year": 1953.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "War"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Rush Hour 2",
+    "rating": 2.0,
+    "year": 2001.0,
+    "genres": [
+      "Action",
+      "Comedy"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Roadie",
+    "rating": 1.17,
+    "year": 1980.0,
+    "genres": [
+      "Comedy",
+      "Musical"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Anna",
+    "rating": 1.5,
+    "year": 2013.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Johnny Suede",
+    "rating": 1.75,
+    "year": 1991.0,
+    "genres": [
+      "Comedy",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Down in the Valley",
+    "rating": 2.56,
+    "year": 2005.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Altered",
+    "rating": 2.25,
+    "year": 2006.0,
+    "genres": [
+      "Horror",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "My Boyfriend's Back",
+    "rating": 2.2,
+    "year": 1993.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "1776",
+    "rating": 1.75,
+    "year": 1972.0,
+    "genres": [
+      "Children",
+      "Drama",
+      "Musical"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Decoy",
+    "rating": 1.67,
+    "year": 1946.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Film-Noir"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Gentlemen Prefer Blondes",
+    "rating": 2.25,
+    "year": 1953.0,
+    "genres": [
+      "Comedy",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Natural Born Killers",
+    "rating": 2.5,
+    "year": 1994.0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Herbie: Fully Loaded",
+    "rating": 2.79,
+    "year": 2005.0,
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Kiss Them for Me",
+    "rating": 2.67,
+    "year": 1957.0,
+    "genres": [
+      "Comedy",
+      "Romance",
+      "War"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "My Wife's Relations",
+    "rating": 3.5,
+    "year": 1922.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Bite the Bullet",
+    "rating": 1.88,
+    "year": 1975.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Western"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Sense and Sensibility",
+    "rating": 4.0,
+    "year": 1995.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Ordinary Sinner",
+    "rating": 2.0,
+    "year": 2001.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Powaqqatsi",
+    "rating": 2.17,
+    "year": 1988.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Double Impact",
+    "rating": 2.65,
+    "year": 1991.0,
+    "genres": [
+      "Action"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Dollman",
+    "rating": 2.25,
+    "year": 1991.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Crime"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Casanova Brown",
+    "rating": 2.75,
+    "year": 1944.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Wise Blood",
+    "rating": 1.67,
+    "year": 1979.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Mama's Boy",
+    "rating": 2.12,
+    "year": 2007.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Ben X",
+    "rating": 2.0,
+    "year": 2007.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Sione's Wedding",
+    "rating": 1.88,
+    "year": 2006.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Rebel Without a Cause",
+    "rating": 3.5,
+    "year": 1955.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Hollywood Shuffle",
+    "rating": 3.0,
+    "year": 1987.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Already Dead",
+    "rating": 2.0,
+    "year": 2007.0,
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Set It Off",
+    "rating": 1.88,
+    "year": 1996.0,
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Battlestar Galactica",
+    "rating": 2.07,
+    "year": 2003.0,
+    "genres": [
+      "Drama",
+      "Sci-Fi",
+      "War"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "McCabe & Mrs. Miller",
+    "rating": 2.5,
+    "year": 1971.0,
+    "genres": [
+      "Drama",
+      "Western"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Revolution",
+    "rating": 1.94,
+    "year": 1985.0,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "War"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Jetsons: The Movie",
+    "rating": 1.0,
+    "year": 1990.0,
+    "genres": [
+      "Animation",
+      "Children",
+      "Comedy",
+      "Musical",
+      "Sci-Fi"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Dawn of the Dead",
+    "rating": 2.12,
+    "year": 2004.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Strange Cargo",
+    "rating": 3.12,
+    "year": 1940.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Corvette Summer",
+    "rating": 3.4,
+    "year": 1978.0,
+    "genres": [
+      "Adventure",
+      "Comedy"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "54",
+    "rating": 2.93,
+    "year": 1998.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "Troma's War",
+    "rating": 2.33,
+    "year": 1988.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Blue Juice",
+    "rating": 3.0,
+    "year": 1995.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Chillers",
+    "rating": 1.75,
+    "year": 1987.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Alabama's Ghost",
+    "rating": 3.5,
+    "year": 1973.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Hey Ram",
+    "rating": 2.75,
+    "year": 2000.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Redline",
+    "rating": 1.92,
+    "year": 2009.0,
+    "genres": [
+      "Action",
+      "Animation",
+      "Sci-Fi"
+    ],
+    "review_count": 52
+  },
+  {
+    "title": "Trance",
+    "rating": 2.5,
+    "year": 2013.0,
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 34
+  },
+  {
+    "title": "Transformers",
+    "rating": 1.0,
+    "year": 2007.0,
+    "genres": [
+      "Action",
+      "Sci-Fi",
+      "Thriller",
+      "IMAX"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Scrooge",
+    "rating": 1.83,
+    "year": 1970.0,
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Musical"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Inspector Gadget",
+    "rating": 1.68,
+    "year": 1999.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Children",
+      "Comedy"
+    ],
+    "review_count": 38
+  },
+  {
+    "title": "Immortel (ad vitam)",
+    "rating": 2.41,
+    "year": 2004.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Animation",
+      "Fantasy",
+      "Sci-Fi"
+    ],
+    "review_count": 22
+  },
+  {
+    "title": "Chronos",
+    "rating": 2.75,
+    "year": 1985.0,
+    "genres": [
+      "Documentary",
+      "IMAX"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Sunshine",
+    "rating": 2.38,
+    "year": 2007.0,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Cabin Fever",
+    "rating": 1.77,
+    "year": 2002.0,
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 40
+  },
+  {
+    "title": "Modern Romance",
+    "rating": 2.67,
+    "year": 1981.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "No Turning Back",
+    "rating": 1.5,
+    "year": 2001.0,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Kill Me Later",
+    "rating": 2.0,
+    "year": 2001.0,
+    "genres": [
+      "Romance",
+      "Thriller"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Much Ado About Nothing",
+    "rating": 1.83,
+    "year": 2012.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Polyester",
+    "rating": 1.5,
+    "year": 1981.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Shakedown",
+    "rating": 2.5,
+    "year": 1988.0,
+    "genres": [
+      "Action"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Maid of Salem",
+    "rating": 2.0,
+    "year": 1937.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Attack Force",
+    "rating": 1.88,
+    "year": 2006.0,
+    "genres": [
+      "Action",
+      "Horror",
+      "Sci-Fi"
+    ],
+    "review_count": 58
+  },
+  {
+    "title": "Buffalo Bill",
+    "rating": 4.0,
+    "year": 1944.0,
+    "genres": [
+      "Western"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Dark Floors",
+    "rating": 2.59,
+    "year": 2008.0,
+    "genres": [
+      "Fantasy",
+      "Horror"
+    ],
+    "review_count": 34
+  },
+  {
+    "title": "Best Friends",
+    "rating": 2.0,
+    "year": 1982.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "My Friend Flicka",
+    "rating": 2.5,
+    "year": 1943.0,
+    "genres": [
+      "Children",
+      "Western"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Switchback",
+    "rating": 2.8,
+    "year": 1997.0,
+    "genres": [
+      "Crime",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Corky Romano",
+    "rating": 2.07,
+    "year": 2001.0,
+    "genres": [
+      "Comedy",
+      "Crime"
+    ],
+    "review_count": 28
+  },
+  {
+    "title": "Evil Aliens",
+    "rating": 2.75,
+    "year": 2005.0,
+    "genres": [
+      "Comedy",
+      "Horror",
+      "Sci-Fi"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Nuremberg",
+    "rating": 2.1,
+    "year": 2000.0,
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Summer of Sam",
+    "rating": 2.14,
+    "year": 1999.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 36
+  },
+  {
+    "title": "Look Both Ways",
+    "rating": 2.38,
+    "year": 2005.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Provocateur",
+    "rating": 2.0,
+    "year": 1995.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Blithe Spirit",
+    "rating": 3.0,
+    "year": 1945.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Fantasy",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Summer Holiday",
+    "rating": 4.0,
+    "year": 1963.0,
+    "genres": [
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Ask the Dust",
+    "rating": 2.25,
+    "year": 2006.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 28
+  },
+  {
+    "title": "Three Days of the Condor",
+    "rating": 2.83,
+    "year": 1975.0,
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Romance",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "In the Good Old Summertime",
+    "rating": 2.5,
+    "year": 1949.0,
+    "genres": [
+      "Musical"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Alone in the Dark",
+    "rating": 1.76,
+    "year": 2005.0,
+    "genres": [
+      "Action",
+      "Horror",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 54
+  },
+  {
+    "title": "Two for the Road",
+    "rating": 3.0,
+    "year": 1967.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Parineeta",
+    "rating": 2.5,
+    "year": 2005.0,
+    "genres": [
+      "Drama",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Snow White",
+    "rating": 2.75,
+    "year": 1916.0,
+    "genres": [
+      "Fantasy",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Attack of the Killer Tomatoes!",
+    "rating": 2.25,
+    "year": 1978.0,
+    "genres": [
+      "Comedy",
+      "Horror"
+    ],
+    "review_count": 28
+  },
+  {
+    "title": "Coming Out",
+    "rating": 2.5,
+    "year": 1989.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Showdown in Little Tokyo",
+    "rating": 2.42,
+    "year": 1991.0,
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Journey to the Center of the Earth",
+    "rating": 1.17,
+    "year": 1989.0,
+    "genres": [
+      "Action",
+      "Children",
+      "Fantasy",
+      "Sci-Fi"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Hollywood Homicide",
+    "rating": 2.25,
+    "year": 2003.0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Ginger Snaps Back: The Beginning",
+    "rating": 2.0,
+    "year": 2004.0,
+    "genres": [
+      "Fantasy",
+      "Horror"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Monster",
+    "rating": 1.86,
+    "year": 2008.0,
+    "genres": [
+      "Action",
+      "Horror",
+      "Sci-Fi"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "The Perils of Pauline",
+    "rating": 2.0,
+    "year": 1967.0,
+    "genres": [
+      "(no genres listed)"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Superman Returns",
+    "rating": 1.5,
+    "year": 2006.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi",
+      "IMAX"
+    ],
+    "review_count": 32
+  },
+  {
+    "title": "Sweetwater",
+    "rating": 2.5,
+    "year": 2013.0,
+    "genres": [
+      "Thriller",
+      "Western"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Shooting Dogs",
+    "rating": 3.5,
+    "year": 2005.0,
+    "genres": [
+      "Documentary",
+      "Drama",
+      "War"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Animal Farm",
+    "rating": 3.17,
+    "year": 1954.0,
+    "genres": [
+      "Animation",
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Rosalie Goes Shopping",
+    "rating": 1.0,
+    "year": 1989.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Bang",
+    "rating": 1.0,
+    "year": 1995.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Munchies",
+    "rating": 1.82,
+    "year": 1987.0,
+    "genres": [
+      "Comedy",
+      "Horror"
+    ],
+    "review_count": 22
+  },
+  {
+    "title": "My Bollywood Bride",
+    "rating": 1.83,
+    "year": 2006.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "X-Men Origins: Wolverine",
+    "rating": 2.58,
+    "year": 2009.0,
+    "genres": [
+      "Action",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Broken Arrow",
+    "rating": 2.0,
+    "year": 1996.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Creepshow 2",
+    "rating": 3.38,
+    "year": 1987.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Marley & Me",
+    "rating": 2.5,
+    "year": 2008.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Femme Fatale",
+    "rating": 2.0,
+    "year": 2002.0,
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Wild Tigers I Have Known",
+    "rating": 2.14,
+    "year": 2006.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 28
+  },
+  {
+    "title": "Jesse James",
+    "rating": 1.5,
+    "year": 1939.0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama",
+      "Romance",
+      "Western"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Do You Wanna Know a Secret?",
+    "rating": 1.94,
+    "year": 2001.0,
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 32
+  },
+  {
+    "title": "Undertow",
+    "rating": 2.08,
+    "year": 2004.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Soul Survivors",
+    "rating": 2.27,
+    "year": 2001.0,
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 40
+  },
+  {
+    "title": "Solar Crisis",
+    "rating": 2.09,
+    "year": 1990.0,
+    "genres": [
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 22
+  },
+  {
+    "title": "Eye of the Needle",
+    "rating": 2.83,
+    "year": 1981.0,
+    "genres": [
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Secrets & Lies",
+    "rating": 2.56,
+    "year": 1996.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Another Man's Poison",
+    "rating": 3.0,
+    "year": 1952.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Don't Drink the Water",
+    "rating": 1.5,
+    "year": 1994.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Seize the Day",
+    "rating": 1.0,
+    "year": 1986.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Hello Mary Lou: Prom Night II",
+    "rating": 2.57,
+    "year": 1987.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "The Forest",
+    "rating": 2.17,
+    "year": 2012.0,
+    "genres": [
+      "Drama",
+      "Fantasy"
+    ],
+    "review_count": 24
+  },
+  {
+    "title": "This Is England",
+    "rating": 3.5,
+    "year": 2006.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Fred Claus",
+    "rating": 2.38,
+    "year": 2007.0,
+    "genres": [
+      "Children",
+      "Comedy",
+      "Fantasy"
+    ],
+    "review_count": 26
+  },
+  {
+    "title": "Alien Hunter",
+    "rating": 2.14,
+    "year": 2003.0,
+    "genres": [
+      "Action",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 22
+  },
+  {
+    "title": "Seven Years in Tibet",
+    "rating": 2.88,
+    "year": 1997.0,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "War"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "13 Going on 30",
+    "rating": 2.5,
+    "year": 2004.0,
+    "genres": [
+      "Comedy",
+      "Fantasy",
+      "Romance"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Moby Dick",
+    "rating": 2.0,
+    "year": 1956.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Blonde Ambition",
+    "rating": 2.33,
+    "year": 2007.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 24
+  },
+  {
+    "title": "It Runs in the Family",
+    "rating": 2.38,
+    "year": 2003.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Chan Is Missing",
+    "rating": 1.5,
+    "year": 1982.0,
+    "genres": [
+      "Crime"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Roberto Succo",
+    "rating": 2.5,
+    "year": 2001.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Awake",
+    "rating": 2.78,
+    "year": 2007.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "Shiner",
+    "rating": 2.58,
+    "year": 2000.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "$",
+    "rating": 1.25,
+    "year": 1971.0,
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Millie",
+    "rating": 3.5,
+    "year": 1931.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "50 First Dates",
+    "rating": 2.0,
+    "year": 2004.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Salvage",
+    "rating": 2.42,
+    "year": 2006.0,
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Wanda Nevada",
+    "rating": 2.58,
+    "year": 1979.0,
+    "genres": [
+      "Comedy",
+      "Mystery",
+      "Romance",
+      "Western"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Harvie Krumpet",
+    "rating": 2.5,
+    "year": 2003.0,
+    "genres": [
+      "Animation",
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Little Man",
+    "rating": 1.64,
+    "year": 2006.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 44
+  },
+  {
+    "title": "Rockin' in the Rockies",
+    "rating": 3.1,
+    "year": 1945.0,
+    "genres": [
+      "Comedy",
+      "Musical",
+      "Western"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Dreamgirls",
+    "rating": 2.18,
+    "year": 2006.0,
+    "genres": [
+      "Drama",
+      "Musical"
+    ],
+    "review_count": 22
+  },
+  {
+    "title": "Aces High",
+    "rating": 3.0,
+    "year": 1976.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "War"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Before the Rains",
+    "rating": 2.5,
+    "year": 2007.0,
+    "genres": [
+      "Drama",
+      "Romance",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Homicide",
+    "rating": 1.75,
+    "year": 1991.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Slither",
+    "rating": 2.5,
+    "year": 1973.0,
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Sleepers",
+    "rating": 4.0,
+    "year": 1996.0,
+    "genres": [
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Go Figure",
+    "rating": 1.92,
+    "year": 2001.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Conceiving Ada",
+    "rating": 1.75,
+    "year": 1997.0,
+    "genres": [
+      "Drama",
+      "Sci-Fi"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Pollyanna",
+    "rating": 3.5,
+    "year": 1960.0,
+    "genres": [
+      "Children",
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Veronica Mars",
+    "rating": 1.75,
+    "year": 2014.0,
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Iceman",
+    "rating": 2.0,
+    "year": 2014.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Sci-Fi"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "It's Christmastime Again, Charlie Brown",
+    "rating": 2.0,
+    "year": 1992.0,
+    "genres": [
+      "Animation"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Frankenstein Must Be Destroyed",
+    "rating": 3.0,
+    "year": 1969.0,
+    "genres": [
+      "Drama",
+      "Horror",
+      "Sci-Fi"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Fiorile",
+    "rating": 2.5,
+    "year": 1993.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Children of a Lesser God",
+    "rating": 1.62,
+    "year": 1986.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Dead Husbands",
+    "rating": 2.67,
+    "year": 1998.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "You'll Find Out",
+    "rating": 2.38,
+    "year": 1940.0,
+    "genres": [
+      "Comedy",
+      "Horror",
+      "Musical",
+      "Mystery",
+      "Romance"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Among Giants",
+    "rating": 2.75,
+    "year": 1998.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Star Wars: Episode III - Revenge of the Sith",
+    "rating": 2.44,
+    "year": 2005.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Watching the Detectives",
+    "rating": 3.17,
+    "year": 2007.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Kiss Kiss Bang Bang",
+    "rating": 1.0,
+    "year": 2005.0,
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Home for the Holidays",
+    "rating": 3.5,
+    "year": 1995.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Something Wicked This Way Comes",
+    "rating": 2.33,
+    "year": 1983.0,
+    "genres": [
+      "Children",
+      "Drama",
+      "Fantasy",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Power",
+    "rating": 2.67,
+    "year": 1934.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Carnosaur 3: Primal Species",
+    "rating": 1.93,
+    "year": 1996.0,
+    "genres": [
+      "Horror",
+      "Sci-Fi"
+    ],
+    "review_count": 46
+  },
+  {
+    "title": "Antitrust",
+    "rating": 2.27,
+    "year": 2001.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 22
+  },
+  {
+    "title": "In the Soup",
+    "rating": 3.5,
+    "year": 1992.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Black Gold",
+    "rating": 2.5,
+    "year": 2006.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "The Face of Marble",
+    "rating": 2.5,
+    "year": 1946.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "White Noise",
+    "rating": 2.58,
+    "year": 2005.0,
+    "genres": [
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 26
+  },
+  {
+    "title": "Forrest Gump",
+    "rating": 2.83,
+    "year": 1994.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance",
+      "War"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Jindabyne",
+    "rating": 2.68,
+    "year": 2006.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 22
+  },
+  {
+    "title": "Parasomnia",
+    "rating": 3.08,
+    "year": 2008.0,
+    "genres": [
+      "Horror",
+      "Romance",
+      "Thriller"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Major Payne",
+    "rating": 2.86,
+    "year": 1995.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "It Should Happen to You",
+    "rating": 3.5,
+    "year": 1954.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Brigadoon",
+    "rating": 2.1,
+    "year": 1954.0,
+    "genres": [
+      "Fantasy",
+      "Musical",
+      "Romance"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "PTU",
+    "rating": 2.5,
+    "year": 2003.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "When Nietzsche Wept",
+    "rating": 1.88,
+    "year": 2007.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Forbidden Zone",
+    "rating": 2.5,
+    "year": 1980.0,
+    "genres": [
+      "Musical",
+      "Sci-Fi"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "I'm Not Rappaport",
+    "rating": 3.5,
+    "year": 1996.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Myra Breckinridge",
+    "rating": 2.29,
+    "year": 1970.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 28
+  },
+  {
+    "title": "Cube Zero",
+    "rating": 2.0,
+    "year": 2004.0,
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 34
+  },
+  {
+    "title": "For Ever Mozart",
+    "rating": 1.5,
+    "year": 1996.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Red Garters",
+    "rating": 3.0,
+    "year": 1954.0,
+    "genres": [
+      "Comedy",
+      "Musical",
+      "Western"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Deadline",
+    "rating": 2.75,
+    "year": 2009.0,
+    "genres": [
+      "Drama",
+      "Horror",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Revenge",
+    "rating": 2.08,
+    "year": 1990.0,
+    "genres": [
+      "Drama",
+      "Romance",
+      "Thriller"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Bartleby",
+    "rating": 2.83,
+    "year": 2001.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Meet the Robinsons",
+    "rating": 1.92,
+    "year": 2007.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Animation",
+      "Children",
+      "Comedy",
+      "Sci-Fi"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "M*A*S*H",
+    "rating": 2.5,
+    "year": 1970.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "War"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Waking Up in Reno",
+    "rating": 2.5,
+    "year": 2002.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Phone Call from a Stranger",
+    "rating": 3.25,
+    "year": 1952.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Slackers",
+    "rating": 2.18,
+    "year": 2002.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 34
+  },
+  {
+    "title": "Peace, Propaganda & the Promised Land",
+    "rating": 1.75,
+    "year": 2004.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Cruel Intentions 2",
+    "rating": 1.73,
+    "year": 2000.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 48
+  },
+  {
+    "title": "Moonlighting",
+    "rating": 2.5,
+    "year": 1982.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Hell and High Water",
+    "rating": 1.5,
+    "year": 1954.0,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "CQ",
+    "rating": 2.28,
+    "year": 2001.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "Every Girl Should Be Married",
+    "rating": 2.86,
+    "year": 1948.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "My Darling Clementine",
+    "rating": 3.0,
+    "year": 1946.0,
+    "genres": [
+      "Western"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Tumbleweeds",
+    "rating": 2.4,
+    "year": 1999.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Omen IV: The Awakening",
+    "rating": 2.35,
+    "year": 1991.0,
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 52
+  },
+  {
+    "title": "Harrison Bergeron",
+    "rating": 3.0,
+    "year": 1995.0,
+    "genres": [
+      "Drama",
+      "Sci-Fi"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Coffy",
+    "rating": 3.17,
+    "year": 1973.0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Heights",
+    "rating": 2.75,
+    "year": 2004.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "16 Years of Alcohol",
+    "rating": 2.08,
+    "year": 2003.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 24
+  },
+  {
+    "title": "Sunny",
+    "rating": 3.0,
+    "year": 2011.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Hybrid",
+    "rating": 1.94,
+    "year": 2000.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Nowhere to Hide",
+    "rating": 3.25,
+    "year": 1999.0,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Crime",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Asylum",
+    "rating": 2.5,
+    "year": 2005.0,
+    "genres": [
+      "Romance",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Story of G.I. Joe",
+    "rating": 2.0,
+    "year": 1945.0,
+    "genres": [
+      "War"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Black Christmas",
+    "rating": 2.5,
+    "year": 1974.0,
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Wrong Is Right",
+    "rating": 2.0,
+    "year": 1982.0,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Big City Blues",
+    "rating": 1.5,
+    "year": 1932.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Premiers désirs",
+    "rating": 3.0,
+    "year": 1984.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Breezy",
+    "rating": 2.2,
+    "year": 1973.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Me & Isaac Newton",
+    "rating": 2.0,
+    "year": 1999.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Bolt",
+    "rating": 2.0,
+    "year": 2008.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Animation",
+      "Children",
+      "Comedy"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Sugar & Spice",
+    "rating": 1.75,
+    "year": 2001.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Some Came Running",
+    "rating": 2.2,
+    "year": 1958.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Catch Me If You Can",
+    "rating": 1.67,
+    "year": 2002.0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Popcorn",
+    "rating": 1.67,
+    "year": 1991.0,
+    "genres": [
+      "Horror"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "WarGames: The Dead Code",
+    "rating": 2.13,
+    "year": 2008.0,
+    "genres": [
+      "Drama",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 54
+  },
+  {
+    "title": "Cry, the Beloved Country",
+    "rating": 3.25,
+    "year": 1995.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Absolute Beginners",
+    "rating": 2.64,
+    "year": 1986.0,
+    "genres": [
+      "Musical"
+    ],
+    "review_count": 14
+  },
+  {
+    "title": "David Copperfield",
+    "rating": 2.0,
+    "year": 2000.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Memorial Day",
+    "rating": 2.62,
+    "year": 2011.0,
+    "genres": [
+      "Action",
+      "Drama",
+      "War"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Wet Hot American Summer",
+    "rating": 2.67,
+    "year": 2001.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Along Came Polly",
+    "rating": 2.39,
+    "year": 2004.0,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "review_count": 18
+  },
+  {
+    "title": "8 ½ Women",
+    "rating": 1.62,
+    "year": 1999.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 26
+  },
+  {
+    "title": "Bonjour tristesse",
+    "rating": 2.33,
+    "year": 1958.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Spontaneous Combustion",
+    "rating": 2.62,
+    "year": 1990.0,
+    "genres": [
+      "Horror",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "review_count": 32
+  },
+  {
+    "title": "Monster House",
+    "rating": 1.0,
+    "year": 2006.0,
+    "genres": [
+      "Animation",
+      "Children",
+      "Fantasy",
+      "Mystery"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Paper Lion",
+    "rating": 3.0,
+    "year": 1968.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Happy Birthday to Me",
+    "rating": 1.5,
+    "year": 1981.0,
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Our Town",
+    "rating": 2.83,
+    "year": 2003.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Last Exit to Brooklyn",
+    "rating": 1.83,
+    "year": 1989.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Stuart Little",
+    "rating": 2.38,
+    "year": 1999.0,
+    "genres": [
+      "Children",
+      "Comedy",
+      "Fantasy"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Cord",
+    "rating": 1.96,
+    "year": 2000.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 26
+  },
+  {
+    "title": "Time Changer",
+    "rating": 2.3,
+    "year": 2002.0,
+    "genres": [
+      "Drama",
+      "Sci-Fi"
+    ],
+    "review_count": 20
+  },
+  {
+    "title": "Julian Po",
+    "rating": 2.83,
+    "year": 1997.0,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Hi, Mom!",
+    "rating": 1.25,
+    "year": 1970.0,
+    "genres": [
+      "Comedy"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Guilty as Sin",
+    "rating": 2.75,
+    "year": 1993.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Brain Dead",
+    "rating": 1.33,
+    "year": 1990.0,
+    "genres": [
+      "Horror",
+      "Sci-Fi"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Romulus, My Father",
+    "rating": 4.0,
+    "year": 2007.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Fantastic Mr. Fox",
+    "rating": 2.42,
+    "year": 2009.0,
+    "genres": [
+      "Adventure",
+      "Animation",
+      "Children",
+      "Comedy",
+      "Crime"
+    ],
+    "review_count": 12
+  },
+  {
+    "title": "Thank You, Jeeves!",
+    "rating": 3.0,
+    "year": 1936.0,
+    "genres": [
+      "(no genres listed)"
+    ],
+    "review_count": 2
+  },
+  {
+    "title": "Cleopatra",
+    "rating": 2.56,
+    "year": 1934.0,
+    "genres": [
+      "Drama",
+      "Romance",
+      "War"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Fallen Angels",
+    "rating": 1.75,
+    "year": 1995.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Joe Strummer: The Future Is Unwritten",
+    "rating": 2.83,
+    "year": 2007.0,
+    "genres": [
+      "Documentary"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Black Angel",
+    "rating": 3.5,
+    "year": 1946.0,
+    "genres": [
+      "Drama",
+      "Film-Noir",
+      "Mystery"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Surviving the Game",
+    "rating": 2.25,
+    "year": 1994.0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Thriller"
+    ],
+    "review_count": 8
+  },
+  {
+    "title": "Naked",
+    "rating": 3.5,
+    "year": 1993.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 4
+  },
+  {
+    "title": "Bobby Deerfield",
+    "rating": 2.4,
+    "year": 1977.0,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "My Brother Tom",
+    "rating": 2.67,
+    "year": 2001.0,
+    "genres": [
+      "Drama"
+    ],
+    "review_count": 6
+  },
+  {
+    "title": "Teachers",
+    "rating": 1.5,
+    "year": 1984.0,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "review_count": 10
+  },
+  {
+    "title": "Problem Child",
+    "rating": 2.75,
+    "year": 1990.0,
+    "genres": [
+      "Children",
+      "Comedy"
+    ],
+    "review_count": 16
+  },
+  {
+    "title": "Head Above Water",
+    "rating": 1.75,
+    "year": 1996.0,
+    "genres": [
+      "Comedy",
+      "Thriller"
+    ],
+    "review_count": 16
+  }
+]
