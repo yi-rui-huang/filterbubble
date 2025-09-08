@@ -1,0 +1,45 @@
+{
+  "name": "filterbubble",
+  "version": "1.0.0",
+  "description": "A research application for studying filter bubbles and AI interactions",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "firebase deploy --only hosting:filterbubble-260ea-7ad8a",
+    "deploy:gh-pages": "vite build && gh-pages -d dist",
+    "deploy:vercel": "vercel --prod",
+    "deploy:surge": "surge dist filterbubble.surge.sh"
+  },
+  "keywords": [
+    "filter-bubble",
+    "research",
+    "ai",
+    "vue",
+    "firebase"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.8.1",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "firebase": "^10.14.1",
+    "firebase-admin": "^13.5.0",
+    "marked": "^15.0.12",
+    "turndown": "^7.2.0",
+    "uuid": "^9.0.1",
+    "vue": "^3.4.15",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.3",
+    "firebase-tools": "^13.32.0",
+    "gh-pages": "^6.3.0",
+    "surge": "^0.24.6",
+    "vercel": "^41.6.1",
+    "vite": "^5.1.3"
+  }
+}

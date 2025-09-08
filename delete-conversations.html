@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Firestore Conversations Collection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    button {
+      background-color: #f44336;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 0;
+    }
+    button:hover {
+      background-color: #d32f2f;
+    }
+    #status {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .success {
+      background-color: #dff0d8;
+      color: #3c763d;
+    }
+    .error {
+      background-color: #f2dede;
+      color: #a94442;
+    }
+    .warning {
+      background-color: #fcf8e3;
+      color: #8a6d3b;
+    }
+    .info {
+      background-color: #d9edf7;
+      color: #31708f;
+    }
+  </style>
+</head>
+<body>
+  <h1>Delete Firestore Conversations Collection</h1>
+  
+  <p><strong>Warning:</strong> This will permanently delete all documents in the "conversations" collection. This action cannot be undone.</p>
+  
+  <button id="deleteButton">Delete Conversations Collection</button>
+  
+  <div id="status" style="display: none;"></div>
+
+  <!-- Firebase App (the core Firebase SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <!-- Firebase Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+
+  <script>
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAMjArPuGb61Sq2g9KhoW0_YqibywsJUx4",
+      authDomain: "filterbubble-260ea.firebaseapp.com",
+      projectId: "filterbubble-260ea",
+      storageBucket: "filterbubble-260ea.appspot.com",
+      messagingSenderId: "377672244422",
+      appId: "1:377672244422:web:59a7987c23d06e161a8bc7",
+      measurementId: "G-R2E669RD7P"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    
+    // Get Firestore instance
+    const db = firebase.firestore();
+    
+    // Function to delete all documents in the conversations collection
+    async function deleteConversationsCollection() {
+      try {
+        updateStatus('Starting deletion of conversations collection...', 'info');
+        
+        // Get all documents from the conversations collection
+        const snapshot = await db.collection('conversations').get();
+        
+        const totalDocs = snapshot.size;
+        updateStatus(`Found ${totalDocs} documents in the conversations collection`, 'info');
+        
+        if (totalDocs === 0) {
+          updateStatus('No documents found in the conversations collection.', 'warning');
+          return;
+        }
+
+        let deletedCount = 0;
+        const batchSize = 500; // Firestore has a limit of 500 operations per batch
+        const batches = [];
+        
+        // Create batches of delete operations
+        let batch = db.batch();
+        let operationsInCurrentBatch = 0;
+        
+        snapshot.docs.forEach(doc => {
+          batch.delete(doc.ref);
+          operationsInCurrentBatch++;
+          
+          // If we reach the batch limit, commit and create a new batch
+          if (operationsInCurrentBatch >= batchSize) {
+            batches.push(batch.commit());
+            batch = db.batch();
+            operationsInCurrentBatch = 0;
+          }
+          
+          deletedCount++;
+          if (deletedCount % 100 === 0 || deletedCount === totalDocs) {
+            updateStatus(`Prepared ${deletedCount}/${totalDocs} documents for deletion...`, 'info');
+          }
+        });
+        
+        // Commit any remaining operations in the last batch
+        if (operationsInCurrentBatch > 0) {
+          batches.push(batch.commit());
+        }
+        
+        // Execute all batches
+        await Promise.all(batches);
+        
+        updateStatus(`Successfully deleted all ${deletedCount} documents from the conversations collection.`, 'success');
+      } catch (error) {
+        console.error('Error deleting conversations collection:', error);
+        updateStatus(`Error deleting collection: ${error.message}`, 'error');
+      }
+    }
+
+    // Function to update status display
+    function updateStatus(message, type) {
+      const statusElement = document.getElementById('status');
+      statusElement.textContent = message;
+      statusElement.style.display = 'block';
+      
+      // Remove all classes
+      statusElement.classList.remove('success', 'error', 'warning', 'info');
+      
+      // Add the appropriate class
+      statusElement.classList.add(type);
+      
+      console.log(message);
+    }
+
+    // Add click event listener to the delete button
+    document.getElementById('deleteButton').addEventListener('click', function() {
+      if (confirm('Are you sure you want to delete all documents in the conversations collection? This action cannot be undone.')) {
+        deleteConversationsCollection();
+      }
+    });
+  </script>
+</body>
+</html>

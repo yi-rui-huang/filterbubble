@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Profile Generator Demo</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Using a common, readable font */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Adding a subtle background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-8 max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">智能体画像生成器演示</h1>
+            <p class="mt-2 text-lg text-gray-600">这是一个演示，展示如何根据用户的问卷数据生成三个具有“受控相似性”的智能体画像。</p>
+        </header>
+
+        <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-semibold">生成的智能体画像</h2>
+                <button id="regenerate-btn" class="px-5 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-75 transition-transform transform hover:scale-105">
+                    重新生成 (Regenerate)
+                </button>
+            </div>
+            
+            <!-- The output will be displayed here -->
+            <pre id="output" class="bg-gray-900 text-white p-4 rounded-lg text-sm overflow-x-auto shadow-inner"></pre>
+        </div>
+
+        <footer class="text-center mt-8 text-gray-500">
+            <p>每次点击“重新生成”按钮，不匹配的属性（如兴趣、人口统计学信息）会因为随机选择而发生变化。</p>
+        </footer>
+    </div>
+
+    <!-- The core JavaScript logic from agentProfileGenerator.js is embedded here -->
+    <script>
+        /**
+         * @file agentProfileGenerator.js (Embedded)
+         * @description A standalone JavaScript module to generate agent profiles based on user questionnaire data.
+         */
+
+        // --- Configuration Constants ---
+        const ALL_MOVIE_GENRES = [
+            "Action", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary", "Drama",
+            "Family", "Fantasy", "Film-Noir", "Game-Show", "History", "Horror", "Music", "Musical",
+            "Mystery", "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show",
+            "Thriller", "War", "Western", "Adult"
+        ];
+        const ALL_AGE_RANGES = ["18-24", "25-30", "31-39", "40-49", "50+"];
+        const ALL_GENDERS = ["Male", "Female", "Other"];
+
+        // --- Helper Functions ---
+        function calculatePersonalityScores(rawTipi) {
+            const reverseScore = (score) => 8 - score;
+            return {
+                extraversion: (rawTipi.tipi_item_1 + reverseScore(rawTipi.tipi_item_6)) / 2,
+                agreeableness: (reverseScore(rawTipi.tipi_item_2) + rawTipi.tipi_item_7) / 2,
+                conscientiousness: (rawTipi.tipi_item_3 + reverseScore(rawTipi.tipi_item_8)) / 2,
+                emotional_stability: (reverseScore(rawTipi.tipi_item_4) + rawTipi.tipi_item_9) / 2,
+                openness: (rawTipi.tipi_item_5 + reverseScore(rawTipi.tipi_item_10)) / 2,
+            };
+        }
+
+        function getMismatchedDemographics(userDemographics) {
+            const otherAgeRanges = ALL_AGE_RANGES.filter(r => r !== userDemographics.age_range);
+            const otherGenders = ALL_GENDERS.filter(g => g !== userDemographics.gender);
+            return {
+                age_range: otherAgeRanges[Math.floor(Math.random() * otherAgeRanges.length)],
+                gender: otherGenders[Math.floor(Math.random() * otherGenders.length)],
+            };
+        }
+
+        function getMismatchedInterests(userInterests) {
+            const mismatchedGenres = ALL_MOVIE_GENRES.filter(g => !userInterests.liked_genres.includes(g));
+            const shuffled = mismatchedGenres.sort(() => 0.5 - Math.random());
+            const count = Math.floor(Math.random() * 2) + 2;
+            return {
+                liked_genres: shuffled.slice(0, count),
+            };
+        }
+
+        function getMismatchedPersonality(userPersonality) {
+            const mismatched = {};
+            for (const trait in userPersonality) {
+                mismatched[trait] = 8 - userPersonality[trait];
+            }
+            return mismatched;
+        }
+
+        // --- Core Profile Generation Function ---
+        function generateAgentProfiles(userInputProfile) {
+            const userPersonalityScored = calculatePersonalityScores(userInputProfile.personality_raw);
+            const fullUserProfile = {
+                demographics: userInputProfile.demographics,
+                interests: userInputProfile.interests,
+                personality_scored: userPersonalityScored,
+            };
+
+            const agentA = {
+                agent_id: "Agent A",
+                match_dimension: "Demographics",
+                profile_description: `This is Alex. Like you, Alex is a ${fullUserProfile.demographics.gender} in the ${fullUserProfile.demographics.age_range} age range. However, their taste in movies and personality might be a bit different from yours.`,
+                attributes: {
+                    demographics: fullUserProfile.demographics,
+                    interests: getMismatchedInterests(fullUserProfile.interests),
+                    personality_scored: getMismatchedPersonality(fullUserProfile.personality_scored),
+                },
+            };
+
+            const agentB = {
+                agent_id: "Agent B",
+                match_dimension: "Interests",
+                profile_description: `This is Ben. Like you, Ben is a big fan of ${fullUserProfile.interests.liked_genres.join(" and ")} movies. However, their personal background and personality might be different from yours.`,
+                attributes: {
+                    demographics: getMismatchedDemographics(fullUserProfile.demographics),
+                    interests: fullUserProfile.interests,
+                    personality_scored: getMismatchedPersonality(fullUserProfile.personality_scored),
+                },
+            };
+
+            const agentC = {
+                agent_id: "Agent C",
+                match_dimension: "Personality",
+                profile_description: `This is Casey. Their way of thinking is very similar to yours, for example, in terms of Openness and Conscientiousness. However, their personal background and taste in movies might be different from yours.`,
+                attributes: {
+                    demographics: getMismatchedDemographics(fullUserProfile.demographics),
+                    interests: getMismatchedInterests(fullUserProfile.interests),
+                    personality_scored: fullUserProfile.personality_scored,
+                },
+            };
+
+            return [agentA, agentB, agentC];
+        }
+
+        // --- DEMO SCRIPT ---
+
+        // 1. Define a sample user input profile, simulating data from a questionnaire.
+        const sampleUserInput = {
+            demographics: {
+                age_range: "25-30",
+                gender: "Female"
+            },
+            interests: {
+                liked_genres: ["Sci-Fi", "Thriller"]
+            },
+            personality_raw: {
+                tipi_item_1: 6, tipi_item_2: 2, tipi_item_3: 7, tipi_item_4: 2, tipi_item_5: 7,
+                tipi_item_6: 2, tipi_item_7: 5, tipi_item_8: 1, tipi_item_9: 6, tipi_item_10: 2
+            }
+        };
+
+        const outputElement = document.getElementById('output');
+        const regenerateBtn = document.getElementById('regenerate-btn');
+
+        // Function to run the generation and display the output
+        function runAndDisplay() {
+            // 2. Call the main function to generate the profiles.
+            const generatedAgents = generateAgentProfiles(sampleUserInput);
+
+            // 3. Display the result in the <pre> tag, formatted as a JSON string.
+            outputElement.textContent = JSON.stringify(generatedAgents, null, 2);
+        }
+
+        // Run the function when the page loads
+        document.addEventListener('DOMContentLoaded', runAndDisplay);
+
+        // Add event listener to the button to re-run the function
+        regenerateBtn.addEventListener('click', runAndDisplay);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+/**
+ * @typedef {Object} Movie
+ * @property {string} tconst - 电影的唯一ID (e.g., "tt0000574")
+ * @property {string} titleType - 标题类型 (e.g., "movie")
+ * @property {string} primaryTitle - 主要标题
+ * @property {string} originalTitle - 原始标题
+ * @property {string} isAdult - 是否为成人电影 ('0' or '1')
+ * @property {string} startYear - 上映年份
+ * @property {string} endYear - 结束年份 ('\N' if not applicable)
+ * @property {string} runtimeMinutes - 时长
+ * @property {string} genres - 类型，以逗号分隔的字符串 (e.g., "Action,Adventure,Biography")
+ * @property {number} num_votes - [重要假设] 投票数，用于过滤
+ */
+
+/**
+ * @typedef {Object} UserProfile
+ * @property {string[]} in_profile_genres - 用户偏好的类型列表
+ */
+
+/**
+ * Fisher-Yates (aka Knuth) Shuffle algorithm.
+ * 用于随机打乱数组。
+ * @param {Array} array The array to shuffle.
+ * @returns {Array} The shuffled array.
+ */
+export function shuffleArray(array) {
+  let currentIndex = array.length, randomIndex;
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+  return array;
+}
+
+/**
+ * 从庞大的电影数据集中为单个用户精确挑选12部电影用于实验。
+ * 遵循 6部偏好内 (In-profile) + 6部偏好外 (Out-of-profile) 的原则。
+ *
+ * @param {Movie[]} fullMovieDataset - 完整的IMDb电影数据集数组。
+ * @param {UserProfile} userProfile - 包含用户偏好类型的对象。
+ * @returns {Movie[]} 一个包含12部电影的最终推荐列表。
+ */
+export function selectMoviesForExperiment(fullMovieDataset, userProfile) {
+  console.log("开始为用户筛选实验电影...");
+  console.log("用户偏好类型:", userProfile.in_profile_genres);
+
+  // --- 第零步：定义筛选常量 ---
+;   const MIN_VOTES = 5000; // [重要] 过滤冷门电影的最小投票数门槛
+  const MIN_YEAR = 1960;  // 过滤掉过于古老的电影，以保证相关性
+
+  // --- 第一步：初始过滤，创建一个高质量的候选池 ---
+  // 这一步大大减少了后续处理的数据量，提高了效率。
+  const candidatePool = fullMovieDataset.filter(movie => {
+    // 假设您的完整数据集中有 num_votes 字段，如果没有，您需要加入这个数据
+    // 这是保证推荐质量的关键步骤，完全遵循 `llm_recommendation_workflow_zh` 文档的原则
+    ; const hasEnoughVotes = movie.num_votes ? parseInt(movie.num_votes, 10) > MIN_VOTES : true;
+
+    return movie.titleType === 'movie' &&         // 必须是电影
+           movie.isAdult === '0' &&               // 必须非成人内容
+           parseInt(movie.startYear, 10) >= MIN_YEAR && // 必须是指定年份之后
+           movie.genres && movie.genres !== '\\N' && // 必须有类型信息
+        ;    hasEnoughVotes;                        // [重要] 必须足够热门
+  });
+
+  console.log(`数据库预处理完成，高质量候选电影数量: ${candidatePool.length}`);
+
+  // --- 第二步：将候选池分类为“偏好内”和“偏好外” ---
+  const inProfileCandidates = [];
+  const outOfProfileCandidates = [];
+
+  const userInProfileSet = new Set(userProfile.in_profile_genres);
+
+  for (const movie of candidatePool) {
+    const movieGenres = movie.genres.split(','); // 将类型字符串转为数组
+    
+    // some() 方法测试数组中是不是至少有1个元素通过了被提供的函数测试
+    const isMatch = movieGenres.some(genre => userInProfileSet.has(genre));
+
+    if (isMatch) {
+      inProfileCandidates.push(movie);
+    } else {
+      outOfProfileCandidates.push(movie);
+    }
+  }
+
+  console.log(`偏好内候选电影数量: ${inProfileCandidates.length}`);
+  console.log(`偏好外候选电影数量: ${outOfProfileCandidates.length}`);
+
+  // --- 第三步：随机抽样 ---
+  // 检查是否有足够的电影进行抽样
+  if (inProfileCandidates.length < 6 || outOfProfileCandidates.length < 6) {
+    throw new Error("候选电影池不足，无法为该用户生成符合条件的12部电影列表。");
+  }
+
+  // 使用Fisher-Yates算法随机打乱数组，以保证公平性
+  const shuffledInProfile = shuffleArray(inProfileCandidates);
+  const shuffledOutOfProfile = shuffleArray(outOfProfileCandidates);
+
+  // 从打乱后的数组中各取前6部
+  const selectedInProfile = shuffledInProfile.slice(0, 6);
+  const selectedOutOfProfile = shuffledOutOfProfile.slice(0, 6);
+
+  // --- 第四步：合并并返回最终列表 ---
+  const finalMovieList = [...selectedInProfile, ...selectedOutOfProfile];
+  
+  console.log("筛选完成！最终生成12部电影列表。");
+  return finalMovieList;
+}
+
+// Named exports provided above for module imports
+export default selectMoviesForExperiment;
+
+
+// --- 使用示例 ---
+/*
+// 1. 假设你已经将TSV文件加载到内存中
+const fullMovieDataset = [
+  { tconst: 'tt0000009', titleType: 'movie', primaryTitle: 'Miss Jerry', isAdult: '0', startYear: '1894', genres: 'Romance', num_votes: 100 },
+  { tconst: 'tt0111161', titleType: 'movie', primaryTitle: 'The Shawshank Redemption', isAdult: '0', startYear: '1994', genres: 'Drama', num_votes: 2500000 },
+  { tconst: 'tt0468569', titleType: 'movie', primaryTitle: 'The Dark Knight', isAdult: '0', startYear: '2008', genres: 'Action,Crime,Drama', num_votes: 2400000 },
+  // ... 更多电影数据
+];
+
+// 2. 获取用户偏好
+const userProfile = {
+  in_profile_genres: ["Action", "Crime"]
+};
+
+// 3. 执行筛选
+try {
+  const recommendedMovies = selectMoviesForExperiment(fullMovieDataset, userProfile);
+  console.log(recommendedMovies);
+} catch (error) {
+  console.error(error.message);
+}
+*/

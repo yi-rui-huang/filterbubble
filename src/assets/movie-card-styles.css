@@ -1,0 +1,47 @@
+/* Agent avatar mini styles for movie recommendations */
+.agent-recommendations {
+  margin-top: 8px;
+  font-size: 0.85rem;
+}
+
+.agent-avatars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.agent-avatar-mini {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+}
+
+.avatar-image-mini {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-rating-stars {
+  margin-top: 8px;
+  font-size: 0.85rem;
+}
+
+.stars {
+  display: flex;
+  gap: 3px;
+  margin-top: 4px;
+}
+
+.star {
+  cursor: pointer;
+  color: #ddd;
+  transition: color 0.2s;
+}
+
+.star:hover, .star.filled {
+  color: #ffc107;
+}
