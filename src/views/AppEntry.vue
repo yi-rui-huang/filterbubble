@@ -29,6 +29,7 @@ We have developed a conversational movie recommendation system that features AI 
           <li><strong>Movie Recommendation Introduction:</strong> <br><br>You'll be introduced to the movie recommendation system and learn about how the conversational AI works. The system will then randomly assign you to one of three different recommendation interfaces for testing.<br><br></li>
           <li><strong>Interact with the <span class="blue-text">Recommendation System</span></strong> <br><br>You'll interact with your assigned conversational system. During this session, you will engage in <span class="red-text">a minimum of five rounds</span> of interaction with the AI to explore movie recommendations that interest you.<br><br></li>
           <li><strong>Post-interaction Questionnaire</strong> <br><br>After using the system, you will complete a short questionnaire about your experience and satisfaction with the recommendations made by the system.<br><br></li>
+          <li><strong>Open-ended Questions</strong> <br><br>At the conclusion of both sessions, you'll be asked to complete a set of open-ended questions that covers your overall experience, preferences among the systems, and your thoughts on the AI-generated recomendations.<br><br></li>
           <li><strong>Study Completion</strong> <br><br>Once the questionnaire is submitted, your participation will be complete, and you'll receive your reward.<br><br></li>
         </ol>
         <p>
