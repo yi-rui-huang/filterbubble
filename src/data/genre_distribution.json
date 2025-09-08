@@ -1,0 +1,374 @@
+{
+  "totalMovies": 11722,
+  "analysisDate": "2025-09-03T12:02:49.672Z",
+  "individualGenres": {
+    "total": 22,
+    "distribution": [
+      {
+        "genre": "Drama",
+        "count": 7569,
+        "percentage": "64.57"
+      },
+      {
+        "genre": "Comedy",
+        "count": 3992,
+        "percentage": "34.06"
+      },
+      {
+        "genre": "Action",
+        "count": 2516,
+        "percentage": "21.46"
+      },
+      {
+        "genre": "Crime",
+        "count": 2477,
+        "percentage": "21.13"
+      },
+      {
+        "genre": "Romance",
+        "count": 2003,
+        "percentage": "17.09"
+      },
+      {
+        "genre": "Thriller",
+        "count": 1712,
+        "percentage": "14.61"
+      },
+      {
+        "genre": "Adventure",
+        "count": 1579,
+        "percentage": "13.47"
+      },
+      {
+        "genre": "Mystery",
+        "count": 1102,
+        "percentage": "9.40"
+      },
+      {
+        "genre": "Biography",
+        "count": 1043,
+        "percentage": "8.90"
+      },
+      {
+        "genre": "Horror",
+        "count": 915,
+        "percentage": "7.81"
+      },
+      {
+        "genre": "Fantasy",
+        "count": 670,
+        "percentage": "5.72"
+      },
+      {
+        "genre": "Animation",
+        "count": 595,
+        "percentage": "5.08"
+      },
+      {
+        "genre": "History",
+        "count": 591,
+        "percentage": "5.04"
+      },
+      {
+        "genre": "Sci-Fi",
+        "count": 541,
+        "percentage": "4.62"
+      },
+      {
+        "genre": "Documentary",
+        "count": 523,
+        "percentage": "4.46"
+      },
+      {
+        "genre": "Music",
+        "count": 433,
+        "percentage": "3.69"
+      },
+      {
+        "genre": "Family",
+        "count": 398,
+        "percentage": "3.40"
+      },
+      {
+        "genre": "Sport",
+        "count": 290,
+        "percentage": "2.47"
+      },
+      {
+        "genre": "War",
+        "count": 288,
+        "percentage": "2.46"
+      },
+      {
+        "genre": "Musical",
+        "count": 148,
+        "percentage": "1.26"
+      },
+      {
+        "genre": "Western",
+        "count": 90,
+        "percentage": "0.77"
+      },
+      {
+        "genre": "News",
+        "count": 8,
+        "percentage": "0.07"
+      }
+    ]
+  },
+  "genreCombinations": {
+    "total": 475,
+    "distribution": [
+      {
+        "combination": "Drama",
+        "count": 699,
+        "percentage": "5.96"
+      },
+      {
+        "combination": "Comedy,Drama,Romance",
+        "count": 610,
+        "percentage": "5.20"
+      },
+      {
+        "combination": "Comedy,Drama",
+        "count": 588,
+        "percentage": "5.02"
+      },
+      {
+        "combination": "Drama,Romance",
+        "count": 477,
+        "percentage": "4.07"
+      },
+      {
+        "combination": "Action,Crime,Drama",
+        "count": 407,
+        "percentage": "3.47"
+      },
+      {
+        "combination": "Comedy",
+        "count": 306,
+        "percentage": "2.61"
+      },
+      {
+        "combination": "Crime,Drama,Thriller",
+        "count": 286,
+        "percentage": "2.44"
+      },
+      {
+        "combination": "Crime,Drama,Mystery",
+        "count": 255,
+        "percentage": "2.18"
+      },
+      {
+        "combination": "Comedy,Romance",
+        "count": 238,
+        "percentage": "2.03"
+      },
+      {
+        "combination": "Adventure,Animation,Comedy",
+        "count": 211,
+        "percentage": "1.80"
+      },
+      {
+        "combination": "Biography,Drama,History",
+        "count": 189,
+        "percentage": "1.61"
+      },
+      {
+        "combination": "Action,Comedy,Crime",
+        "count": 178,
+        "percentage": "1.52"
+      },
+      {
+        "combination": "Drama,Thriller",
+        "count": 177,
+        "percentage": "1.51"
+      },
+      {
+        "combination": "Action,Crime,Thriller",
+        "count": 175,
+        "percentage": "1.49"
+      },
+      {
+        "combination": "Crime,Drama",
+        "count": 166,
+        "percentage": "1.42"
+      },
+      {
+        "combination": "Action,Adventure,Animation",
+        "count": 166,
+        "percentage": "1.42"
+      },
+      {
+        "combination": "Comedy,Crime,Drama",
+        "count": 163,
+        "percentage": "1.39"
+      },
+      {
+        "combination": "Documentary",
+        "count": 142,
+        "percentage": "1.21"
+      },
+      {
+        "combination": "Action,Adventure,Comedy",
+        "count": 141,
+        "percentage": "1.20"
+      },
+      {
+        "combination": "Action,Adventure,Drama",
+        "count": 140,
+        "percentage": "1.19"
+      },
+      {
+        "combination": "Biography,Drama",
+        "count": 130,
+        "percentage": "1.11"
+      },
+      {
+        "combination": "Drama,Mystery,Thriller",
+        "count": 119,
+        "percentage": "1.02"
+      },
+      {
+        "combination": "Biography,Crime,Drama",
+        "count": 115,
+        "percentage": "0.98"
+      },
+      {
+        "combination": "Action,Adventure,Sci-Fi",
+        "count": 113,
+        "percentage": "0.96"
+      },
+      {
+        "combination": "Action,Drama,Thriller",
+        "count": 105,
+        "percentage": "0.90"
+      },
+      {
+        "combination": "Comedy,Drama,Music",
+        "count": 97,
+        "percentage": "0.83"
+      },
+      {
+        "combination": "Action,Thriller",
+        "count": 91,
+        "percentage": "0.78"
+      },
+      {
+        "combination": "Horror,Mystery,Thriller",
+        "count": 90,
+        "percentage": "0.77"
+      },
+      {
+        "combination": "Comedy,Drama,Fantasy",
+        "count": 89,
+        "percentage": "0.76"
+      },
+      {
+        "combination": "Drama,Horror,Mystery",
+        "count": 83,
+        "percentage": "0.71"
+      },
+      {
+        "combination": "Comedy,Crime",
+        "count": 81,
+        "percentage": "0.69"
+      },
+      {
+        "combination": "Horror,Thriller",
+        "count": 77,
+        "percentage": "0.66"
+      },
+      {
+        "combination": "Drama,War",
+        "count": 76,
+        "percentage": "0.65"
+      },
+      {
+        "combination": "Crime,Drama,Romance",
+        "count": 74,
+        "percentage": "0.63"
+      },
+      {
+        "combination": "Biography,Comedy,Drama",
+        "count": 73,
+        "percentage": "0.62"
+      },
+      {
+        "combination": "Adventure,Comedy,Drama",
+        "count": 69,
+        "percentage": "0.59"
+      },
+      {
+        "combination": "Horror",
+        "count": 69,
+        "percentage": "0.59"
+      },
+      {
+        "combination": "Comedy,Drama,Family",
+        "count": 67,
+        "percentage": "0.57"
+      },
+      {
+        "combination": "Action,Drama,History",
+        "count": 66,
+        "percentage": "0.56"
+      },
+      {
+        "combination": "Biography,Drama,Romance",
+        "count": 65,
+        "percentage": "0.55"
+      },
+      {
+        "combination": "Action,Adventure,Fantasy",
+        "count": 64,
+        "percentage": "0.55"
+      },
+      {
+        "combination": "Biography,Drama,Music",
+        "count": 60,
+        "percentage": "0.51"
+      },
+      {
+        "combination": "Action,Drama",
+        "count": 59,
+        "percentage": "0.50"
+      },
+      {
+        "combination": "Drama,History",
+        "count": 56,
+        "percentage": "0.48"
+      },
+      {
+        "combination": "Drama,Sport",
+        "count": 56,
+        "percentage": "0.48"
+      },
+      {
+        "combination": "Biography,Drama,Sport",
+        "count": 56,
+        "percentage": "0.48"
+      },
+      {
+        "combination": "Drama,Mystery,Romance",
+        "count": 56,
+        "percentage": "0.48"
+      },
+      {
+        "combination": "Action,Comedy,Drama",
+        "count": 55,
+        "percentage": "0.47"
+      },
+      {
+        "combination": "Crime,Mystery,Thriller",
+        "count": 54,
+        "percentage": "0.46"
+      },
+      {
+        "combination": "Action,Adventure,Thriller",
+        "count": 53,
+        "percentage": "0.45"
+      }
+    ]
+  }
+}
