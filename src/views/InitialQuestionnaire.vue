@@ -45,6 +45,9 @@
           
           <div class="form-group">
             <label class="form-label" for="favorite-movie-types">3. What types of movies do you prefer? (Select 4-8 options)</label>
+            <div v-if="movieTypeError" class="movie-type-error">
+              {{ movieTypeError }}
+            </div>
             <div class="checkbox-group">
   <label><input type="checkbox" value="Drama" v-model="responses.favoriteMovieTypes"> Drama</label>
   <label><input type="checkbox" value="Comedy" v-model="responses.favoriteMovieTypes"> Comedy</label>
@@ -305,6 +308,7 @@ export default {
     return {
       isSubmitting: false,
       validationError: '',
+      movieTypeError: '',
       responses: {
         // Demographic
         gender: '',
@@ -337,7 +341,18 @@ export default {
       },
     };
   },
-  // ...
+  watch: {
+    'responses.favoriteMovieTypes': {
+      handler(newTypes) {
+        if (newTypes.length > 8) {
+          this.movieTypeError = 'Please select no more than 8 movie types.';
+        } else {
+          this.movieTypeError = '';
+        }
+      },
+      immediate: true
+    }
+  },
   methods: {
     validateForm() {
       console.log('开始表单验证...');
@@ -743,5 +758,17 @@ export default {
   0%, 100% { transform: translateX(0); }
   10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
   20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.movie-type-error {
+  background-color: #ffebee;
+  color: #d32f2f;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  border-left: 4px solid #d32f2f;
+  font-size: 0.9rem;
+  animation: shake 0.5s;
 }
 </style>

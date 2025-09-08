@@ -400,7 +400,7 @@
         
         <div class="form-actions">
           <button type="submit" class="btn" :disabled="isSubmitting">
-            {{ isSubmitting ? 'Submitting...' : 'Submit and Continue to Second Round' }}
+            {{ isSubmitting ? 'Submitting...' : 'Submit' }}
           </button>
         </div>
       </form>

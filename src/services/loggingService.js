@@ -112,11 +112,15 @@ async function syncPendingLogs() {
     for (const log of logsToProcess) {
       const { collectionName, data } = log;
       const newDocRef = doc(collection(db, collectionName));
-      batch.set(newDocRef, {
+      
+      // Remove undefined values before saving to Firestore
+      const cleanedData = removeUndefinedValues({
         ...data,
         syncedAt: serverTimestamp(),
         wasOffline: true
       });
+      
+      batch.set(newDocRef, cleanedData);
     }
     
     // 提交批量操作
@@ -212,16 +216,34 @@ function checkFirebaseAvailability() {
  * @param {string} collectionName 集合名称，默认为 'user_events'
  * @returns {Promise<Object>} 包含事件 ID 的对象，如果失败则包含错误
  */
+// Helper function to remove undefined values from an object
+function removeUndefinedValues(obj) {
+  const cleaned = {};
+  for (const [key, value] of Object.entries(obj)) {
+    if (value !== undefined) {
+      if (value && typeof value === 'object' && !Array.isArray(value) && !(value instanceof Date)) {
+        cleaned[key] = removeUndefinedValues(value);
+      } else {
+        cleaned[key] = value;
+      }
+    }
+  }
+  return cleaned;
+}
+
 export async function logEvent(eventType, eventData = {}, collectionName = 'user_events') {
   try {
     const userId = getUserId();
     const timestamp = new Date().toISOString();
     
+    // Remove undefined values from eventData to prevent Firestore errors
+    const cleanedEventData = removeUndefinedValues(eventData);
+    
     const eventDoc = {
       userId,
       eventType,
       clientTimestamp: timestamp,
-      ...eventData
+      ...cleanedEventData
     };
     
     // 检查网络连接和 Firebase 可用性

@@ -451,7 +451,7 @@ export default {
 
     // Check if rating reminder should be shown
     needRatingReminder() {
-      return this.userMessageCount >= this.minRequiredMessages && this.ratedMoviesCount < 3;
+      return this.userMessageCount >= this.minRequiredMessages && this.ratedMoviesCount < 4;
     }
   },
   methods: {
@@ -521,7 +521,7 @@ export default {
         await logUserEvent('movie_rated', {
           movieTitle: movieTitle,
           rating: rating,
-          previousRating: previousRating,
+          previousRating: previousRating || null,
           profileId: this.profileId || null,
           roundId: '3',
           totalRatedMovies: Object.keys(this.movieRatings).length
@@ -1201,6 +1201,20 @@ export default {
               };
               currentGroup.agentMessages.push(agentMessage);
               
+              // Process movie recommendations from agent responses in subsequent rounds
+              try {
+                await this.extractMovieRecommendation(response.dialogue, senderKey);
+              } catch (e) {
+                console.warn('[multiagenttest] extractMovieRecommendation failed in subsequent round:', e);
+              }
+              
+              // Log each agent response to conversation_turns in subsequent rounds
+              try {
+                await this.logConversationToFirestore('agent', response.dialogue, senderKey);
+              } catch (e) {
+                console.warn('[multiagenttest] logConversationToFirestore failed in subsequent round:', e);
+              }
+              
               // Scroll to bottom after each message
               this.scrollToBottom();
             }
@@ -1223,6 +1237,13 @@ export default {
                 timestamp: new Date()
               };
               currentGroup.agentMessages.push(agentMessage);
+              
+              // Log fallback agent responses to Firestore as well
+              try {
+                await this.logConversationToFirestore('agent', agentMessage.text, agentKey);
+              } catch (e) {
+                console.warn('[multiagenttest] logConversationToFirestore failed in fallback subsequent round:', e);
+              }
               this.scrollToBottom();
             }
           }
@@ -1832,36 +1853,6 @@ ${text}
       }
     },
 
-    // 给电影评分
-    async rateMovie(movie, rating) {
-      const previousRating = movie.userRating;
-      movie.userRating = rating;
-      
-      // 保存到Firestore user_events集合
-      try {
-        const movieDetails = {
-          imdbID: movie.imdbID || null,
-          year: movie.Year || null,
-          genre: movie.Genre || null,
-          poster: movie.Poster || null,
-          director: movie.Director || null,
-          imdbRating: movie.imdbRating || null
-        };
-        
-        await logUserEvent('movie_rating', {
-          movieTitle: movie.title || 'Unknown',
-          rating: rating,
-          previousRating: previousRating || null,
-          profileId: this.profileId || null,
-          roundId: '3',
-          movieDetails: movieDetails,
-          recommendedBy: movie.recommendedBy || null,
-          recommendedByAgents: movie.recommendedByAgents || null
-        });
-      } catch (error) {
-        console.error('Failed to log rating event:', error);
-      }
-    },
 
     // Save movie set to Firestore recommended_movie_sets collection
     async saveMovieSetToFirestore(selectedMovies, userProfile, userQuery) {
@@ -1955,15 +1946,30 @@ ${text}
 
     // 保存对话到conversation_turns集合
     async logConversationToFirestore(sender, text, agentKey = null) {
+      console.log('[MultiAgentTest] logConversationToFirestore called:', { sender, textLength: text?.length, agentKey, profileId: this.profileId });
+      
       const db = getFirebaseDb();
       if (!db) {
-        console.error('Firestore is not initialized');
+        console.error('[MultiAgentTest] Firestore is not initialized');
         return;
       }
+      
       try {
         if (!this.profileId) {
-          console.warn('[MultiAgentTest] No profileId available, skipping Firestore logging');
-          return;
+          console.warn('[MultiAgentTest] No profileId available, attempting to get from route or localStorage');
+          
+          // Try to get profileId from route or localStorage
+          const idFromRoute = this.$route?.query?.profileId;
+          const idFromLocal = localStorage.getItem('fb_profile_id');
+          const profileId = idFromRoute || idFromLocal;
+          
+          if (profileId) {
+            this.profileId = profileId;
+            console.log('[MultiAgentTest] Retrieved profileId:', profileId);
+          } else {
+            console.error('[MultiAgentTest] Still no profileId available, skipping Firestore logging');
+            return;
+          }
         }
 
         // 构建对话记录
@@ -1990,9 +1996,10 @@ ${text}
         }
 
         // 保存到conversation_turns集合
-        await saveConversationTurn(conversationTurn);
+        console.log('[MultiAgentTest] Attempting to save conversation turn:', conversationTurn);
+        const docId = await saveConversationTurn(conversationTurn);
         
-        console.log('[MultiAgentTest] Conversation logged to Firestore successfully');
+        console.log('[MultiAgentTest] Conversation logged to Firestore successfully with ID:', docId);
       } catch (error) {
         console.error('[MultiAgentTest] Error logging conversation to Firestore:', error);
       }

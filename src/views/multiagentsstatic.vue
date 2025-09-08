@@ -1005,6 +1005,8 @@ export default {
         this.scrollToBottom();
 
         // Generate agent responses using the new workflow
+        // Show typing indicator while generating agent responses
+        this.isAgentTyping = true;
         await this.generateAgentResponses(userInputCopy);
         
       } catch (error) {

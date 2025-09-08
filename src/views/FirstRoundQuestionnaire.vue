@@ -315,7 +315,7 @@
         
         <div class="form-actions">
           <button type="submit" class="btn" :disabled="isSubmitting">
-            {{ isSubmitting ? 'Submitting...' : 'Submit and Continue to Transition' }}
+            {{ isSubmitting ? 'Submitting...' : 'Submit' }}
           </button>
         </div>
       </form>
