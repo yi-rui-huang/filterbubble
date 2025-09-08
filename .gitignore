@@ -63,8 +63,8 @@ ssl/
 .env.production.local
 
 # Large data files (exceed GitHub limits)
-src/data/*
-!src/data/title.high_quality.tsv
+# src/data/* - 注释掉以包含所有数据文件
+# !src/data/title.high_quality.tsv - 不再需要此例外规则
 public/title.crew.tsv
 public/title.ratings.tsv
 
