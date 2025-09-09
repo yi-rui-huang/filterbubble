@@ -375,13 +375,9 @@ export default {
             timestamp: new Date().toISOString()
           });
           
-          // 标记当前系统（第一轮）为已完成
-          completeCurrentSystem();
-          
-          // 使用系统服务决定下一步去哪里
-          const nextRoute = getNextRouteAfterQuestionnaire();
-          console.log('FirstRoundQuestionnaire 下一步导航到:', nextRoute);
-          this.$router.push(nextRoute);
+          // 直接跳转到最终问卷页面
+          console.log('FirstRoundQuestionnaire 直接跳转到 FinalQuestionnaire');
+          this.$router.push('/final-questionnaire');
         } else {
           alert('There was an error submitting your responses. Please try again.');
           this.isSubmitting = false;
