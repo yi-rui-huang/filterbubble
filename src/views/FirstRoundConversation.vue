@@ -53,7 +53,7 @@
                     <strong>What</strong> mood or genre are you in for?
                   </div>
                 </div>
-                <p class="welcome-footer">The more I know about your preferences, the better our conversation will be!</p>
+                <!-- <p class="welcome-footer">The more I know about your preferences, the better our conversation will be!</p> -->
               </div>
             </div>
             
@@ -1119,7 +1119,7 @@ ${text}
       setTimeout(async () => {
         const instructionText = 'What\'s next?\n' +
                                '1. Ask for more details: Feel free to ask me anything about these movies. This is the explanation round, and I won\'t recommend new films, but I can provide deeper insights to help you choose.\n' +
-                               '2. Rate your top choices: When you feel you have enough information, please select and rate **4 to 6 movies** you are most interested in from the list on the right. You can do this by adding them to your watchlist and then clicking the stars.\n\n' +
+                               '2. Rate your top choices: When you feel you have enough information, please select and rate 4 to 6 movies you are most interested in from the list on the right. You can do this by adding them to your watchlist and then clicking the stars.\n\n' +
                                'Once you\'ve completed the rating, the button to proceed to the final questionnaire will become active.';
         
         // 添加第二条消息：操作指引

@@ -23,11 +23,10 @@
             In this study, you completed:
           </p>
           <ul>
-            <li>An initial questionnaire about your background and preferences</li>
-            <li>A first conversation with an AI assistant</li>
-            <li>A mid-study questionnaire about your experience</li>
-            <li>A second conversation with an AI assistant</li>
-            <li>A final questionnaire about your overall experience</li>
+            <li>An initial questionnaire to understand your background and movie tastes.</li>
+            <li>An interactive session with one of our experimental AI systems to receive personalized movie recommendations.</li>
+            <li>A post-study questionnaire to gather your immediate feedback on that session.</li>
+            <li>A final, open-ended questionnaire to understand your overall thoughts on the entire process.</li>
           </ul>
         </div>
         
