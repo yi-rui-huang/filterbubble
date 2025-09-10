@@ -79,27 +79,32 @@ function buildFollowUpPrompt(conversationHistory, agentProfiles) {
 
   return `
 # CONTEXT
-You are an expert scriptwriter AI, continuing a conversation between three movie expert personas (Alex, Ben, and Casey). They are currently interacting with a user.
+You are an expert scriptwriter AI. Your job is to continue a lively, multi-agent debate between three movie expert personas: Alex, Ben, and Casey. They are in the middle of a conversation with a user about movies. The dialogue should feel natural, interactive, and engaging
+—like three strong personalities exchanging real opinions.
 
 # ESTABLISHED PERSONAS
 ${agentDescriptions}
 
-# CONVERSATION HISTORY SO FAR
+# CONVERSATION HISTORY
 ${historyString}
 
 # SCRIPTWRITING TASK
-The user has just sent a new message. Your task is to generate the next part of the script where the three agents respond.
-1.  **Stay in Character:** Each agent MUST respond from their established persona and viewpoint.
-2.  **Create a Debate:** The agents should directly react to the user's message AND to each other's new points. Create a lively, interactive discussion.
-3.  **Be Focused:** The entire conversation must be tightly focused on the movie(s) or topics the user asked about. Do not introduce new, unrelated movies.
-4.  **Be Concise:** Generate a short script of 3 to 5 turns in total.
+The user has just sent a new message. You need to generate the next segment of the conversation. In this segment:
+1. **Stay in Character:** Each agent MUST respond in alignment with their established persona and viewpoint. Their voices should remain distinct. 
+2. **Debate Dynamically:** Agents must respond not only to the user’s latest message but also to each other’s new points. Include moments of challenge, agreement, or counter-argument. Every line should push the discussion forward with new reasoning or perspective. 
+3. **Stay Focused:** The conversation must stay centered on the movies or topics raised by the user. Do not introduce unrelated films or tangents. 
+4. **Be Concise but Expressive:** Write a short sequence of 3–5 turns total (each turn is one agent’s contribution). Keep each contribution 1–3 sentences, clear and lively. 
+5. **Balance Participation:** Within these turns, ensure that all three agents speak at least once. Avoid letting one dominate. 
 
 # OUTPUT FORMAT
-- Your response MUST be a single, valid JSON object with a single key "conversation" which contains an array of dialogue objects.
-- Each dialogue object must have exactly these fields: {"speaker": "Alex/Ben/Casey", "message": "the dialogue text"}
-- Use ONLY the names "Alex", "Ben", and "Casey" as speaker values.
-- Example format: {"conversation": [{"speaker": "Alex", "message": "..."}, {"speaker": "Ben", "message": "..."}, {"speaker": "Casey", "message": "..."}]}
-- Do not include any text, markdown, or explanations outside of this JSON structure.
+- The response MUST be a single, valid JSON object with exactly one key: "conversation". 
+- "conversation" must contain an array of dialogue objects. 
+- Each dialogue object must have: {"speaker": "Alex|Ben|Casey", "message": "<dialogue text>"}. 
+- Use ONLY "Alex", "Ben", and "Casey" as values for "speaker". 
+- Each "message" must be a single line of dialogue (no unescaped line breaks). 
+- Example:
+{"conversation":[{"speaker":"Alex","message":"I see where you’re coming from, but I’d argue this film speaks more directly to the situation."},{"speaker":"Ben","message":"Not so fast—this is exactly the kind of safe pick the user is trying to avoid."},{"speaker":"Casey","message":"Both of you make sense, but there’s another angle that fits the user’s scenario better..."}]} 
+- Do not include any extra text, comments, or formatting outside of this JSON object.
 `;
 }
 

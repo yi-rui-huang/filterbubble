@@ -3,7 +3,7 @@
     <div class="intro-content">
       <!-- Header Section -->
       <div class="header-section">
-        <h1 class="main-title">Coming Soon: Movie Recommendation Process Introduction</h1>
+        <h1 class="main-title">Movie Recommendation Process Introduction</h1>
         <p class="subtitle">
           Before you begin, please take a minute to read the following simple instructions. 
           This will help you understand how to interact with our intelligent recommendation system 
@@ -93,16 +93,17 @@
         <div class="instruction-card">
           <h3 class="step-title">
             <span class="step-badge">Step 2</span>
-            Interaction and Understanding (Subsequent Dialogue Turns)
+            Explore & Understand Recommendations
           </h3>
           
           <div class="instruction-content">
             <div class="what-you-can-do">
               <h4>What can you do?</h4>
               <p>
-                After seeing the recommendation list, if you're curious or confused about certain movies, 
-                you can ask the system for explanations at any time. This is a free dialogue process - 
-                you can ask multiple questions until you're satisfied.
+                After the system provides the initial list of 12 movies, the recommendation phase is complete.
+
+From this point on, the system will <strong>only provide explanations</strong> for these 12 movies to help you understand them better. 
+<strong>It will not recommend any new movies.</strong> You can ask multiple questions to gather enough information to make your final choices.
               </p>
             </div>
 
@@ -128,16 +129,16 @@
             <div class="what-to-do-final">
               <h4>What do you need to do?</h4>
               <p>
-                When you have a clear choice in mind through your interaction with the system, 
-                please select the movie you most want to watch from the recommendation list.
+                Your main task is to identify movies you are genuinely interested in. 
+                Based on the recommendations and explanations, please add 4 to 6 movies you like the most to your "Watchlist".
               </p>
             </div>
 
             <div class="final-step">
               <h4>Final Step:</h4>
               <p>
-                After making your choice, the system will ask you to rate your satisfaction with 
-                this recommendation. Your feedback is crucial for us to continuously improve our service.
+                After adding them to the watchlist, you will be asked to give each of them a star rating (1-5 stars). 
+                Once you have rated 4 to 6 movies, you will be able to proceed to the post-study questionnaire. Your feedback is crucial for us.
               </p>
             </div>
           </div>

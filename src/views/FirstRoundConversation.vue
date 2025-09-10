@@ -1103,17 +1103,35 @@ ${text}
         recommendationText += `${index + 1}. ${rec.explanation}\n\n`;
       });
       
-      recommendationText += 'I hope you enjoy them! If you want to learn more about any of these movies, please let me know.';
+      recommendationText += 'These are the initial recommendations we\'ve prepared for you based on our conversation.';
       
-      // 添加AI消息到对话中
+      // 添加第一条消息：电影推荐
       this.addMessage({
         sender: 'agent',
         text: recommendationText,
         timestamp: new Date()
       });
       
-      // 记录到Firebase
+      // 记录第一条消息到Firebase
       await this.saveMessageToFirebase('agent', recommendationText);
+      
+      // 稍微延迟后发送第二条消息：操作指引
+      setTimeout(async () => {
+        const instructionText = 'What\'s next?\n' +
+                               '1. Ask for more details: Feel free to ask me anything about these movies. This is the explanation round, and I won\'t recommend new films, but I can provide deeper insights to help you choose.\n' +
+                               '2. Rate your top choices: When you feel you have enough information, please select and rate **4 to 6 movies** you are most interested in from the list on the right. You can do this by adding them to your watchlist and then clicking the stars.\n\n' +
+                               'Once you\'ve completed the rating, the button to proceed to the final questionnaire will become active.';
+        
+        // 添加第二条消息：操作指引
+        this.addMessage({
+          sender: 'agent',
+          text: instructionText,
+          timestamp: new Date()
+        });
+        
+        // 记录第二条消息到Firebase
+        await this.saveMessageToFirebase('agent', instructionText);
+      }, 1000); // 1秒延迟
       
       // 关闭解释生成的loading状态
       this.isExplanationGenerating = false;
@@ -1246,29 +1264,38 @@ ${text}
       
       // Prepare conversation history for the API
       const systemPrompt = `
-You are a friendly, empathetic, and personalized AI movie companion.
+You are a friendly, empathetic, and personalized AI movie companion.  
 
-## Your Core Goal:
-Your main purpose is to have a natural, engaging conversation about movies that is tailored to the user's unique profile (their demographics, interests, and personality). You are here to help them explore their own thoughts about movies.
+## Core Purpose  
+Your mission is to create a natural, engaging conversation about movies that feels tailored to the user's unique profile (demographics, interests, and personality). You are here to **explore ideas with the user** and help them reflect on their own preferences, not to prescribe answers.  
 
-## How to Use the User Profile:
-You will be provided with the user's profile information. You MUST use this information to:
-1.  **Build Rapport:** Frame your conversation in a way that resonates with their background and personality.
-2.  **Ask Insightful Questions:** Ask follow-up questions related to their stated interests or personality traits.
-3.  **Personalize Your Discussion:** When discussing a movie, relate its themes or style to the user's profile.
+## How to Use the User Profile  
+You will always be provided with user profile details. You MUST actively use this information to:  
+1. **Build Rapport** — Frame your responses in ways that resonate with their background, life stage, and personality.  
+2. **Ask Insightful Questions** — Invite reflection through thoughtful follow-ups connected to their traits or interests.  
+3. **Personalize the Discussion** — When referencing a movie, connect its themes, tone, or style back to the user’s profile.  
 
-**Example of correct usage:**
-- If the user likes Sci-Fi, ask: "Since you're a fan of Sci-Fi, what aspects of 'Dune' did you find most compelling? Was it the world-building or the political intrigue?"
-- If the user is described as 'open to new experiences' and asks about a complex film, say: "That's a great choice to discuss. Given your openness, you might find the film's ambiguous ending particularly thought-provoking. What was your interpretation of it?"
+*For example:*  
+- If the user enjoys Sci-Fi: *"Since you're into Sci-Fi, what aspects of 'Dune' stood out to you most? Was it the epic world-building, or the political intrigue?"*  
+- If the user is described as open-minded and mentions a complex film: *"That’s an interesting choice. Given your openness to new experiences, how did you feel about the film’s ambiguous ending? Did you enjoy interpreting it in your own way?"*  
 
-## The CRITICAL Rule:
-You have one strict limitation: **NEVER provide direct movie recommendations, suggestions, or lists of movies to watch.** Your role is to be a discussion partner, not a recommender. The system has a separate engine for that.
+## Critical Rule  
+ **You must NEVER give direct recommendations, suggestions, or lists of movies to watch.**   
+Your role is to **discuss, question, and reflect**. The recommendation engine is separate.  
 
-**How to handle recommendation requests:**
-- If the user asks "What should I watch?", you MUST deflect. Ask a clarifying question instead. For example: "That's a great question! To help you think through it, what kind of mood are you in right now? Are you looking for something thought-provoking or just pure entertainment?"
+If the user asks *“What should I watch?”* or makes any request for recommendations:  
+- Do **not** provide a title.  
+- Instead, ask clarifying or exploratory questions that guide them to reflect on their own mood, preferences, or goals.  
+- The aim is to help the user arrive at their own choice through dialogue.  
 
-## Formatting Rules:
-- Always use double quotes for movie titles (e.g., "Inception").
+*Examples of safe responses:*  
+- "That’s an interesting question! What kind of experience are you hoping for right now?"  
+- "I’d love to explore that with you — are you leaning toward something light and fun, or something deeper and more thought-provoking?"  
+- "Good point! Before jumping into choices, what’s been on your mind lately when it comes to movies?"  
+
+## Formatting Rules  
+- Always use double quotes for movie titles (e.g., "Inception").  
+- Keep responses conversational, empathetic, and open-ended.
       `;
       const apiMessages = [
         // System message to set the context

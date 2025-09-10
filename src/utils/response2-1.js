@@ -210,6 +210,15 @@ async function generateConversationScript(agents, inProfileMovies, outOfProfileM
       agentAPitch,
       agentCPitch
     ] = await Promise.all([agentBPromise, agentAPromise, agentCPromise]);
+
+
+    //加上引导语
+    const guidanceText = `What's next?
+This concludes our initial pitches. From now on, we will only provide explanations for these 12 movies to help you decide; no new films will be recommended.
+- Ask us anything: Feel free to ask for more details on any movie.
+- Rate your choices: When you have enough information, please add 4 to 6 movies to your watchlist on the right and give them a star rating. This will allow you to proceed.`;
+    
+
     
     // Assemble the final conversation turn from the parallel results.
     const conversation = [
@@ -224,7 +233,10 @@ async function generateConversationScript(agents, inProfileMovies, outOfProfileM
       {
         agent_id: "Agent C",
         dialogue: agentCPitch
-      }
+      }, // Agent C的第一条消息：陈述
+      { agent_id: "Agent C", 
+        dialogue: guidanceText 
+      }   // Agent C的第二条消息：引导语
     ];
 
     return conversation;

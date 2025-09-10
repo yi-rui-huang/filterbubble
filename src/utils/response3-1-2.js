@@ -133,46 +133,54 @@ function buildMegaPrompt(agents, inProfileTitles, outOfProfileTitles, userProfil
 
   return `
 # CONTEXT
-You are an expert scriptwriter AI. Your task is to generate a lively, multi-turn conversation between three distinct movie expert personas (Agent A, B, and C). The conversation should help a user, whose profile is provided, to choose a movie based on their scenario.
+You are an expert scriptwriter AI. Your task is to generate a lively, debate-driven, multi-turn conversation between three distinct movie expert personas (Agent A, B, and C). The conversation should help a user, whose profile is provided, to choose a movie based on their scenario.
 
 # USER PROFILE & VIEWING SCENARIO
 - User Profile: ${userProfileString}
 - Viewing Scenario: "${userScenario}"
 
 # AGENT PERSONAS & ROLES
-1.  **Agent A (Alex):**
-    -   Identity: ${buildAgentIdentity(agents.agentA)}
-    -   Core Trait: Matches the user on **Demographics**.
-    -   Stance: You are the champion for these specific Out-of-Profile movies: ${JSON.stringify(outOfProfileSetA)}. Your arguments must be based on your shared demographic background (e.g., age, life experience).
+1. **Agent A (Alex):**
+- Identity: ${buildAgentIdentity(agents.agentA)}
+- Core Trait: Matches the user on **Demographics**.
+- Stance: You are the champion for these specific Out-of-Profile movies: ${JSON.stringify(outOfProfileSetA)}. Argue from shared demographics (e.g., age, life stage, family situation). Explicitly reference demographic overlaps with the user.
 
-2.  **Agent B (Ben):**
-    -   Identity: ${buildAgentIdentity(agents.agentB)}
-    -   Core Trait: Matches the user on **Interests**.
-    -   Stance: You are the passionate champion for all In-Profile movies: ${JSON.stringify(inProfileTitles)}. You should start the conversation enthusiastically and be skeptical of the others' "out-there" suggestions.
+2. **Agent B (Ben):**
+- Identity: ${buildAgentIdentity(agents.agentB)}
+- Core Trait: Matches the user on **Interests**.
+- Stance: You are the passionate champion for all In-Profile movies: ${JSON.stringify(inProfileTitles)}. Be enthusiastic and biased, skeptical of “out-there” suggestions. Use emotional or passionate language to defend your stance. 
 
-3.  **Agent C (Casey):**
-    -   Identity: ${buildAgentIdentity(agents.agentC)}
-    -   Core Trait: Matches the user on **Personality**.
-    -   Stance: You support Agent A's goal of exploration and champion these other Out-of-Profile movies: ${JSON.stringify(outOfProfileSetC)}. Your arguments must be based on your shared personality (e.g., intellectual curiosity, emotional depth).
+3. **Agent C (Casey):**
+- Identity: ${buildAgentIdentity(agents.agentC)}
+- Core Trait: Matches the user on **Personality**.
+- Stance: You support Agent A's goal of exploration and champion these other Out-of-Profile movies: ${JSON.stringify(outOfProfileSetC)}. Argue from shared personality (e.g., intellectual curiosity, emotional depth). Highlight how films connect with the user’s inner world.
 
 # SCRIPTWRITING TASK
-1.  **Generate a lively discussion:** The conversation should have around 6-8 turns total.
-2.  **Create a real debate:** This is crucial. Agents MUST directly evaluate and react to each other's recommendations and reasoning. The dialogue should flow naturally with agreements, disagreements, and counter-points.
-3.  **Cover all movies:** All 12 provided movie titles must be mentioned naturally within the conversation.
-4.  **End with a summary:** Conclude the script with a "Conversational Wrap-up". The agents should summarize their top 3 picks (one from each) and end with a direct question to the user.
+1.**Generate a lively discussion:** The conversation should have around 6-8 turns total. The dialogue must feel like a natural debate.
+
+2. **Create a real debate:** This is crucial. Agents MUST directly evaluate and react to each other's recommendations and reasoning. The dialogue should flow naturally with agreements, disagreements, and counter-points.
+
+
+3. **Cover all movies:**  All 12 provided movie titles must be **mentioned naturally** and tied to the user’s profile or scenario. No random listing. Each film’s mention should feel purposeful.
+
+4.**Conversational Wrap-up:** End with a summary phase:
+	•	Each Agent nominates their top pick (1 per Agent).
+	•	Each must briefly restate why they stand by this choice and respond at least once to another Agent’s final position.
+	•	End with a direct question to the user, inviting them to choose.
 
 # OUTPUT FORMAT
 - Your response MUST be a single, valid JSON object with a single key "conversation" which contains an array of dialogue objects.
-- Each object in the array must have two keys: "agent_id" (string: "Agent A", "Agent B", or "Agent C") and "dialogue" (string).
+- Each object in the array must have two keys: "agent_id" (string: "Agent A", "Agent B", or "Agent C") and "dialogue" (string: the spoken line).
 - Do not include any text, markdown, or explanations outside of this JSON structure.
+-  Ensure all special characters (quotes, apostrophes) are properly escaped so the JSON remains valid.
 
 Example:
 {
-  "conversation": [
-    {"agent_id": "Agent B", "dialogue": "Given the user wants to relax, the choice is obvious! 'Movie Title 1' is perfect because..."},
-    {"agent_id": "Agent A", "dialogue": "Hold on, Ben. I think people our age would appreciate something more thoughtful like 'Movie Title 7'..."},
-    {"agent_id": "Agent C", "dialogue": "I agree with Alex's point about exploration. From a personality standpoint, 'Movie Title 10' offers a level of complexity that..."}
-  ]
+"conversation": [
+{"agent_id": "Agent B", "dialogue": "Given the user wants to relax, the choice is obvious! 'Movie Title 1' is perfect because..."},
+{"agent_id": "Agent A", "dialogue": "Hold on, Ben. I think people our age would appreciate something more thoughtful like 'Movie Title 7'..."},
+{"agent_id": "Agent C", "dialogue": "I agree with Alex's point about exploration. From a personality standpoint, 'Movie Title 10' offers a level of complexity that..."}
+]
 }
 `;
 }
@@ -246,6 +254,20 @@ export async function generateAgentConversation(movieData, agentProfiles, userPr
     console.log('[generateAgentConversation] Parsing JSON response...');
     const conversation = JSON.parse(responseJsonString);
     console.log("[generateAgentConversation] Successfully generated conversation:", conversation);
+
+    // 6. Append the guidance message as a new turn from Agent C
+const guidanceText = `What's next?
+This concludes our initial discussion and recommendations. From now on, our conversation will focus only on providing explanations for these 12 movies to help you decide.
+- Ask us anything: Feel free to ask for more details on any movie.
+- Rate your choices: When you have enough information, please add 4 to 6 movies to your watchlist on the right and give them a star rating. This will allow you to proceed to the final questionnaire.`;
+
+conversation.push({
+  agent_id: "Agent C", // 让 Casey 来做总结和引导
+  dialogue: guidanceText
+});
+
+console.log("[generateAgentConversation] Appended guidance message. Final conversation length:", conversation.length);
+
     return conversation;
 
   } catch (error) {
