@@ -27,7 +27,7 @@ We have developed a conversational movie recommendation system that features AI 
         <ol>
           <li><strong>Initial Questionnaire:</strong> <br><br>You will begin by filling out a brief questionnaire regarding your demographic information (e.g., age, gender) and your general movie preferences.<br><br></li>
           <li><strong>Movie Recommendation Introduction:</strong> <br><br>You'll be introduced to the movie recommendation system and learn about how the conversational AI works. The system will then randomly assign you to one of three different recommendation interfaces for testing.<br><br></li>
-          <li><strong>Interact with the <span class="blue-text">Recommendation System</span></strong> <br><br>You'll interact with your assigned conversational system. During this session, you will engage in <span class="red-text">a minimum of five rounds</span> of interaction with the AI to explore movie recommendations that interest you.<br><br></li>
+          <li><strong>Interact with the <span class="blue-text">Recommendation System</span></strong> <br><br>You'll interact with your assigned conversational system. During this session, you will engage in <span class="red-text">a minimum of three rounds</span> of interaction with the AI to explore movie recommendations that interest you.<br><br></li>
           <li><strong>Post-interaction Questionnaire</strong> <br><br>After using the system, you will complete a short questionnaire about your experience and satisfaction with the recommendations made by the system.<br><br></li>
           <li><strong>Open-ended Questions</strong> <br><br>At the conclusion of both sessions, you'll be asked to complete a set of open-ended questions that covers your overall experience, preferences among the systems, and your thoughts on the AI-generated recomendations.<br><br></li>
           <li><strong>Study Completion</strong> <br><br>Once the questionnaire is submitted, your participation will be complete, and you'll receive your reward.<br><br></li>
@@ -43,7 +43,7 @@ We have developed a conversational movie recommendation system that features AI 
       <div class="duration-section">
         <h2 class="card-title">DURATION:</h2>
         <p>
-          This study will take about 30 minutes to complete (including time for filling out required and optional questionnaires).
+          This study will take about 15 minutes to complete (including time for filling out required and optional questionnaires).
         </p>
       </div>
       

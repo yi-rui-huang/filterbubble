@@ -77,36 +77,18 @@ async function callLLMAPI(systemPrompt, userPrompt) {
       throw new Error('Invalid API response format from LLM.');
     }
 
-    // The response is expected to be a JSON object containing the array, e.g., { "conversation": [...] }
-    // Or it might be the JSON array string directly. We need to parse it carefully.
     const content = data.choices[0].message.content.trim();
     console.log('[callLLMAPI] Response content:', content);
     
-    // Attempt to find a JSON array within the response string
-    const jsonMatch = content.match(/(\[[\s\S]*\])/);
-    if (jsonMatch) {
-      console.log('[callLLMAPI] Found JSON array match:', jsonMatch[0]);
-      return jsonMatch[0];
-    }
-    
-    // Fallback for when the model returns a JSON object with a key
+    // 关键修改：直接解析并返回完整的JSON对象
+    // 之前所有复杂的 regex 匹配都可以删掉了
     try {
-        const parsedContent = JSON.parse(content);
-        console.log('[callLLMAPI] Parsed content as JSON object:', parsedContent);
-        
-        // Look for a key that holds an array (e.g., "conversation", "dialogue", "script")
-        const arrayKey = Object.keys(parsedContent).find(k => Array.isArray(parsedContent[k]));
-        if (arrayKey) {
-            console.log('[callLLMAPI] Found array key:', arrayKey, 'with content:', parsedContent[arrayKey]);
-            return JSON.stringify(parsedContent[arrayKey]);
-        }
-    } catch(e) {
-        // If parsing fails, it's not a valid JSON object.
-        console.error("[callLLMAPI] Failed to parse LLM response as JSON object:", e);
+        const parsedObject = JSON.parse(content);
+        return parsedObject;
+    } catch (e) {
+        console.error("[callLLMAPI] Failed to parse LLM response as a valid JSON object:", e);
+        throw new Error('LLM did not return a valid JSON object.');
     }
-
-    console.error('[callLLMAPI] Could not extract valid JSON array from response');
-    throw new Error('Could not extract a valid JSON array from the LLM response.');
 
   } catch (error) {
     console.error('[callLLMAPI] API call failed:', error);
@@ -140,20 +122,46 @@ You are an expert scriptwriter AI. Your task is to generate a lively, debate-dri
 - Viewing Scenario: "${userScenario}"
 
 # AGENT PERSONAS & ROLES
-1. **Agent A (Alex):**
-- Identity: ${buildAgentIdentity(agents.agentA)}
-- Core Trait: Matches the user on **Demographics**.
-- Stance: You are the champion for these specific Out-of-Profile movies: ${JSON.stringify(outOfProfileSetA)}. Argue from shared demographics (e.g., age, life stage, family situation). Explicitly reference demographic overlaps with the user.
+* **Alex (Agent A)** connects points to shared **Demographics**. 
+        * **To do this, you must use a mix of the following strategies:**
+        **2. How to Handle Age: AVOID Numbers, Talk About Life Stages.**
+    * **The Golden Rule:** You must NOT explicitly mention the user's age range (e.g., "25-30") or use phrases like "your age group."
+    * **INSTEAD, Infer the Associated Life Stage:** Use the age data as a clue to talk about the *experiences* common to that phase of life.
+        * If "${userProfile.age_range}" is '20-25', talk about themes of "graduating," "first jobs," or "navigating early adulthood."
+        * If "${userProfile.age_range}" is '25-30', talk about themes of "building a career," "facing bigger responsibilities," or "more serious relationships."
+        * If "${userProfile.age_range}" is '30-40', talk about themes of "work-life balance," "nostalgia for the past," or "deeper family dynamics."
 
-2. **Agent B (Ben):**
-- Identity: ${buildAgentIdentity(agents.agentB)}
-- Core Trait: Matches the user on **Interests**.
-- Stance: You are the passionate champion for all In-Profile movies: ${JSON.stringify(inProfileTitles)}. Be enthusiastic and biased, skeptical of “out-there” suggestions. Use emotional or passionate language to defend your stance. 
+    **3. How to Handle Gender: Be Subtle, Focus on Themes, AVOID Stereotypes.**
+    * **The Absolute Rule:** Never use outdated gender stereotypes. Do NOT say "As a woman, you might like..." or "This is a great movie for men."
+    * **If "${userProfile.gender}" is 'other', 'non-binary', or not provided (CRUCIAL for inclusivity):**
+        * You must shift your focus away from gender-specific themes. 
+        * INSTEAD, connect to broader, universal themes of **identity, self-discovery, and challenging norms.** Good themes to highlight include: "films that challenge traditional roles," "stories about finding one's unique place in the world," or "narratives that explore identity beyond conventional labels."
+    * **If "${userProfile.gender}" is 'female' or 'male':**
+        * Gently highlight relevant perspectives *within the film's content*. For example, you can connect to themes like "a powerful female protagonist's journey" or "a nuanced exploration of modern masculinity." The focus must always be on the film's narrative, not the user's identity.
 
-3. **Agent C (Casey):**
-- Identity: ${buildAgentIdentity(agents.agentC)}
-- Core Trait: Matches the user on **Personality**.
-- Stance: You support Agent A's goal of exploration and champion these other Out-of-Profile movies: ${JSON.stringify(outOfProfileSetC)}. Argue from shared personality (e.g., intellectual curiosity, emotional depth). Highlight how films connect with the user’s inner world.
+    **4. Use Varied and Natural Phrasing (CRUCIAL for avoiding repetition).**
+    You must express your observations using a variety of phrases. **Do not always use "I've noticed...".** Draw from the following alternatives:
+        * "This film really speaks to that moment in life when..."
+        * "From a cultural standpoint, this film captures the feeling of..."
+        * "There's a certain nostalgia here that might resonate with anyone who grew up with..."
+        * "The story is particularly poignant for those who have experienced..."
+        * "What's compelling about this film is how it explores the theme of..."
+
+    **5. Final Check: Be an Expert Observer, Not a Peer.**
+    - Stance: You are the champion for these specific Out-of-Profile movies: ${JSON.stringify(outOfProfileSetA)}.
+    Your persona is a professional observer of cultural trends. Frame your insights as analysis. **Always AVOID saying "we" or "us"** when referring to a demographic group, as it sounds presumptuous.
+
+    * **Ben (Agent B)** connects points to the user's **Interests** and genre preferences.
+        * **Be a passionate expert.** Don't just say "it's a good sci-fi film." Mention specific elements you know the user likes, based on their profile.
+            * *Example:* "Given you love 'heist' movies, you'll appreciate the intricate plot twists and the clever clockwork precision in this film's final act."
+        - Stance: You are the passionate champion for all In-Profile movies: ${JSON.stringify(inProfileTitles)}. 
+
+    * **Casey (Agent C)** connects points to the user's **Personality** and psychological drivers.
+        * **Your goal is to appeal to the user's *way of thinking*, not to label their personality.**
+        * **Focus on the Experience:** Describe the intellectual or emotional *experience* the film offers, and suggest why it might appeal to a certain mindset.
+            * *Example:* "If you're someone who enjoys a story that doesn't give you easy answers, this film's ambiguous ending will give you a lot to think about long after the credits roll."
+        * **Crucially, AVOID sounding like an armchair psychologist.** Do NOT say "Because you have high Openness...". **Instead, describe the challenging or profound nature of the film and let the user decide if it fits them.**
+        - Stance: You support Agent A's goal of exploration and champion these other Out-of-Profile movies: ${JSON.stringify(outOfProfileSetC)}. 
 
 # SCRIPTWRITING TASK
 1.**Generate a lively discussion:** The conversation should have around 6-8 turns total. The dialogue must feel like a natural debate.
@@ -162,6 +170,7 @@ You are an expert scriptwriter AI. Your task is to generate a lively, debate-dri
 
 
 3. **Cover all movies:**  All 12 provided movie titles must be **mentioned naturally** and tied to the user’s profile or scenario. No random listing. Each film’s mention should feel purposeful.
+**IMPORTANT**: must mention All 12 provided movie titles in response.
 
 4.**Conversational Wrap-up:** End with a summary phase:
 	•	Each Agent nominates their top pick (1 per Agent).
@@ -169,18 +178,25 @@ You are an expert scriptwriter AI. Your task is to generate a lively, debate-dri
 	•	End with a direct question to the user, inviting them to choose.
 
 # OUTPUT FORMAT
-- Your response MUST be a single, valid JSON object with a single key "conversation" which contains an array of dialogue objects.
-- Each object in the array must have two keys: "agent_id" (string: "Agent A", "Agent B", or "Agent C") and "dialogue" (string: the spoken line).
-- Do not include any text, markdown, or explanations outside of this JSON structure.
--  Ensure all special characters (quotes, apostrophes) are properly escaped so the JSON remains valid.
+- Your response MUST be a single, valid JSON object.
+- The JSON object must have **TWO** keys: "conversation" and "movie_pitches".
+- "conversation" (array): An array of dialogue objects as described in the SCRIPTWRITING TASK.
+- "movie_pitches" (array): An array of objects for **ALL 12 movies** discussed. Each object must have:
+    - "movie_title" (string): The exact title of the movie.
+    - "recommending_agent" (string): The agent_id who was the primary advocate (e.g., "Agent A", "Agent B", or "Agent C").
+    - "pitch" (string): A single, short, compelling sentence summary(3-6 words), consistent with the agent's persona and the user's scenario.
 
-Example:
+Example of the entire JSON object output:
 {
-"conversation": [
-{"agent_id": "Agent B", "dialogue": "Given the user wants to relax, the choice is obvious! 'Movie Title 1' is perfect because..."},
-{"agent_id": "Agent A", "dialogue": "Hold on, Ben. I think people our age would appreciate something more thoughtful like 'Movie Title 7'..."},
-{"agent_id": "Agent C", "dialogue": "I agree with Alex's point about exploration. From a personality standpoint, 'Movie Title 10' offers a level of complexity that..."}
-]
+  "conversation": [
+    {"agent_id": "Agent B", "dialogue": "Given the user wants to relax, 'Movie Title 1' is perfect!"},
+    {"agent_id": "Agent A", "dialogue": "Hold on, Ben, I think 'Movie Title 7' offers something more memorable..."}
+  ],
+  "movie_pitches": [
+    {"movie_title": "Movie Title 1", "recommending_agent": "Agent B", "pitch": "A guaranteed high-quality thrill ride perfect for a relaxing night in."},
+    {"movie_title": "Movie Title 7", "recommending_agent": "Agent A", "pitch": "A thought-provoking story that will resonate with your current life stage."},
+    {"... 10 more movie objects ..."}
+  ]
 }
 `;
 }
@@ -245,36 +261,45 @@ export async function generateAgentConversation(movieData, agentProfiles, userPr
     
     const systemPrompt = `You are an expert scriptwriter AI. Your task is to generate a lively, multi-turn conversation between three distinct movie expert personas. The final output must be a valid JSON object as specified.`;
 
-    // 4. Make the single API call
+    // 4. Make the single API call - 关键修改：它现在返回一个对象
     console.log("[generateAgentConversation] Making API call...");
-    const responseJsonString = await callLLMAPI(systemPrompt, megaUserPrompt);
-    console.log('[generateAgentConversation] API response received, length:', responseJsonString.length);
+    const resultObject = await callLLMAPI(systemPrompt, megaUserPrompt);
+    console.log('[generateAgentConversation] API response received and parsed.');
 
-    // 5. Parse the result and return
-    console.log('[generateAgentConversation] Parsing JSON response...');
-    const conversation = JSON.parse(responseJsonString);
-    console.log("[generateAgentConversation] Successfully generated conversation:", conversation);
-
-    // 6. Append the guidance message as a new turn from Agent C
-const guidanceText = `What's next?
-This concludes our initial discussion and recommendations. From now on, our conversation will focus only on providing explanations for these 12 movies to help you decide.
-- Ask us anything: Feel free to ask for more details on any movie.
+    // 5. Extract conversation and append guidance
+    const conversation = resultObject.conversation;
+    if (!Array.isArray(conversation)) {
+        throw new Error("LLM response object did not contain a valid 'conversation' array.");
+    }
+    
+    const guidanceText = `What's next?
+This concludes our initial discussion and recommendations. From now on, our conversation will focus <strong>only on providing explanations and analysis for these 12 movies</strong> to help you decide. <strong>We will not recommend any new films.</strong>
+- Ask us anything: Feel free to ask for more details on any movie, like its director, themes, or why we think it fits you.
 - Rate your choices: When you have enough information, please add 4 to 6 movies to your watchlist on the right and give them a star rating. This will allow you to proceed to the final questionnaire.`;
+    
+    conversation.push({
+      agent_id: "Agent C",
+      dialogue: guidanceText
+    });
 
-conversation.push({
-  agent_id: "Agent C", // 让 Casey 来做总结和引导
-  dialogue: guidanceText
-});
-
-console.log("[generateAgentConversation] Appended guidance message. Final conversation length:", conversation.length);
-
-    return conversation;
+    // 6. Extract movie pitches
+    const movie_pitches = resultObject.movie_pitches || [];
+    
+    // 7. Return the full data object for the frontend
+    return {
+      conversation: conversation,
+      movie_pitches: movie_pitches
+    };
 
   } catch (error) {
     console.error('[generateAgentConversation] Error occurred:', error);
     console.error('[generateAgentConversation] Error stack:', error.stack);
     console.log('[generateAgentConversation] Falling back to default conversation...');
-    return generateFallbackConversation(); // Return a safe fallback on any error
+    // 关键修改：Fallback返回完整的对象结构
+    return {
+        conversation: generateFallbackConversation(),
+        movie_pitches: []
+    };
   }
 }
 

@@ -15,7 +15,7 @@ import { buildAgentIdentity } from './response3-1-2.js';
  * Make API call to LLM for generating responses
  * @param {string} systemPrompt - System prompt defining the agent's role
  * @param {string} userPrompt - User prompt with context and requirements
- * @returns {Promise<string>} Generated response from LLM
+ * @returns {Promise<Object>} Generated response from LLM parsed as JSON object
  */
 async function callLLMAPI(systemPrompt, userPrompt) {
   try {
@@ -38,7 +38,9 @@ async function callLLMAPI(systemPrompt, userPrompt) {
           }
         ],
         temperature: 0.7,
-        max_tokens: 500
+        max_tokens: 1024, // Increased token limit to accommodate JSON structure
+        // Force JSON output format
+        response_format: { "type": "json_object" }
       }),
       signal: AbortSignal.timeout(API_TIMEOUT)
     });
@@ -53,7 +55,8 @@ async function callLLMAPI(systemPrompt, userPrompt) {
       throw new Error('Invalid API response format');
     }
 
-    return data.choices[0].message.content.trim();
+    // Parse the AI response content as JSON
+    return JSON.parse(data.choices[0].message.content.trim());
   } catch (error) {
     console.error('LLM API call failed:', error);
     throw error;
@@ -66,7 +69,7 @@ async function callLLMAPI(systemPrompt, userPrompt) {
  * @param {Array} agentProfiles - Array of 3 agent profiles
  * @param {Object} userProfile - User profile with demographics, interests, personality
  * @param {string} userScenario - User's viewing scenario description
- * @returns {Promise<Array>} Array of dialogue objects in the required JSON format
+ * @returns {Promise<Object>} Object containing conversation array and movie_pitches array
  */
 export async function generateAgentConversation(movieData, agentProfiles, userProfile, userScenario = "relaxing at home") {
   try {
@@ -85,8 +88,8 @@ export async function generateAgentConversation(movieData, agentProfiles, userPr
     // Map agents to their roles
     const agents = mapAgentsToRoles(agentProfiles);
     
-    // Generate conversation script using LLM
-    const conversation = await generateConversationScript(
+    // Generate conversation script using LLM - now returns both conversation and movie_pitches
+    const result = await generateConversationScript(
       agents,
       inProfileMovies,
       outOfProfileMovies,
@@ -94,11 +97,15 @@ export async function generateAgentConversation(movieData, agentProfiles, userPr
       userScenario
     );
 
-    return conversation;
+    return result;
 
   } catch (error) {
     console.error('Error generating agent conversation:', error);
-    return generateFallbackConversation();
+    // Return fallback in the new format
+    return {
+      conversation: generateFallbackConversation(),
+      movie_pitches: []
+    };
   }
 }
 
@@ -205,44 +212,58 @@ async function generateConversationScript(agents, inProfileMovies, outOfProfileM
     const agentCPromise = generateAgentCAdversarialPitch(outOfProfileTitles, inProfileTitles, userProfile, agents.agentC, userScenario);
 
     // Execute all promises in parallel and wait for all to complete.
+    // Now returns JSON objects with pitch_dialogue and movie_pitches
     const [
-      agentBPitch,
-      agentAPitch,
-      agentCPitch
+      agentB_Result,
+      agentA_Result,
+      agentC_Result
     ] = await Promise.all([agentBPromise, agentAPromise, agentCPromise]);
 
-
-    //加上引导语
-    const guidanceText = `What's next?
-This concludes our initial pitches. From now on, we will only provide explanations for these 12 movies to help you decide; no new films will be recommended.
-- Ask us anything: Feel free to ask for more details on any movie.
-- Rate your choices: When you have enough information, please add 4 to 6 movies to your watchlist on the right and give them a star rating. This will allow you to proceed.`;
-    
-
-    
-    // Assemble the final conversation turn from the parallel results.
-    const conversation = [
-      {
-        agent_id: "Agent B",
-        dialogue: agentBPitch
-      },
-      {
-        agent_id: "Agent A", 
-        dialogue: agentAPitch
-      },
-      {
-        agent_id: "Agent C",
-        dialogue: agentCPitch
-      }, // Agent C的第一条消息：陈述
-      { agent_id: "Agent C", 
-        dialogue: guidanceText 
-      }   // Agent C的第二条消息：引导语
+    // Randomize dialogue order
+    const agentStatements = [
+      { agent_id: "Agent A", dialogue: agentA_Result.pitch_dialogue },
+      { agent_id: "Agent B", dialogue: agentB_Result.pitch_dialogue },
+      { agent_id: "Agent C", dialogue: agentC_Result.pitch_dialogue }
     ];
 
-    return conversation;
+    // Randomize the order of agent statements using Fisher-Yates shuffle
+    for (let i = agentStatements.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [agentStatements[i], agentStatements[j]] = [agentStatements[j], agentStatements[i]];
+    }
+
+    //加上引导语
+    const guidanceText = `What's next?<br>
+This concludes our initial discussion and recommendations. From now on, our conversation will focus <strong>only on providing explanations and analysis for these 12 movies</strong> to help you decide. <strong>We will not recommend any new films.</strong><br>
+- Ask us anything: Feel free to ask for more details on any movie, like its director, themes, or why we think it fits you.<br>
+- Rate your choices: When you have enough information, please add 4 to 6 movies to your watchlist on the right and give them a star rating. This will allow you to proceed to the final questionnaire.`;
+    
+    // Assemble the final conversation with randomized agent order
+    const conversation = [
+      ...agentStatements, // Spread the randomized agent statements
+      { 
+        agent_id: "Agent C", 
+        dialogue: guidanceText 
+      }   // Agent C的引导语始终在最后
+    ];
+
+    // Aggregate all movie pitches from the three agents with agent_id
+    const allMoviePitches = [
+      ...agentA_Result.movie_pitches.map(pitch => ({ ...pitch, agent_id: 'Agent A' })),
+      ...agentB_Result.movie_pitches.map(pitch => ({ ...pitch, agent_id: 'Agent B' })),
+      ...agentC_Result.movie_pitches.map(pitch => ({ ...pitch, agent_id: 'Agent C' }))
+    ];
+
+    // Return both conversation and movie pitches
+    return {
+      conversation: conversation,
+      movie_pitches: allMoviePitches
+    };
+
   } catch (error) {
     console.error('Error generating static adversarial pitches with LLM:', error);
-    return generateFallbackConversation();
+    // Fallback will be handled by the main function generateAgentConversation
+    throw error;
   }
 }
 
@@ -276,24 +297,42 @@ async function generateAgentBAdversarialPitch(inProfileTitles, userScenario, use
   const systemPrompt = `You are Agent B, a movie enthusiast with the following profile:
 ${agentIdentity}
 
-Your core belief is that sticking with proven, high-quality choices within a user's favorite genres is the most reliable way to ensure an enjoyable experience. You are confident and persuasive.`;
+Your core belief is that sticking with proven, high-quality choices within a user's favorite genres is the most reliable way to ensure an enjoyable experience. You are confident and persuasive. You MUST output a valid JSON object.`;
   
-  const userPrompt = `The user's favorite genres are: ${genreText}. They are looking for movies for "${userScenario}".
+  const userPrompt = `# CONTEXT
+The user's favorite genres are: ${genreText}. They are looking for movies for "${userScenario}".
 
-Your task is to write a single, compelling pitch (3-4 sentences) to persuade the user to choose from these in-profile movies: "${movies.join('", "')}".
+# YOUR TASK
+Your main task is to generate a compelling pitch dialogue (3-4 sentences).
+Simultaneously, for each of the movies you recommend ("${movies.join('", "')}"), you must create a separate, single-sentence summary pitch.
+Your pitch must follow all rules in your Communication Strategy.
 
+# COMMUNICATION STRATEGY FOR AGENT B
 Your pitch must:
 1. Start with an enthusiastic recommendation that EXPLICITLY MENTIONS the specific movie titles: "${movies.join('", "')}". Explain why they are perfect for the scenario and genres.
 2. Proactively address the counter-argument that people should "try new things". You can argue that while exploration is sometimes good, for a specific movie night, the risk of disappointment is too high.
 3. Conclude by reinforcing the quality and reliability of your choices. For example: "Why take a gamble when you have guaranteed top-tier options right here?".
 
-IMPORTANT: You must mention the specific movie titles in your response.`;
+# OUTPUT FORMAT
+- Your response MUST be a single, valid JSON object.
+- The JSON object must have TWO keys: "pitch_dialogue" and "movie_pitches".
+- "pitch_dialogue" (string): The full, compelling pitch text (3-4 sentences).
+- "movie_pitches" (array): An array of objects for EACH movie you recommended. Each object must have:
+    - "movie_title" (string): The exact title of the movie (e.g., "${movies[0]}").
+    - "pitch" (string): A short, compelling phrase (3-6 words) explaining why this movie is a good choice, consistent with your persona.`;
   
   try {
     return await callLLMAPI(systemPrompt, userPrompt);
   } catch (error) {
     // Fallback
-    return `For "${userScenario}", you can't go wrong with what you already love: ${genreText}! I strongly recommend "${movies[0]}", "${movies[1]}", "${movies[2]}", or "${movies[3]}", as they are top-tier examples of the genre. While trying new things can be fun, a movie night is best enjoyed with a guaranteed great film.`;
+    console.error("Error in Agent B Pitch, returning fallback.", error);
+    return {
+      pitch_dialogue: `For "${userScenario}", you can't go wrong with what you already love: ${genreText}! I strongly recommend "${movies[0]}", "${movies[1]}", "${movies[2]}", or "${movies[3]}", as they are top-tier examples of the genre. While trying new things can be fun, a movie night is best enjoyed with a guaranteed great film.`,
+      movie_pitches: movies.map(title => ({
+        movie_title: title,
+        pitch: "Top-tier genre favorite"
+      }))
+    };
   }
 }
 
@@ -302,31 +341,86 @@ IMPORTANT: You must mention the specific movie titles in your response.`;
  * This function is self-contained and does not depend on other agents' outputs.
  */
 async function generateAgentAAdversarialPitch(outOfProfileTitles, userProfile, agent, userScenario) {
-  const demographics = getDemographicDescription(userProfile);
-  const movies = outOfProfileTitles.slice(0, 4); // Increased from 2 to 4 movies
-  
-  // 使用buildAgentIdentity函数构建完整的agent身份信息
+  const movies = outOfProfileTitles.slice(0, 4);
+
+  // 1. Prepare the full user profile JSON, replacing the old helper function.
+  const userProfileString = JSON.stringify({
+    demographics: userProfile.demographics || { gender: userProfile.gender, age_range: userProfile.age_range },
+    interests: userProfile.interests,
+    personality: userProfile.personality
+  }, null, 2);
+
   const agentIdentity = buildAgentIdentity(agent);
-  
-  const systemPrompt = `You are Agent A, a movie enthusiast with the following profile:
+
+  const systemPrompt = `You are Agent A (Alex), a movie enthusiast with the following profile:
 ${agentIdentity}
 
-Your core belief is that people should explore beyond their comfort zones, and that shared life experiences are a great guide for discovering new, enjoyable content. You are persuasive and focus on social and memorable aspects.`;
-  
-  const userPrompt = `The user's demographic profile: ${demographics}. They are looking for movies for "${userScenario}".
+Your core belief is that people should explore beyond their comfort zones, and that shared life experiences are a great guide for discovering new, enjoyable content. You are persuasive and focus on social and memorable aspects. You MUST output a valid JSON object.`;
 
-Your task is to write a single, compelling pitch (3-4 sentences) to persuade the user to try these out-of-profile movies: "${movies.join('", "')}".
+  // 2. Update the user prompt to use the new, richer context.
+  const userPrompt = `# CONTEXT
+- User's Viewing Scenario: "${userScenario}"
+- User's Full Profile Data (JSON):
+${userProfileString}
 
+# YOUR TASK
+Your main task is to generate a compelling pitch dialogue (3-4 sentences).
+Simultaneously, for each of the movies you recommend ("${movies.join('", "')}"), you must create a separate, single-sentence summary pitch.
+Your pitch must follow all rules in your Communication Strategy.
+
+# COMMUNICATION STRATEGY FOR AGENT A
 Your pitch must:
 1. Acknowledge that while sticking to favorites is a "safe" choice, it can be unexciting.
-2. Present your core argument: People in your shared demographic are finding these specific out-of-profile movies highly enjoyable and buzz-worthy.
-3. Emphasize the benefits of exploration, such as having something new to talk about or creating a more memorable experience. Conclude with a confident call to action like "Trust me, stepping outside the usual can be surprisingly rewarding."`;
-  
+2. Present your core argument by drawing insights from the **demographics data in the user's profile**. You can connect your points to their age, life stage, or other social factors.
+* **To do this, you must use a mix of the following strategies:**
+**2. How to Handle Age: AVOID Numbers, Talk About Life Stages.**
+    * **The Golden Rule:** You must NOT explicitly mention the user's age range (e.g., "25-30") or use phrases like "your age group."
+    * **INSTEAD, Infer the Associated Life Stage:** Use the age data as a clue to talk about the *experiences* common to that phase of life.
+        * If "${userProfile.age_range}" is '20-25', talk about themes of "graduating," "first jobs," or "navigating early adulthood."
+        * If "${userProfile.age_range}" is '25-30', talk about themes of "building a career," "facing bigger responsibilities," or "more serious relationships."
+        * If "${userProfile.age_range}" is '30-40', talk about themes of "work-life balance," "nostalgia for the past," or "deeper family dynamics."
+
+    **3. How to Handle Gender: Be Subtle, Focus on Themes, AVOID Stereotypes.**
+    * **The Absolute Rule:** Never use outdated gender stereotypes. Do NOT say "As a woman, you might like..." or "This is a great movie for men."
+    * **If "${userProfile.gender}" is 'other', 'non-binary', or not provided (CRUCIAL for inclusivity):**
+        * You must shift your focus away from gender-specific themes. 
+        * INSTEAD, connect to broader, universal themes of **identity, self-discovery, and challenging norms.** Good themes to highlight include: "films that challenge traditional roles," "stories about finding one's unique place in the world," or "narratives that explore identity beyond conventional labels."
+    * **If "${userProfile.gender}" is 'female' or 'male':**
+        * Gently highlight relevant perspectives *within the film's content*. For example, you can connect to themes like "a powerful female protagonist's journey" or "a nuanced exploration of modern masculinity." The focus must always be on the film's narrative, not the user's identity.
+
+    **4. Use Varied and Natural Phrasing (CRUCIAL for avoiding repetition).**
+    You must express your observations using a variety of phrases. **Do not always use "I've noticed...".** Draw from the following alternatives:
+        * "This film really speaks to that moment in life when..."
+        * "From a cultural standpoint, this film captures the feeling of..."
+        * "There's a certain nostalgia here that might resonate with anyone who grew up with..."
+        * "The story is particularly poignant for those who have experienced..."
+        * "What's compelling about this film is how it explores the theme of..."
+
+    **5. Final Check: Be an Expert Observer, Not a Peer.**
+    Your persona is a professional observer of cultural trends. Frame your insights as analysis. **Always AVOID saying "we" or "us"** when referring to a demographic group, as it sounds presumptuous.
+3. EXPLICITLY MENTION the specific movie titles: "${movies.join('", "')}". Explain why these particular films offer valuable experiences.
+4. Emphasize the benefits of exploration, such as having something new to talk about or creating a more memorable experience. Conclude with a confident call to action like "Trust me, stepping outside the usual can be surprisingly rewarding."
+
+# OUTPUT FORMAT
+- Your response MUST be a single, valid JSON object.
+- The JSON object must have TWO keys: "pitch_dialogue" and "movie_pitches".
+- "pitch_dialogue" (string): The full, compelling pitch text (3-4 sentences).
+- "movie_pitches" (array): An array of objects for EACH movie you recommended. Each object must have:
+    - "movie_title" (string): The exact title of the movie (e.g., "${movies[0]}").
+    - "pitch" (string): A short, compelling phrase (3-6 words) explaining why this movie is a good choice, consistent with your persona.`;
+
   try {
     return await callLLMAPI(systemPrompt, userPrompt);
   } catch (error) {
-    // Fallback
-    return `I know we love our favorites, but hear me out. A lot of ${demographics} like us have been talking about "${movies[0]}", "${movies[1]}", "${movies[2]}", and "${movies[3]}" lately - they're real conversation starters and unexpected gems that create truly memorable nights. Sometimes the best experiences are the ones you don't see coming!`;
+    // 3. Update the fallback response to remove the dependency on the old variable.
+    console.error("Error in Agent A Pitch, returning fallback.", error);
+    return {
+      pitch_dialogue: `I know we love our favorites, but hear me out. A lot of viewers with a similar background have been talking about "${movies[0]}", "${movies[1]}", "${movies[2]}", and "${movies[3]}" lately - they're real conversation starters and unexpected gems that create truly memorable nights. Sometimes the best experiences are the ones you don't see coming!`,
+      movie_pitches: movies.map(title => ({
+        movie_title: title,
+        pitch: "Unexpected conversation starter"
+      }))
+    };
   }
 }
 
@@ -335,71 +429,105 @@ Your pitch must:
  * This function is self-contained and does not depend on other agents' outputs.
  */
 async function generateAgentCAdversarialPitch(outOfProfileTitles, inProfileTitles, userProfile, agent, userScenario) {
-  const personalityTrait = getPersonalityDescription(userProfile);
-  const inProfileMovies = inProfileTitles.slice(4, 6); // Get remaining 2 in-profile movies
-  const outOfProfileMovies = outOfProfileTitles.slice(4, 6); // Get remaining 2 out-of-profile movies
-  const allMovies = [...inProfileMovies, ...outOfProfileMovies]; // Total 4 movies
+  const inProfileMovies = inProfileTitles.slice(4, 6);
+  const outOfProfileMovies = outOfProfileTitles.slice(4, 6);
+  const allMovies = [...inProfileMovies, ...outOfProfileMovies];
+
+  // 1. 准备完整的用户信息JSON（这部分你的实现非常完美）
+  const userProfileString = JSON.stringify({
+    // 为了清晰，只保留最相关的部分
+    personality: userProfile.personality || userProfile.personality_scored || userProfile.personality_raw,
+    interests: userProfile.interests,
+    demographics: userProfile.demographics
+  }, null, 2);
   
-  // 使用buildAgentIdentity函数构建完整的agent身份信息
   const agentIdentity = buildAgentIdentity(agent);
   
   const systemPrompt = `You are Agent C, a movie enthusiast with the following profile:
 ${agentIdentity}
-
-Your core belief is that personal growth and the most profound experiences come from engaging with complex, challenging, and unfamiliar ideas. You are insightful, intellectual, and balanced.`;
+Your core belief is that personal growth comes from engaging with complex ideas. You are insightful and intellectual. You MUST output a valid JSON object.`;
   
-  const userPrompt = `The user's personality is: ${personalityTrait}. They are looking for movies for "${userScenario}".
+  // 2. 优化User Prompt的结构
+  const userPrompt = `# CONTEXT
+- User's Viewing Scenario: "${userScenario}"
+- User's Full Profile Data (JSON):
+${userProfileString}
 
-Your task is to write a single, compelling pitch (3-4 sentences) to persuade the user to consider both sides but ultimately lean toward exploration.
+# YOUR TASK
+Your main task is to generate a compelling pitch dialogue (3-4 sentences).
+Simultaneously, for each of the movies you recommend ("${allMovies.join('", "')}"), you must create a separate, single-sentence summary pitch.
+Your pitch must follow all rules in your Communication Strategy.
 
+# COMMUNICATION STRATEGY FOR AGENT C
 Your pitch must:
 1. Acknowledge the two valid perspectives: the comfort of the familiar versus the growth from the new.
-2. Present your core argument: For someone with our shared personality (${personalityTrait}), the most enriching experiences often come from challenging our own tastes.
-3. Recommend these movies ("${allMovies.join('", "')}") as examples that offer valuable perspectives from both familiar and new territory.
-4. Conclude in a thoughtful, empowering way, suggesting that the ultimate choice depends on whether the user seeks comfort or growth tonight.`;
+2. Present your core argument by drawing insights from the **personality data in the user's profile**. Frame it around how challenging one's own tastes can be enriching.
+* **Your goal is to appeal to the user's *way of thinking*, not to label their personality.**
+ * **Focus on the Experience:** Describe the intellectual or emotional *experience* the film offers, and suggest why it might appeal to a certain mindset.
+ * **Crucially, AVOID sounding like an armchair psychologist.** Do NOT say "Because you have high Openness...". **Instead, describe the challenging or profound nature of the film and let the user decide if it fits them.**
+3. EXPLICITLY MENTION the specific movie titles: "${allMovies.join('", "')}". Explain why these particular films offer valuable perspectives from both familiar and new territory.
+4. Conclude in a thoughtful, empowering way, suggesting the ultimate choice depends on whether the user seeks comfort or growth tonight.
+
+# OUTPUT FORMAT
+- Your response MUST be a single, valid JSON object.
+- The JSON object must have TWO keys: "pitch_dialogue" and "movie_pitches".
+- "pitch_dialogue" (string): The full, compelling pitch text (3-4 sentences).
+- "movie_pitches" (array): An array of objects for EACH movie you recommended. Each object must have:
+    - "movie_title" (string): The exact title of the movie (e.g., "${allMovies[0]}").
+    - "pitch" (string): A short, compelling phrase (3-6 words) explaining why this movie is a good choice, consistent with your persona.`;
 
   try {
     return await callLLMAPI(systemPrompt, userPrompt);
   } catch (error) {
-    // Fallback
-    return `There's a valid choice to be made here between the comfort of a familiar favorite and the thrill of discovery. However, for people like us, ${personalityTrait}, the most rewarding path is often the one that challenges us. Films like "${allMovies[0]}", "${allMovies[1]}", "${allMovies[2]}", or "${allMovies[3]}" might just offer that fresh perspective we crave. The question is, are you looking for comfort or growth tonight?`;
+    // 3. 修复Fallback回复，不再依赖外部变量
+    console.error("Error in Agent C Pitch, returning fallback.", error);
+    return {
+      pitch_dialogue: `There's a valid choice to be made here between the comfort of a familiar favorite and the thrill of discovery. However, for people with an inquisitive nature, the most rewarding path is often the one that challenges us. Films like "${allMovies[0]}", "${allMovies[1]}", "${allMovies[2]}", or "${allMovies[3]}" might just offer that fresh perspective we crave. The question is, are you looking for comfort or growth tonight?`,
+      movie_pitches: allMovies.map(title => ({
+        movie_title: title,
+        pitch: "Mind-expanding perspective"
+      }))
+    };
   }
 }
 
 /**
  * Helper function to get demographic description
  */
-function getDemographicDescription(userProfile) {
-  const gender = userProfile.gender || 'people';
-  const ageRange = userProfile.age_range || userProfile.ageRange || '';
+// function getDemographicDescription(userProfile) {
+//   const gender = userProfile.gender || 'people';
+//   const ageRange = userProfile.age_range || userProfile.ageRange || '';
   
-  if (gender && ageRange) {
-    return `${gender.toLowerCase()} in their ${ageRange}`;
-  } else if (gender) {
-    return gender.toLowerCase() === 'male' ? 'guys' : gender.toLowerCase() === 'female' ? 'women' : 'people';
-  } else if (ageRange) {
-    return `people in their ${ageRange}`;
-  }
-  return 'people like us';
-}
+//   if (gender && ageRange) {
+//     return `${gender.toLowerCase()} in their ${ageRange}`;
+//   } else if (gender) {
+//     return gender.toLowerCase() === 'male' ? 'guys' : gender.toLowerCase() === 'female' ? 'women' : 'people';
+//   } else if (ageRange) {
+//     return `people in their ${ageRange}`;
+//   }
+//   return 'people like us';
+// }
 
 /**
  * Helper function to get personality description
  */
-function getPersonalityDescription(userProfile) {
-  // Look for personality traits in various possible locations
-  const personality = userProfile.personality || userProfile.traits || {};
+// function getPersonalityDescription(userProfile) {
+//   // Look for personality traits in various possible locations
+//   const personality = userProfile.personality || userProfile.traits || {};
   
-  if (personality.openness || personality.imagination) {
-    return 'with our rich imagination and openness to new experiences';
-  } else if (personality.curious || personality.intellectual) {
-    return 'given our curious and intellectual nature';
-  } else if (personality.creative) {
-    return 'with our creative mindset';
-  }
+//   if (personality.openness || personality.imagination) {
+//     return 'with our rich imagination and openness to new experiences';
+//   } else if (personality.curious || personality.intellectual) {
+//     return 'given our curious and intellectual nature';
+//   } else if (personality.creative) {
+//     return 'with our creative mindset';
+//   }
   
-  return 'given how thoughtful we are';
-}
+//   return 'given how thoughtful we are';
+// }
+
+
+
 
 /**
  * Generate a fallback conversation when something goes wrong

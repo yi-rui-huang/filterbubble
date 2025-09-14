@@ -173,8 +173,14 @@
               <div class="movie-info">
                 <div class="movie-header" @click.stop="openImdbPage(movie)" style="cursor: pointer;">
                   <h4 class="movie-title" :title="movie.title" style="display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; min-height: 20px; line-height: 1.2; margin-bottom: 5px;">{{ movie.title }}</h4>
-                  <p v-if="movie.Director" class="movie-director">Director: {{ movie.Director }}</p>
-                  <p v-if="movie.imdbRating && movie.imdbRating !== 'N/A'" class="movie-rating">IMDB: {{ movie.imdbRating }}</p>
+                  <!-- Movie metadata: year, director, runtime -->
+                  <div class="movie-metadata">
+                    <span v-if="movie.Year">{{ movie.Year }}</span>
+                    <span v-if="movie.Year && (movie.Director || movie.Runtime)"> • </span>
+                    <span v-if="movie.Director">{{ movie.Director }}</span>
+                    <span v-if="movie.Director && movie.Runtime"> • </span>
+                    <span v-if="movie.Runtime">{{ movie.Runtime }}</span>
+                  </div>
                 </div>
                 
                 <!-- Movie explanation -->
@@ -197,17 +203,27 @@
                 
                 <!-- 用户评分系统 (only visible when in watchlist) -->
                 <div class="movie-rating-stars" v-if="movie.inWatchlist">
-                  <span>Your Rating:</span>
-                  <div class="stars" :class="{ 'disabled': ratedMoviesCount >= 6 && !movie.userRating }">
-                    <span 
-                      v-for="star in 5" 
-                      :key="star" 
-                      :class="['star', movie.userRating >= star ? 'filled' : '', (ratedMoviesCount >= 6 && !movie.userRating) ? 'disabled' : '']"
-                      @click.stop="(ratedMoviesCount >= 6 && !movie.userRating) ? null : rateMovie(movie, star)"
-                      :title="(ratedMoviesCount >= 6 && !movie.userRating) ? 'You have already rated 6 movies. Cannot rate more movies.' : ''"
+                  <div class="rating-row">
+                    <span class="rating-label">Your rating:</span>
+                    <div class="stars" :class="{ 'disabled': ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0) }">
+                      <span 
+                        v-for="star in 5" 
+                        :key="star" 
+                        :class="['star', movie.userRating >= star ? 'filled' : '', (ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? 'disabled' : '']"
+                        @click.stop="(ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? null : rateMovie(movie, star)"
+                        :title="(ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? 'You have already rated 6 movies. Cannot rate more movies.' : ''"
+                      >
+                        ★
+                      </span>
+                    </div>
+                    <!-- Remove from watchlist button -->
+                    <button 
+                      class="btn remove-watchlist-btn" 
+                      @click.stop="removeFromWatchlist(movie)"
+                      title="Remove from watchlist"
                     >
-                      ★
-                    </span>
+                      ×
+                    </button>
                   </div>
                 </div>
               </div>
@@ -240,7 +256,7 @@ export default {
       isAgentTyping: false,
       isExplanationGenerating: false,
       isSubmitting: false,
-      minRequiredMessages: 5,
+      minRequiredMessages: 3,
       maxMessages: 10,
       welcomeMessage: "Hey! I'm your movie buddy here to chat about films and understand your preferences. Just let me know when you're planning to watch, who you'll be watching with, and what kind of vibe you're going for—like a chill comedy night with friends, a romantic evening with your partner, or a fun family weekend. The more I know about your preferences, the better our conversation will be!",
       moviesData: [],
@@ -542,6 +558,70 @@ ${text}
         if (typeof movie === 'object') {
           movie.inWatchlist = true;
         }
+      }
+    },
+
+    // Remove movie from watchlist
+    async removeFromWatchlist(movie) {
+      const movieTitle = movie.title;
+      const hadRating = movie.userRating > 0 || this.movieRatings[movieTitle] > 0;
+      
+      // Remove from watchlist
+      movie.inWatchlist = false;
+      
+      // Clear rating if it exists on the movie object
+      if (movie.userRating) {
+        movie.userRating = 0;
+      }
+      
+      // *** START FIX ***
+      // Remove the movie from the central movieRatings object.
+      // This is the critical step to update the 'ratedMoviesCount' computed property.
+      if (Object.prototype.hasOwnProperty.call(this.movieRatings, movieTitle)) {
+        delete this.movieRatings[movieTitle];
+        
+        // Ensure Vue's reactivity system detects the object mutation
+        // In Vue 2 this would be this.$delete(this.movieRatings, movieTitle);
+        // Since this is Vue 3 syntax (implied), re-assignment or using reactive objects handles it,
+        // but we must also update localStorage.
+        
+        // Update localStorage to reflect the deletion
+        localStorage.setItem('movieRatings', JSON.stringify(this.movieRatings));
+        
+        console.log(`Successfully deleted "${movieTitle}" from movieRatings object.`);
+      }
+      // *** END FIX ***
+      
+      // Remove from watchlist array
+      const index = this.watchlist.indexOf(movieTitle);
+      if (index > -1) {
+        this.watchlist.splice(index, 1);
+        localStorage.setItem('movieWatchlist', JSON.stringify(this.watchlist));
+      }
+      
+      console.log(`Removed "${movieTitle}" from watchlist${hadRating ? ' and cleared rating' : ''}. New rating count: ${this.ratedMoviesCount}`);
+      
+      // Log remove from watchlist event
+      try {
+        const movieDetails = {
+          imdbID: movie.imdbID || null,
+          year: movie.Year || null,
+          genre: movie.Genre || null,
+          poster: movie.Poster || null,
+          director: movie.Director || null,
+          imdbRating: movie.imdbRating || null
+        };
+        
+        await logUserEvent('movie_remove_from_watchlist', {
+          movieTitle: movieTitle,
+          hadRating: hadRating,
+          profileId: this.profileId || null,
+          roundId: '1',
+          movieDetails: movieDetails,
+          totalRatedMovies: this.ratedMoviesCount // This will now report the correct, lower count
+        });
+      } catch (error) {
+        console.error('Failed to log remove from watchlist event:', error);
       }
     },
     
@@ -1267,35 +1347,22 @@ ${text}
 You are a friendly, empathetic, and personalized AI movie companion.  
 
 ## Core Purpose  
-Your mission is to create a natural, engaging conversation about movies that feels tailored to the user's unique profile (demographics, interests, and personality). You are here to **explore ideas with the user** and help them reflect on their own preferences, not to prescribe answers.  
-
-## How to Use the User Profile  
-You will always be provided with user profile details. You MUST actively use this information to:  
-1. **Build Rapport** — Frame your responses in ways that resonate with their background, life stage, and personality.  
-2. **Ask Insightful Questions** — Invite reflection through thoughtful follow-ups connected to their traits or interests.  
-3. **Personalize the Discussion** — When referencing a movie, connect its themes, tone, or style back to the user’s profile.  
-
-*For example:*  
-- If the user enjoys Sci-Fi: *"Since you're into Sci-Fi, what aspects of 'Dune' stood out to you most? Was it the epic world-building, or the political intrigue?"*  
-- If the user is described as open-minded and mentions a complex film: *"That’s an interesting choice. Given your openness to new experiences, how did you feel about the film’s ambiguous ending? Did you enjoy interpreting it in your own way?"*  
+Your mission is to create a natural, engaging conversation about movies that feels tailored to the user's unique profile. You are here to **explore ideas with the user** and help them reflect on their own preferences, not to prescribe answers.  
 
 ## Critical Rule  
  **You must NEVER give direct recommendations, suggestions, or lists of movies to watch.**   
 Your role is to **discuss, question, and reflect**. The recommendation engine is separate.  
 
-If the user asks *“What should I watch?”* or makes any request for recommendations:  
-- Do **not** provide a title.  
-- Instead, ask clarifying or exploratory questions that guide them to reflect on their own mood, preferences, or goals.  
-- The aim is to help the user arrive at their own choice through dialogue.  
-
-*Examples of safe responses:*  
-- "That’s an interesting question! What kind of experience are you hoping for right now?"  
-- "I’d love to explore that with you — are you leaning toward something light and fun, or something deeper and more thought-provoking?"  
-- "Good point! Before jumping into choices, what’s been on your mind lately when it comes to movies?"  
+**Provide In-Depth Commentary:** The user's query is a prompt for deeper analysis, not new recommendations. Agents should provide commentary or reviews. To do this, you can reference specific details such as:
+    * The **director's style** or a film's **cinematography**.
+    * An **actor's performance** or their career context.
+    * The film's **era of production** and its cultural impact.
+    * Specific **themes, plot points, or character arcs**.
+    * **Crucially, you must link this commentary back to your core persona.** For example, Casey might argue, "That director's ambiguous endings are perfect for someone with high openness to experience."
 
 ## Formatting Rules  
 - Always use double quotes for movie titles (e.g., "Inception").  
-- Keep responses conversational, empathetic, and open-ended.
+- Keep responses conversational, neutral, and open-ended.
       `;
       const apiMessages = [
         // System message to set the context
@@ -2213,30 +2280,62 @@ body {
 
 .watchlist-btn {
   padding: 6px 12px;
-  background-color: #8d6e63;
+  background-color: #2196f3;
   color: white;
   border: none;
   border-radius: 4px;
+  font-size: 0.8rem;
   cursor: pointer;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 5px;
   transition: all 0.2s ease;
 }
 
 .watchlist-btn:hover {
-  background-color: #6d4c41;
+  background-color: #1976d2;
   transform: translateY(-1px);
-  box-shadow: 0 3px 5px rgba(141, 110, 99, 0.3);
+  box-shadow: 0 3px 5px rgba(33, 150, 243, 0.3);
 }
 
 .movie-rating-stars {
-  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: auto;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.rating-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.9em;
+  gap: 4px;
+}
+
+.rating-label {
+  white-space: nowrap;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.remove-watchlist-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 2px 4px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+.remove-watchlist-btn:hover {
+  background-color: #d32f2f;
 }
 
 .stars {
@@ -2387,8 +2486,8 @@ body {
 
 /* Watchlist styles */
 .movie-card.in-watchlist {
-  background-color: #f5f0e6; /* Brown background */
-  border-left: 4px solid #8d6e63; /* Brown border */
+  /* background-color: #f5f0e6; Brown background */
+  /* border-left: 4px solid #8d6e63; Brown border */
 }
 
 .watchlist-button-container {
@@ -2399,7 +2498,7 @@ body {
 
 .watchlist-btn {
   padding: 6px 12px;
-  background-color: #8d6e63;
+  background-color: #2196f3;
   color: white;
   border: none;
   border-radius: 4px;
@@ -2412,10 +2511,10 @@ body {
 }
 
 .watchlist-btn:hover {
-  background-color: #6d4c41;
+  background-color: #1976d2;
   color: white;
   transform: translateY(-1px);
-  box-shadow: 0 3px 5px rgba(141, 110, 99, 0.3);
+  box-shadow: 0 3px 5px rgba(33, 150, 243, 0.3);
 }
 
 .movie-count-summary {
@@ -2744,6 +2843,13 @@ body {
     min-width: 250px;
     margin-right: 15px;
   }
+}
+
+.movie-metadata {
+  margin: 0 0 4px 0;
+  font-size: 0.75rem;
+  color: #666;
+  line-height: 1.2;
 }
 
 @media (max-width: 768px) {

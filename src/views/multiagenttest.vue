@@ -67,6 +67,7 @@
                 </div>
               </div>
               
+              
               <!-- Agent Responses Group -->
               <div class="agent-responses-group" v-if="group.agentMessages.length > 0">
                 <div class="agent-responses-header" @click="toggleAgentResponses(groupIndex)">
@@ -179,63 +180,15 @@
               >
               <!-- 没有海报或加载失败时显示替代文本 -->
               <div 
-                :style="{
-                  display: (movie.Poster && movie.Poster !== 'N/A') ? 'none' : 'flex',
-                  width: '100%',
-                  height: '100%',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: '#f0f0f0',
-                  borderRadius: '6px',
-                  color: '#666',
-                  fontSize: '12px',
-                  textAlign: 'center'
-                }"
+                v-show="!movie.Poster || movie.Poster === 'N/A'"
+                class="poster-fallback"
               >No Poster</div>
-            </div>
-            <div class="movie-info">
-              <div class="movie-header" @click.stop="openImdbPage(movie)" style="cursor: pointer;">
-                <h4 class="movie-title" :title="movie.title" style="display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; min-height: 20px; line-height: 1.2; margin-bottom: 5px;">{{ movie.title }}</h4>
-                <p v-if="movie.Director" class="movie-director">Director: {{ movie.Director }}</p>
-                <p v-if="movie.imdbRating" class="movie-rating">IMDB: {{ movie.imdbRating }}</p>
-              </div>
-              
-              <!-- Watchlist button (always visible) -->
-              <div class="watchlist-button-container" v-if="!movie.inWatchlist">
-                <button 
-                  class="btn watchlist-btn" 
-                  @click.stop="addToWatchlist(movie)"
-                  :disabled="ratedMoviesCount >= 6"
-                  :class="{ 'disabled': ratedMoviesCount >= 6 }"
-                  :title="ratedMoviesCount >= 6 ? 'You have already rated 6 movies. Cannot add more to watchlist.' : ''"
-                >
-                  <i class="fas fa-plus"></i> Add to Watchlist
-                </button>
-              </div>
-              
-              <!-- Rating stars (only visible after adding to watchlist) -->
-              <div class="movie-rating-stars" v-if="movie.inWatchlist">
-                <span>Your Rating:</span>
-                <div class="stars" :class="{ 'disabled': ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0) }">
-                  <span 
-                    v-for="star in 5" 
-                    :key="star"
-                    :class="['star', (movieRatings[movie.title] >= star || movie.userRating >= star) ? 'filled' : '', (ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? 'disabled' : '']"
-                    @click.stop="(ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? null : rateMovie(movie, star)"
-                    :title="(ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? 'You have already rated 6 movies. Cannot rate more movies.' : ''"
-                  >
-                    ★
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="movie-recommenders">
+              <div class="movie-recommenders">
             <!-- 兼容旧数据结构 -->
             <div v-if="!movie.recommendedByAgents" class="recommender-avatar-container">
               <div class="avatar-tooltip">
                 <img :src="getAgentAvatar(movie.recommendedBy)" class="recommender-avatar" alt="Agent Avatar" @click.stop="scrollToAgentMention(movie.title, movie.recommendedBy)" style="cursor: pointer;" />
-                <span class="avatar-tooltip-text">{{ getAgentDisplayName(movie.recommendedBy) }}</span>
+                <span class="avatar-tooltip-text">See {{ getAgentDisplayName(movie.recommendedBy) }}'s full recommendation in the conversation</span>
               </div>
             </div>
             
@@ -253,10 +206,72 @@
                   @click.stop="scrollToAgentMention(movie.title, recommender.agentType)"
                   style="cursor: pointer;"
                 />
-                <span class="avatar-tooltip-text">{{ getAgentDisplayName(recommender.agentType) }}</span>
+                <span class="avatar-tooltip-text">See {{ getAgentDisplayName(recommender.agentType) }}'s full recommendation in the conversation</span>
               </div>
             </div>
           </div>
+            </div>
+            <div class="movie-info">
+              <div class="movie-header" @click.stop="openImdbPage(movie)" style="cursor: pointer;">
+                <h4 class="movie-title" :title="movie.title" style="display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; min-height: 20px; line-height: 1.2; margin-bottom: 5px;">{{ movie.title }}</h4>
+                <!-- Movie metadata: year, director, runtime -->
+                <div class="movie-metadata">
+                  <span v-if="movie.Year">{{ movie.Year }}</span>
+                  <span v-if="movie.Year && (movie.Director || movie.Runtime)"> • </span>
+                  <span v-if="movie.Director">{{ movie.Director }}</span>
+                  <span v-if="movie.Director && movie.Runtime"> • </span>
+                  <span v-if="movie.Runtime">{{ movie.Runtime }}</span>
+                </div>
+                <!-- <p v-if="movie.imdbRating" class="movie-rating">IMDB: {{ movie.imdbRating }}</p> -->
+              </div>
+              
+              <!-- AI-generated one-sentence pitch -->
+              <div v-if="moviePitches[movie.title]" class="movie-pitch" :class="getPitchColorClass(movie.title)">
+                <div class="pitch-attribution">{{ getAgentDisplayNameById(moviePitches[movie.title].agentId) }} recommends:</div>
+                <p class="pitch-text">{{ moviePitches[movie.title].pitch || moviePitches[movie.title] }}</p>
+              </div>
+              
+              <!-- Watchlist button (always visible) -->
+              <div class="watchlist-button-container" v-if="!movie.inWatchlist">
+                <button 
+                  class="btn watchlist-btn" 
+                  @click.stop="addToWatchlist(movie)"
+                  :disabled="ratedMoviesCount >= 6"
+                  :class="{ 'disabled': ratedMoviesCount >= 6 }"
+                  :title="ratedMoviesCount >= 6 ? 'You have already rated 6 movies. Cannot add more to watchlist.' : ''"
+                >
+                  <i class="fas fa-plus"></i> Add to Watchlist
+                </button>
+              </div>
+              
+              <!-- Rating stars and remove button (only visible after adding to watchlist) -->
+              <div class="movie-rating-stars" v-if="movie.inWatchlist">
+                <div class="rating-row">
+                  <span class="rating-label">Your rating:</span>
+                  <div class="stars" :class="{ 'disabled': ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0) }">
+                    <span 
+                      v-for="star in 5" 
+                      :key="star"
+                      :class="['star', (movieRatings[movie.title] >= star || movie.userRating >= star) ? 'filled' : '', (ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? 'disabled' : '']"
+                      @click.stop="(ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? null : rateMovie(movie, star)"
+                      :title="(ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? 'You have already rated 6 movies. Cannot rate more movies.' : ''"
+                    >
+                      ★
+                    </span>
+                  </div>
+                  <!-- Remove from watchlist button -->
+                  <button 
+                    class="btn remove-watchlist-btn" 
+                    @click.stop="removeFromWatchlist(movie)"
+                    title="Remove from watchlist"
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
           <!-- <p class="movie-reason" v-if="movie.reason">{{ movie.reason }}</p> -->
         </div>
       </div>
@@ -303,8 +318,9 @@ export default {
       movieDataset: null, // Store the loaded movie dataset
       isFirstRound: true, // Track if this is the first conversation round 
       profileId: null, // Store profile ID for conversation recording
-      minRequiredMessages: 5, // Minimum required conversation rounds
-      movieRatings: {} // Store user movie ratings
+      minRequiredMessages: 3, // Minimum required conversation rounds
+      movieRatings: {}, // Store user movie ratings
+      moviePitches: {} // Store movie pitches from agents
     };
   },
   async mounted() {
@@ -1125,9 +1141,29 @@ export default {
           
           console.log('[multiagenttest] Generated conversation:', agentConversation);
           
+          // Check if agentConversation has the new structure with conversation and movie_pitches
+          let conversationArray;
+          if (agentConversation.conversation && Array.isArray(agentConversation.conversation)) {
+            conversationArray = agentConversation.conversation;
+            // Process movie pitches if available
+            if (agentConversation.movie_pitches && Array.isArray(agentConversation.movie_pitches)) {
+              agentConversation.movie_pitches.forEach(pitch => {
+                this.moviePitches[pitch.movie_title] = {
+                  agentId: pitch.recommending_agent,
+                  pitch: pitch.pitch
+                };
+              });
+            }
+          } else if (Array.isArray(agentConversation)) {
+            // Fallback for old format
+            conversationArray = agentConversation;
+          } else {
+            throw new Error('Invalid conversation format received');
+          }
+
           // Step 5: Add the generated responses to the conversation
-          for (let i = 0; i < agentConversation.length; i++) {
-            const agentResponse = agentConversation[i];
+          for (let i = 0; i < conversationArray.length; i++) {
+            const agentResponse = conversationArray[i];
             
             // Add delay between responses for better UX
             if (i > 0) {
@@ -1853,6 +1889,50 @@ ${text}
       }
     },
 
+    // Remove movie from watchlist
+    async removeFromWatchlist(movie) {
+      const movieTitle = movie.title;
+      const hadRating = this.movieRatings[movieTitle] > 0 || movie.userRating > 0;
+      
+      // Remove from watchlist
+      movie.inWatchlist = false;
+      
+      // Clear rating if it exists
+      if (this.movieRatings[movieTitle]) {
+        delete this.movieRatings[movieTitle];
+      }
+      if (movie.userRating) {
+        movie.userRating = 0;
+      }
+      
+      console.log(`Removed "${movieTitle}" from watchlist${hadRating ? ' and cleared rating' : ''}`);
+      
+      // Log remove from watchlist event
+      try {
+        const movieDetails = {
+          imdbID: movie.imdbID || null,
+          year: movie.Year || null,
+          genre: movie.Genre || null,
+          poster: movie.Poster || null,
+          director: movie.Director || null,
+          imdbRating: movie.imdbRating || null
+        };
+        
+        await logUserEvent('movie_remove_from_watchlist', {
+          movieTitle: movieTitle,
+          hadRating: hadRating,
+          profileId: this.profileId || null,
+          roundId: '3',
+          movieDetails: movieDetails,
+          recommendedBy: movie.recommendedBy || null,
+          recommendedByAgents: movie.recommendedByAgents || null,
+          totalRatedMovies: Object.keys(this.movieRatings).length
+        });
+      } catch (error) {
+        console.error('Failed to log remove from watchlist event:', error);
+      }
+    },
+
 
     // Save movie set to Firestore recommended_movie_sets collection
     async saveMovieSetToFirestore(selectedMovies, userProfile, userQuery) {
@@ -2117,6 +2197,42 @@ ${text}
         console.error('Error loading recommended movies:', error);
         this.recommendedMovies = [];
       }
+    },
+
+    // Get pitch color class based on agent ID
+    getPitchColorClass(movieTitle) {
+      const pitchData = this.moviePitches[movieTitle];
+      if (!pitchData || typeof pitchData === 'string') {
+        return 'pitch-default';
+      }
+      
+      const agentId = pitchData.agentId;
+      switch (agentId) {
+        case 'Agent A':
+          return 'pitch-agent-alex';
+        case 'Agent B':
+          return 'pitch-agent-ben';
+        case 'Agent C':
+          return 'pitch-agent-casey';
+        default:
+          return 'pitch-default';
+      }
+    },
+
+    // Get agent display name by agent ID
+    getAgentDisplayNameById(agentId) {
+      if (!agentId || typeof agentId !== 'string') {
+        return 'Agent';
+      }
+      
+      // Map agent IDs to friendly names
+      const agentIdToName = {
+        'Agent A': 'Alex',
+        'Agent B': 'Ben', 
+        'Agent C': 'Casey'
+      };
+      
+      return agentIdToName[agentId] || 'Agent';
     }
   }
 };
@@ -2658,8 +2774,8 @@ ${text}
 }
 
 .movie-card.in-watchlist {
-  border-left-color: #4caf50;
-  background-color: #f8fff8;
+  /* border-left-color: #4caf50; */
+  /* background-color: #f8fff8; */
 }
 
 .movie-details-container {
@@ -2668,13 +2784,20 @@ ${text}
   margin-bottom: 10px;
 }
 
+.movie-metadata {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
 .movie-poster-container {
   flex-shrink: 0;
   width: 60px;
   height: 90px;
   border-radius: 6px;
   overflow: hidden;
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
 }
 
 .movie-poster {
@@ -2731,11 +2854,45 @@ ${text}
 
 .movie-rating-stars {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  flex-direction: column;
+  gap: 4px;
   margin-top: auto;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #666;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rating-label {
+  white-space: nowrap;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.remove-watchlist-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 2px 4px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+.remove-watchlist-btn:hover {
+  background-color: #d32f2f;
 }
 
 .stars {
@@ -2755,11 +2912,99 @@ ${text}
   color: #ffc107;
 }
 
-.movie-recommenders {
+/* AI-generated movie pitch styles */
+.movie-pitch {
+  margin: 4px 0 8px 0;
+  padding: 6px 8px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  border-left: 3px solid #007bff; /* Default color */
+}
+
+/* Agent-specific pitch border colors */
+.movie-pitch.pitch-agent-alex {
+  border-left-color: #2196f3; /* 蓝色 - 与Alex发言框颜色一致 */
+}
+
+.movie-pitch.pitch-agent-ben {
+  border-left-color: #ff9800; /* 亮橙色 - 与Ben发言框颜色一致 */
+}
+
+.movie-pitch.pitch-agent-casey {
+  border-left-color: #8d6e63; /* 棕色 - 与Casey发言框颜色一致 */
+}
+
+.movie-pitch.pitch-default {
+  border-left-color: #007bff; /* 默认蓝色 */
+}
+
+/* Agent attribution label */
+.pitch-attribution {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pitch-text {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #495057;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+/* 1. 海报容器（父元素）：
+   这是一个60px宽、垂直堆叠的柱状布局容器 */
+.movie-poster-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* 让所有子元素（包括头像列表）在60px宽度内水平居中 */
+  flex-shrink: 0;
+  width: 60px;
+  height: auto;       /* 正确：高度自动，以容纳海报和头像 */
+  overflow: visible;    /* 正确：显示所有内容 */
+}
+
+/* 2. 海报图片（子元素）：
+   这才是应该持有固定尺寸和圆角的视觉元素 */
+.movie-poster {
+  width: 60px;         /* 关键修复：设为固定宽度 */
+  height: 90px;        /* 关键修复：设为固定高度 */
+  border-radius: 6px;  /* 圆角样式属于图片 */
+  object-fit: cover;   /* 你的 object-fit 规则很好，保持它 */
+  display: block;
+}
+
+/* 3. "No Poster" 的占位符 (重要！):
+   你也必须为你的 "No Poster" 那个 div 设置完全相同的固定尺寸和圆角，
+   否则它将无法正确显示。
+   最好的方法是删除它的内联样式，并给它一个class，比如 .poster-fallback 
+*/
+.poster-fallback { /* <-- 你应该在HTML中给那个div加上这个class */
+  width: 60px;
+  height: 90px;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  color: #666;
+  font-size: 12px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
+  justify-content: center;
+  text-align: center;
+}
+
+/* 4. 推荐人头像列表（子元素）：
+   这是一个在海报下方的、居中的、有间距的flex行 */
+.movie-recommenders {
+  display: flex;
+  flex-wrap: wrap;       /* 新增: 如果头像超过3个，允许换行 */
+  align-items: center;
+  justify-content: center; /* 修改: 在60px宽度内，"居中"通常比"末端对齐"更好看 */
+  gap: 4px;              /* 修改: 8px的间距在60px的宽度下可能太大，4px更紧凑 */
+  margin-top: 8px;       /* 新增: 在海报和头像列表之间添加8px的垂直间距 */
 }
 
 .recommender-avatar-container,

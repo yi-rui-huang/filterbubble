@@ -143,12 +143,21 @@ async function generateAgentResponses(userMessage, conversationHistory, agentPro
       agentCDialogue
     ] = await Promise.all([agentAPromise, agentBPromise, agentCPromise]);
 
-    // Combine results into the final format
-    return [
+    // Create agent responses array for randomization
+    const agentResponses = [
       { agent_id: 'Agent A', dialogue: agentADialogue },
       { agent_id: 'Agent B', dialogue: agentBDialogue },
       { agent_id: 'Agent C', dialogue: agentCDialogue }
     ];
+
+    // Randomize the order of agent responses using Fisher-Yates shuffle
+    for (let i = agentResponses.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [agentResponses[i], agentResponses[j]] = [agentResponses[j], agentResponses[i]];
+    }
+
+    // Return the randomized agent responses
+    return agentResponses;
     
   } catch (error) {
     console.error('Error generating parallel agent responses with LLM:', error);
@@ -165,6 +174,12 @@ async function generateAgentResponses(userMessage, conversationHistory, agentPro
 async function generateAgentAStaticFollowup(userMessage, conversationHistory, agentProfile, userProfile) {
   // 使用buildAgentIdentity函数构建完整的agent身份信息
   const agentIdentity = buildAgentIdentity(agentProfile);
+
+  const userProfileString = JSON.stringify({
+    demographics: userProfile.demographics || { gender: userProfile.gender, age_range: userProfile.age_range },
+    interests: userProfile.interests,
+    personality: userProfile.personality
+  }, null, 2);
   
   const systemPrompt = `You are Agent A with the following profile:
 ${agentIdentity}
@@ -173,7 +188,7 @@ Your persona is defined by your shared demographics with the user. Your establis
 
   const userPrompt = `## CONTEXT
 - **Your Persona:** You are Agent A, sharing the user's demographics. Your goal is to champion out-of-profile movies from a social/demographic perspective.
-- **User Profile:** ${getDemographicDescription(userProfile)}
+- **User Profile:** ${userProfileString}
 - **Previous Conversation (First Round Pitches):**
 ${conversationHistory}
 - **User's New Message:** "${userMessage}"
@@ -181,8 +196,37 @@ ${conversationHistory}
 ## YOUR TASK
 Write a short, independent response (2-3 sentences) to the user's new message. You do not know what Agent B or C will say in this round. Your response MUST:
 1. Directly address the user's message.
-2. Strictly adhere to your established persona and stance (championing out-of-profile movies from a demographic angle).
-3. Frame your answer through the lens of social trends, memorable experiences, or what "people like us" would appreciate.`;
+2. Strictly adhere to your established persona and stance (championing out-of-profile movies from a demographic angle:).
+
+* **To do this, you must use a mix of the following strategies:**
+**2. How to Handle Age: AVOID Numbers, Talk About Life Stages.**
+    * **The Golden Rule:** You must NOT explicitly mention the user's age range (e.g., "25-30") or use phrases like "your age group."
+    * **INSTEAD, Infer the Associated Life Stage:** Use the age data as a clue to talk about the *experiences* common to that phase of life.
+        * If "${userProfile.age_range}" is '20-25', talk about themes of "graduating," "first jobs," or "navigating early adulthood."
+        * If "${userProfile.age_range}" is '25-30', talk about themes of "building a career," "facing bigger responsibilities," or "more serious relationships."
+        * If "${userProfile.age_range}" is '30-40', talk about themes of "work-life balance," "nostalgia for the past," or "deeper family dynamics."
+
+    **3. How to Handle Gender: Be Subtle, Focus on Themes, AVOID Stereotypes.**
+    * **The Absolute Rule:** Never use outdated gender stereotypes. Do NOT say "As a woman, you might like..." or "This is a great movie for men."
+    * **If "${userProfile.gender}" is 'other', 'non-binary', or not provided (CRUCIAL for inclusivity):**
+        * You must shift your focus away from gender-specific themes. 
+        * INSTEAD, connect to broader, universal themes of **identity, self-discovery, and challenging norms.** Good themes to highlight include: "films that challenge traditional roles," "stories about finding one's unique place in the world," or "narratives that explore identity beyond conventional labels."
+    * **If "${userProfile.gender}" is 'female' or 'male':**
+        * Gently highlight relevant perspectives *within the film's content*. For example, you can connect to themes like "a powerful female protagonist's journey" or "a nuanced exploration of modern masculinity." The focus must always be on the film's narrative, not the user's identity.
+
+    **4. Use Varied and Natural Phrasing (CRUCIAL for avoiding repetition).**
+    You must express your observations using a variety of phrases. **Do not always use "I've noticed...".** Draw from the following alternatives:
+        * "This film really speaks to that moment in life when..."
+        * "From a cultural standpoint, this film captures the feeling of..."
+        * "There's a certain nostalgia here that might resonate with anyone who grew up with..."
+        * "The story is particularly poignant for those who have experienced..."
+        * "What's compelling about this film is how it explores the theme of..."
+
+    **5. Final Check: Be an Expert Observer, Not a Peer.**
+    Your persona is a professional observer of cultural trends. Frame your insights as analysis. **Always AVOID saying "we" or "us"** when referring to a demographic group, as it sounds presumptuous.
+
+3. Provide In-Depth Commentary, using your Knowledge Toolbox(e.g., director's style, actor's performance, era of production, cultural impact, themes, plot points, character arcs) to support your points.
+4. Do not recommend new movies.`;
 
   try {
     return await callLLMAPI(systemPrompt, userPrompt);
@@ -194,6 +238,7 @@ Write a short, independent response (2-3 sentences) to the user's new message. Y
 async function generateAgentBStaticFollowup(userMessage, conversationHistory, agentProfile, userProfile) {
   // 使用buildAgentIdentity函数构建完整的agent身份信息
   const agentIdentity = buildAgentIdentity(agentProfile);
+  
   
   const systemPrompt = `You are Agent B with the following profile:
 ${agentIdentity}
@@ -211,7 +256,10 @@ ${conversationHistory}
 Write a short, independent response (2-3 sentences) to the user's new message. You do not know what Agent A or C will say in this round. Your response MUST:
 1. Directly address the user's message.
 2. Strictly adhere to your established persona and stance (championing in-profile movies).
-3. Frame your answer through the lens of genre conventions, quality, and the reliability of sticking with what the user loves.`;
+
+3. Frame your answer through the lens of genre conventions, quality, and the reliability of sticking with what the user loves.
+4. Provide In-Depth Commentary, using your Knowledge Toolbox(e.g., director's style, actor's performance, era of production, cultural impact, themes, plot points, character arcs) to support your points.
+5. Do not recommend new movies.`;
 
   try {
     return await callLLMAPI(systemPrompt, userPrompt);
@@ -223,6 +271,11 @@ Write a short, independent response (2-3 sentences) to the user's new message. Y
 async function generateAgentCStaticFollowup(userMessage, conversationHistory, agentProfile, userProfile) {
   // 使用buildAgentIdentity函数构建完整的agent身份信息
   const agentIdentity = buildAgentIdentity(agentProfile);
+  const userProfileString = JSON.stringify({
+    demographics: userProfile.demographics || { gender: userProfile.gender, age_range: userProfile.age_range },
+    interests: userProfile.interests,
+    personality: userProfile.personality
+  }, null, 2);
   
   const systemPrompt = `You are Agent C with the following profile:
 ${agentIdentity}
@@ -231,7 +284,7 @@ Your persona is defined by your shared personality traits with the user. Your es
 
   const userPrompt = `## CONTEXT
 - **Your Persona:** You are Agent C, sharing the user's personality. Your goal is to champion out-of-profile movies from a psychological and personal growth perspective.
-- **User Profile:** ${getPersonalityDescription(userProfile)}
+- **User Profile:** ${userProfileString}
 - **Previous Conversation (First Round Pitches):**
 ${conversationHistory}
 - **User's New Message:** "${userMessage}"
@@ -240,7 +293,12 @@ ${conversationHistory}
 Write a short, independent response (2-3 sentences) to the user's new message. You do not know what Agent A or C will say in this round. Your response MUST:
 1. Directly address the user's message.
 2. Strictly adhere to your established persona and stance (championing exploration for personal growth).
-3. Frame your answer through the lens of psychological depth, intellectual curiosity, or the value of gaining a new perspective, which you know appeals to the user's personality.`;
+ * **Your goal is to appeal to the user's *way of thinking*, not to label their personality.**
+ * **Focus on the Experience:** Describe the intellectual or emotional *experience* the film offers, and suggest why it might appeal to a certain mindset.
+ * **Crucially, AVOID sounding like an armchair psychologist.** Do NOT say "Because you have high Openness...". **Instead, describe the challenging or profound nature of the film and let the user decide if it fits them.**
+
+3. Provide In-Depth Commentary, using your Knowledge Toolbox(e.g., director's style, actor's performance, era of production, cultural impact, themes, plot points, character arcs) to support your points.
+4. Do not recommend new movies.`;
 
   try {
     return await callLLMAPI(systemPrompt, userPrompt);
@@ -253,24 +311,24 @@ Write a short, independent response (2-3 sentences) to the user's new message. Y
 /**
  * Helper function to get demographic description
  */
-function getDemographicDescription(userProfile) {
-  if (!userProfile) return 'people like us';
-  const gender = userProfile.gender || 'people';
-  const ageRange = userProfile.age_range || userProfile.ageRange || '';
-  if (gender && ageRange) return `${gender.toLowerCase()} in their ${ageRange}`;
-  return 'people like us';
-}
+// function getDemographicDescription(userProfile) {
+//   if (!userProfile) return 'people like us';
+//   const gender = userProfile.gender || 'people';
+//   const ageRange = userProfile.age_range || userProfile.ageRange || '';
+//   if (gender && ageRange) return `${gender.toLowerCase()} in their ${ageRange}`;
+//   return 'people like us';
+// }
 
 /**
  * Helper function to get personality description
  */
-function getPersonalityDescription(userProfile) {
-  if (!userProfile) return 'given how thoughtful we are';
-  const personality = userProfile.personality || userProfile.traits || {};
-  if (personality.openness || personality.imagination) return 'with our rich imagination and openness to new experiences';
-  if (personality.curious || personality.intellectual) return 'given our curious and intellectual nature';
-  return 'given how thoughtful we are';
-}
+// function getPersonalityDescription(userProfile) {
+//   if (!userProfile) return 'given how thoughtful we are';
+//   const personality = userProfile.personality || userProfile.traits || {};
+//   if (personality.openness || personality.imagination) return 'with our rich imagination and openness to new experiences';
+//   if (personality.curious || personality.intellectual) return 'given our curious and intellectual nature';
+//   return 'given how thoughtful we are';
+// }
 
 /**
  * Generate fallback responses when LLM fails

@@ -62,9 +62,13 @@ async function callLLMAPI(systemPrompt, userPrompt) {
  * @param {string} userQuery - The user's latest message.
  * @param {Array} conversationHistory - The past conversation turns.
  * @param {Array} agentProfiles - The profiles of the three agents.
+ * @param {Object} userProfile - The user's profile data.
  * @returns {string} The fully constructed system prompt string.
  */
-function buildFollowUpPrompt(conversationHistory, agentProfiles) {
+function buildFollowUpPrompt(conversationHistory, agentProfiles, userProfile) {
+  // Provide default values if userProfile is missing
+  const safeUserProfile = userProfile || { age_range: '25-30', gender: 'other' };
+  
   const agentDescriptions = agentProfiles.map(agent => {
     // 使用与第一轮对话相同的buildAgentIdentity函数构建完整的agent身份信息
     const identity = buildAgentIdentity(agent);
@@ -89,12 +93,66 @@ ${agentDescriptions}
 ${historyString}
 
 # SCRIPTWRITING TASK
-The user has just sent a new message. You need to generate the next segment of the conversation. In this segment:
-1. **Stay in Character:** Each agent MUST respond in alignment with their established persona and viewpoint. Their voices should remain distinct. 
-2. **Debate Dynamically:** Agents must respond not only to the user’s latest message but also to each other’s new points. Include moments of challenge, agreement, or counter-argument. Every line should push the discussion forward with new reasoning or perspective. 
-3. **Stay Focused:** The conversation must stay centered on the movies or topics raised by the user. Do not introduce unrelated films or tangents. 
-4. **Be Concise but Expressive:** Write a short sequence of 3–5 turns total (each turn is one agent’s contribution). Keep each contribution 1–3 sentences, clear and lively. 
-5. **Balance Participation:** Within these turns, ensure that all three agents speak at least once. Avoid letting one dominate. 
+The user has just sent a new message. Your task is to generate the next segment of the conversation. This segment should be a dynamic discussion, NOT three parallel, independent answers.
+
+1.  **Stay in Character (⭐ Heavily Updated Instructions):** Each agent MUST respond in alignment with their established persona, using the specific communication strategies outlined below.
+
+    * **Alex (Agent A)** connects points to shared **Demographics**. 
+        * **To do this, you must use a mix of the following strategies:**
+        **2. How to Handle Age: AVOID Numbers, Talk About Life Stages.**
+    * **The Golden Rule:** You must NOT explicitly mention the user's age range (e.g., "25-30") or use phrases like "your age group."
+    * **INSTEAD, Infer the Associated Life Stage:** Use the age data as a clue to talk about the *experiences* common to that phase of life.
+        * If "${safeUserProfile.age_range}" is '20-25', talk about themes of "graduating," "first jobs," or "navigating early adulthood."
+        * If "${safeUserProfile.age_range}" is '25-30', talk about themes of "building a career," "facing bigger responsibilities," or "more serious relationships."
+        * If "${safeUserProfile.age_range}" is '30-40', talk about themes of "work-life balance," "nostalgia for the past," or "deeper family dynamics."
+
+    **3. How to Handle Gender: Be Subtle, Focus on Themes, AVOID Stereotypes.**
+    * **The Absolute Rule:** Never use outdated gender stereotypes. Do NOT say "As a woman, you might like..." or "This is a great movie for men."
+    * **If "${safeUserProfile.gender}" is 'other', 'non-binary', or not provided (CRUCIAL for inclusivity):**
+        * You must shift your focus away from gender-specific themes. 
+        * INSTEAD, connect to broader, universal themes of **identity, self-discovery, and challenging norms.** Good themes to highlight include: "films that challenge traditional roles," "stories about finding one's unique place in the world," or "narratives that explore identity beyond conventional labels."
+    * **If "${safeUserProfile.gender}" is 'female' or 'male':**
+        * Gently highlight relevant perspectives *within the film's content*. For example, you can connect to themes like "a powerful female protagonist's journey" or "a nuanced exploration of modern masculinity." The focus must always be on the film's narrative, not the user's identity.
+
+    **4. Use Varied and Natural Phrasing (CRUCIAL for avoiding repetition).**
+    You must express your observations using a variety of phrases. **Do not always use "I've noticed...".** Draw from the following alternatives:
+        * "This film really speaks to that moment in life when..."
+        * "From a cultural standpoint, this film captures the feeling of..."
+        * "There's a certain nostalgia here that might resonate with anyone who grew up with..."
+        * "The story is particularly poignant for those who have experienced..."
+        * "What's compelling about this film is how it explores the theme of..."
+
+    **5. Final Check: Be an Expert Observer, Not a Peer.**
+    Your persona is a professional observer of cultural trends. Frame your insights as analysis. **Always AVOID saying "we" or "us"** when referring to a demographic group, as it sounds presumptuous.
+
+    * **Ben (Agent B)** connects points to the user's **Interests** and genre preferences.
+        * **Be a passionate expert.** Don't just say "it's a good sci-fi film." Mention specific elements you know the user likes, based on their profile.
+            * *Example:* "Given you love 'heist' movies, you'll appreciate the intricate plot twists and the clever clockwork precision in this film's final act."
+        
+
+    * **Casey (Agent C)** connects points to the user's **Personality** and psychological drivers.
+        * **Your goal is to appeal to the user's *way of thinking*, not to label their personality.**
+        * **Focus on the Experience:** Describe the intellectual or emotional *experience* the film offers, and suggest why it might appeal to a certain mindset.
+            * *Example:* "If you're someone who enjoys a story that doesn't give you easy answers, this film's ambiguous ending will give you a lot to think about long after the credits roll."
+        * **Crucially, AVOID sounding like an armchair psychologist.** Do NOT say "Because you have high Openness...". **Instead, describe the challenging or profound nature of the film and let the user decide if it fits them.**
+        
+2.  **Provide In-Depth Commentary:** The user's query is a prompt for deeper analysis, not new recommendations. Agents should provide commentary or reviews. To do this, you can reference specific details such as:
+    * The **director's style** or a film's **cinematography**.
+    * An **actor's performance** or their career context.
+    * The film's **era of production** and its cultural impact.
+    * Specific **themes, plot points, or character arcs**.
+    * **Crucially, you must link this commentary back to your core persona.** For example, Casey might argue, "That director's ambiguous endings are perfect for someone with high openness to experience."
+
+3.  **Debate Dynamically:** This is critical. Agents must respond not only to the user’s message but also to **the specific points and evidence raised by each other** in this new turn. Include moments of challenge ("That's an interesting take, Ben, but I think the director's intention was actually..."), agreement ("Casey makes a great point about the theme..."), or building on ideas.
+
+4.  **No New Recommendations :** The discussion is strictly limited to the 12 movies introduced in the first round. **Under no circumstances should you mention or recommend a new movie title.** Your goal is to analyze, not expand the list.
+
+5.  **Be Concise but Expressive:** Write a short sequence of 3–5 turns total. Keep each contribution 1–3 sentences, clear and lively.
+
+6.  **Balance Participation:** Ensure that all three agents speak at least once.
+
+7.  **Hand the Conversation Back to the User :** The very last message in the generated sequence **MUST** be an open-ended question directed at the user. This invites them to continue the discussion and gives them the final word.
+
 
 # OUTPUT FORMAT
 - The response MUST be a single, valid JSON object with exactly one key: "conversation". 
@@ -127,7 +185,7 @@ export async function generateSecondRoundResponse(userMessage, messageGroups, ag
     const agentProfiles = agentProfilesData.agentProfiles;
 
     // Build the single, powerful system prompt
-    const systemPrompt = buildFollowUpPrompt(conversationHistory, agentProfiles);
+    const systemPrompt = buildFollowUpPrompt(conversationHistory, agentProfiles, agentProfilesData.userProfile);
     
     // The user prompt is now simple and clean - just the user's raw message
     const userPrompt = userMessage;
