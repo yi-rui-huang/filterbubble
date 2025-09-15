@@ -37,8 +37,8 @@
             <div class="welcome-message" v-if="messageGroups.length === 0">
               <div class="welcome-content">
                 <h3>🎬 Welcome to your personalized movie discussion!</h3>
-                <p>I'll be your host. Let's introduce you to our movie experts for today: <strong>Alex</strong>, <strong>Ben</strong>, and <strong>Casey</strong> (you can see their profiles on the left).</p>
-                <p>To kick off their discussion, could you tell them a bit about your plans?</p>
+                <p style="text-align: left;">I'll be your host. Let's introduce you to our movie experts for today: <strong>Alex</strong>, <strong>Ben</strong>, and <strong>Casey</strong> (you can see their profiles on the left).</p>
+                  <p style="text-align: left;">To kick off their discussion, could you tell them a bit about your plans?</p>
                 <div class="welcome-prompts">
                   <div class="prompt-item">
                     <span class="prompt-icon">📅</span>
@@ -53,7 +53,11 @@
                     <strong>Who</strong> are you watching with?
                   </div>
                 </div>
-                <p class="welcome-footer">Based on your input, they will start a conversation and recommend movies just for you!</p>
+                <p class="welcome-footer" style="text-align: left;">Based on your input, they will start a conversation and recommend movies just for you!</p>
+                <!-- <p style="text-align: left;">Please note: The first response may take 1-2 minutes as our agents analyze your preferences and prepare personalized recommendations.</p> -->
+                <!-- <div class="response-time-notice">
+                  <p><em>⏱️ Please note: The first response may take 1-2 minutes as our agents analyze your preferences and prepare personalized recommendations.</em></p>
+                </div> -->
               </div>
             </div>
             
