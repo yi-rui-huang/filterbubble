@@ -143,32 +143,34 @@
           >
             <div class="movie-details-container">
               <div class="movie-poster-container">
+                <!-- 加载中状态 -->
+                <div 
+                  v-if="movieDetailsMap[movie.title]?.loading"
+                  class="poster-loading"
+                >
+                  <div class="loading-spinner"></div>
+                </div>
+                
                 <!-- 有海报时显示图片 -->
                 <img 
-                  v-if="movie.Poster && movie.Poster !== 'N/A'" 
+                  v-else-if="movie.Poster && movie.Poster !== 'N/A' && movie.Poster !== null && !movie.posterError" 
                   :src="movie.Poster" 
                   :alt="movie.title + ' poster'" 
                   class="movie-poster"
                   @error="handlePosterError($event, movie)"
+                  @load="handlePosterLoad($event, movie)"
                 >
+                
                 <!-- 没有海报或加载失败时显示替代图片 -->
                 <div 
-                  :style="{
-                    display: (movie.Poster && movie.Poster !== 'N/A' && !movie.posterError) ? 'none' : 'flex',
-                    width: '100%',
-                    height: '100%',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backgroundColor: '#f0f0f0',
-                    borderRadius: '6px',
-                    color: '#666',
-                    fontSize: '12px',
-                    textAlign: 'center',
-                    backgroundImage: 'url(https://via.placeholder.com/60x90/e0e0e0/666666?text=Movie)',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  }"
-                ></div>
+                  v-else
+                  class="poster-placeholder"
+                >
+                  <div class="placeholder-content">
+                    <i class="fas fa-film"></i>
+                    <span>No Poster</span>
+                  </div>
+                </div>
               </div>
               <div class="movie-info">
                 <div class="movie-header" @click.stop="openImdbPage(movie)" style="cursor: pointer;">
@@ -693,22 +695,48 @@ ${text}
     
     // 处理海报加载错误
     handlePosterError(event, movie) {
-      console.log(`Poster for "${movie.title}" failed to load`);
+      console.log(`Poster for "${movie.title}" failed to load:`, event.target.src);
+      
       // 标记海报加载失败
       movie.posterError = true;
-      // 隐藏图片元素，显示替代内容
-      event.target.style.display = 'none';
-      if (event.target.nextElementSibling) {
-        event.target.nextElementSibling.style.display = 'flex';
+      
+      // 更新movieDetailsMap中的错误状态
+      if (this.movieDetailsMap[movie.title]) {
+        this.movieDetailsMap[movie.title].posterError = true;
+        this.movieDetailsMap = { ...this.movieDetailsMap };
       }
       
       // 尝试使用备用海报URL（如果有）
-      if (movie.backupPoster) {
+      if (movie.backupPoster && !movie.triedBackup) {
         console.log(`Trying backup poster for "${movie.title}":`, movie.backupPoster);
+        movie.triedBackup = true;
         event.target.src = movie.backupPoster;
-        event.target.style.display = 'block';
-        // 重置错误处理，以便如果备用海报也失败，会再次触发错误处理
-        movie.posterError = false;
+        movie.posterError = false; // 重置错误状态以便重试
+        return;
+      }
+      
+      // 记录海报加载失败事件
+      try {
+        logUserEvent('poster_load_error', {
+          movieTitle: movie.title,
+          posterUrl: event.target.src,
+          profileId: this.profileId || null,
+          roundId: '1'
+        });
+      } catch (error) {
+        console.error('Failed to log poster error event:', error);
+      }
+    },
+    
+    // 处理海报加载成功
+    handlePosterLoad(event, movie) {
+      console.log(`Poster for "${movie.title}" loaded successfully`);
+      movie.posterError = false;
+      
+      // 更新movieDetailsMap中的状态
+      if (this.movieDetailsMap[movie.title]) {
+        this.movieDetailsMap[movie.title].posterError = false;
+        this.movieDetailsMap = { ...this.movieDetailsMap };
       }
     },
     
@@ -1271,24 +1299,59 @@ ${text}
     fetchMovieDetailsIfNeeded(movieTitle) {
       if (!movieTitle || this.movieDetailsMap[movieTitle]) {
         console.log(`Skipping fetch for "${movieTitle}": ${!movieTitle ? 'Empty title' : 'Already in cache'}`);
-        return;
+        return Promise.resolve();
       }
       
-      // 清理电影标题，移除特殊字符
-      const cleanTitle = normalizeMovieTitle(movieTitle);
+      // Clean the movie title to remove any HTML tags
+      const cleanTitle = this.stripHtmlTags(movieTitle).trim();
       if (!cleanTitle) {
-        console.log(`Skipping fetch for "${movieTitle}": Title is invalid after cleaning`);
-        return;
+        console.log(`Skipping fetch for "${movieTitle}": Empty after cleaning`);
+        return Promise.resolve();
       }
       
-      this.fetchMovieDetails(cleanTitle).then(details => {
+      // 标记为正在获取，避免重复请求
+      this.movieDetailsMap[movieTitle] = { loading: true };
+      
+      return this.fetchMovieDetails(cleanTitle).then(details => {
         if (details) {
           // Vue 3 直接赋值即可实现响应式更新
-          this.movieDetailsMap[movieTitle] = details;
-          console.log(`Successfully fetched details for "${movieTitle}":`, details);
+          this.movieDetailsMap[movieTitle] = {
+            ...details,
+            loading: false,
+            error: false
+          };
+          console.log(`Fetched and cached details for movie: ${movieTitle}`, details);
         } else {
-          console.log(`No details found for movie: ${movieTitle}`);
+          console.warn(`Failed to fetch details for movie: ${movieTitle}`);
+          // 即使失败也要缓存结果，避免重复请求
+          this.movieDetailsMap[movieTitle] = { 
+            title: movieTitle, 
+            Poster: null, 
+            loading: false, 
+            error: true 
+          };
         }
+        
+        // 触发Vue的响应式更新
+        this.movieDetailsMap = { ...this.movieDetailsMap };
+        
+        // 滚动到电影列表底部
+        this.$nextTick(() => {
+          this.scrollToBottomOfMovieList();
+        });
+        
+        return this.movieDetailsMap[movieTitle];
+      }).catch(error => {
+        console.error(`Error fetching details for movie "${movieTitle}":`, error);
+        // 缓存失败结果
+        this.movieDetailsMap[movieTitle] = { 
+          title: movieTitle, 
+          Poster: null, 
+          loading: false, 
+          error: true 
+        };
+        this.movieDetailsMap = { ...this.movieDetailsMap };
+        return this.movieDetailsMap[movieTitle];
       });
     },
     
@@ -1316,27 +1379,78 @@ ${text}
       try {
         // 使用一致的API密钥
         const API_KEY = '7e374f8b';
-        const response = await axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&t=${encodeURIComponent(movieTitle)}`);
+        
+        // 清理电影标题
+        const cleanTitle = this.cleanMovieTitle(movieTitle);
+        console.log(`Fetching details for: "${cleanTitle}"`);
+        
+        // 第一次尝试：使用原始标题
+        let response = await axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&t=${encodeURIComponent(cleanTitle)}`, {
+          timeout: 10000 // 10秒超时
+        });
+        
         if (response.data.Response === 'True') {
-          return response.data;
+          console.log(`成功获取电影详情: "${cleanTitle}"`, response.data);
+          return this.processMovieData(response.data);
         }
         
-        // 如果第一次尝试失败，尝试使用标题的变体
-        if (movieTitle.includes(':')) {
-          // 尝试不带副标题（冒号后的文本）
-          const mainTitle = movieTitle.split(':')[0].trim();
+        // 第二次尝试：移除冒号后的内容
+        if (cleanTitle.includes(':')) {
+          const mainTitle = cleanTitle.split(':')[0].trim();
           console.log(`第一次尝试失败，仅使用主标题重试: "${mainTitle}"`);
-          const retryResponse = await axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&t=${encodeURIComponent(mainTitle)}`);
-          if (retryResponse.data.Response === 'True') {
-            return retryResponse.data;
+          response = await axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&t=${encodeURIComponent(mainTitle)}`, {
+            timeout: 10000
+          });
+          if (response.data.Response === 'True') {
+            console.log(`使用主标题成功获取电影详情: "${mainTitle}"`, response.data);
+            return this.processMovieData(response.data);
           }
         }
         
+        // 第三次尝试：移除括号内容（如年份）
+        const titleWithoutParentheses = cleanTitle.replace(/\s*\([^)]*\)/g, '').trim();
+        if (titleWithoutParentheses !== cleanTitle && titleWithoutParentheses.length > 0) {
+          console.log(`尝试移除括号内容: "${titleWithoutParentheses}"`);
+          response = await axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&t=${encodeURIComponent(titleWithoutParentheses)}`, {
+            timeout: 10000
+          });
+          if (response.data.Response === 'True') {
+            console.log(`移除括号后成功获取电影详情: "${titleWithoutParentheses}"`, response.data);
+            return this.processMovieData(response.data);
+          }
+        }
+        
+        console.warn(`无法找到电影: "${movieTitle}"`, response.data);
         return null;
       } catch (error) {
-        console.error('获取电影详情时出错:', error);
+        console.error(`获取电影详情时出错 ("${movieTitle}"):`, error.message);
         return null;
       }
+    },
+    
+    // 清理电影标题
+    cleanMovieTitle(title) {
+      if (!title) return '';
+      return title
+        .trim()
+        .replace(/[""'']/g, '"') // 统一引号
+        .replace(/\s+/g, ' ') // 合并多个空格
+        .replace(/^["']|["']$/g, ''); // 移除首尾引号
+    },
+    
+    // 处理电影数据
+    processMovieData(data) {
+      // 确保海报URL有效
+      if (data.Poster && data.Poster !== 'N/A' && data.Poster.startsWith('http')) {
+        // 检查是否是有效的图片URL
+        if (!data.Poster.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
+          console.warn(`可疑的海报URL: ${data.Poster}`);
+        }
+      } else {
+        data.Poster = null; // 设置为null而不是'N/A'
+      }
+      
+      return data;
     },
     
     async fetchGPT4oResponse(userMessage) {
@@ -2375,6 +2489,64 @@ body {
   height: 100%;
   object-fit: cover;
   border-radius: 6px;
+}
+
+/* 海报加载状态样式 */
+.poster-loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e3e3e3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 海报占位符样式 */
+.poster-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  border: 1px dashed #ccc;
+}
+
+.placeholder-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 10px;
+  text-align: center;
+}
+
+.placeholder-content i {
+  font-size: 16px;
+  margin-bottom: 4px;
+  opacity: 0.6;
+}
+
+.placeholder-content span {
+  font-size: 8px;
+  opacity: 0.8;
 }
 
 .movie-info {

@@ -1650,7 +1650,7 @@ ${text}
     // 标准化电影标题
     normalizeMovieTitle(title) {
       return title
-        .replace(/["'\u201c\u201d\u2018\u2019]/g, '') // 移除引号
+        .replace(/["\u201c\u201d\u2018\u2019]/g, '') // 移除引号但保留撇号
         .replace(/\s+/g, ' ') // 统一空格
         .trim();
     },
