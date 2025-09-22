@@ -103,8 +103,10 @@ async function callLLMAPI(systemPrompt, userPrompt) {
  * @returns {string} The fully constructed prompt string.
  */
 function buildMegaPrompt(agents, inProfileTitles, outOfProfileTitles, userProfile, userScenario) {
+  // Balanced 3-3-6 movie distribution
+  const inProfileSetB = inProfileTitles.slice(0, 3);
   const outOfProfileSetA = outOfProfileTitles.slice(0, 3);
-  const outOfProfileSetC = outOfProfileTitles.slice(3, 6);
+  const mixedSetC = [...inProfileTitles.slice(3, 6), ...outOfProfileTitles.slice(3, 6)];
 
   // The userProfile object might contain nested properties. Stringify it for robustness.
   const userProfileString = JSON.stringify({
@@ -154,24 +156,36 @@ You are an expert scriptwriter AI. Your task is to generate a lively, debate-dri
     * **Ben (Agent B)** connects points to the user's **Interests** and genre preferences.
         * **Be a passionate expert.** Don't just say "it's a good sci-fi film." Mention specific elements you know the user likes, based on their profile.
             * *Example:* "Given you love 'heist' movies, you'll appreciate the intricate plot twists and the clever clockwork precision in this film's final act."
-        - Stance: You are the passionate champion for all In-Profile movies: ${JSON.stringify(inProfileTitles)}. 
+        - Stance: You are the passionate champion for these specific In-Profile movies: ${JSON.stringify(inProfileSetB)}. 
 
     * **Casey (Agent C)** connects points to the user's **Personality** and psychological drivers.
         * **Your goal is to appeal to the user's *way of thinking*, not to label their personality.**
         * **Focus on the Experience:** Describe the intellectual or emotional *experience* the film offers, and suggest why it might appeal to a certain mindset.
             * *Example:* "If you're someone who enjoys a story that doesn't give you easy answers, this film's ambiguous ending will give you a lot to think about long after the credits roll."
         * **Crucially, AVOID sounding like an armchair psychologist.** Do NOT say "Because you have high Openness...". **Instead, describe the challenging or profound nature of the film and let the user decide if it fits them.**
-        - Stance: You support Agent A's goal of exploration and champion these other Out-of-Profile movies: ${JSON.stringify(outOfProfileSetC)}. 
+        - Stance: You offer a balanced perspective, championing these specific movies that bridge both worlds: ${JSON.stringify(mixedSetC)}. 
 
 # SCRIPTWRITING TASK
-1.**Generate a lively discussion:** The conversation should have around 6-8 turns total. The dialogue must feel like a natural debate.
+1. **Anchor all debates to the Scenario:**
 
-2. **Create a real debate:** This is crucial. Agents MUST directly evaluate and react to each other's recommendations and reasoning. The dialogue should flow naturally with agreements, disagreements, and counter-points.
+The user's goal ("${userScenario}") is the highest priority filter for this discussion. No matter how well a movie matches the user's genre or personality, if it doesn't fit this core scenario (e.g., not suitable for family viewing), other agents must immediately challenge it.
+2. **Generate a lively discussion:** The conversation should have around 10-12 turns total. The dialogue must feel like a natural debate.
+
+3. **Explain Dynamically:** This is critical. Agents must respond not only to the user’s message but also to **the specific points and evidence raised by each other** in this new turn.
+	•	Begin each turn by briefly acknowledging, agreeing with, or challenging the previous speaker’s point (not just naming them, but referencing their reasoning or film choice directly).
+	•	Use natural conversational connectors (e.g., “That’s a fun nostalgic choice, Alex, though I think…”, “I agree with Casey about the artistic value, and I’d add…”).
+	•	Avoid simply listing multiple new films; instead, focus on one main recommendation per turn, and optionally contrast it with the previous suggestion.
+	•	When disagreeing, agents should explain why the earlier recommendation may not fully fit the user’s scenario before offering an alternative.
+	•	When agreeing, agents should build on the point by adding new reasoning or a complementary example.
+	•	Towards the end, agents should collaboratively summarize their distinct perspectives (e.g., “So, we seem to have three strong options: a lighthearted comedy, a whimsical fantasy, and a deep artistic drama, depending on the mood the user prefers.”).
+4. **Create a Collaborative and Integrative Debate:**
+# All agents are working for the same user. They must demonstrate listening to each other and engage in debate by integrating insights. Agents shouldn't remain in their specialized silos (e.g., A only talks about demographics, B only talks about genres). They must build on each other's ideas.
+# - DO THIS: "Alex, your point about 'work-life balance' (A's perspective) is spot on. Casey, you also mentioned that users enjoy intellectual challenges (C's perspective). This is why I think Movie X is a great choice: it explores profound themes of balance (A's perspective), is intellectually satisfying (C's perspective), and *is* a sci-fi biopic that users enjoy (B's perspective/user interest)."
+# - AVOID: A simple, polite turn-taking list (A suggests something, B disagrees and suggests something else, C disagrees and suggests something else). This isn't a collaborative debate.
 
 
 
-
-4.**Conversational Wrap-up:** End with a summary phase:
+5. **Conversational Wrap-up:** End with a summary phase:
 	•	Each Agent nominates their top pick (1 per Agent).
 	•	Each must briefly restate why they stand by this choice and respond at least once to another Agent’s final position.
 	•	End with a direct question to the user, inviting them to choose.
@@ -188,6 +202,8 @@ You are an expert scriptwriter AI. Your task is to generate a lively, debate-dri
 # MOST CRITICAL INSTRUCTION
 **Cover all movies:**  All 12 provided movie titles must be **mentioned naturally** and tied to the user’s profile or scenario. No random listing. Each film’s mention should feel purposeful.
 **IMPORTANT**: must mention All 12 provided movie titles in response. This is the first and non-negotiable requirement of this task. Any output that fails to mention all 12 movies will be considered a failure. Before generating JSON, be sure to double-check that your dialog covers all 12 titles.
+# IF YOU CANNOT NATURALLY FIT ALL 12 TITLES
+- Restructure: make 6–8 debate turns that focus on 4–6 titles deeply, and **within those turns** include concise, natural one-line mentions of the remaining titles tied to the scenario (e.g., "Side note: 'Movie X' also works for family viewing because...").
 
 Example of the entire JSON object output:
 {
@@ -275,10 +291,10 @@ export async function generateAgentConversation(movieData, agentProfiles, userPr
         throw new Error("LLM response object did not contain a valid 'conversation' array.");
     }
     
-    const guidanceText = `What's next?
-This concludes our initial discussion and recommendations. From now on, our conversation will focus <strong>only on providing explanations and analysis for these 12 movies</strong> to help you decide. <strong>We will not recommend any new films.</strong>
-- Ask us anything: Feel free to ask for more details on any movie, like its director, themes, or why we think it fits you.
-- Rate your choices: When you have enough information, please add 4 to 6 movies to your watchlist on the right and give them a star rating. This will allow you to proceed to the final questionnaire.`;
+    const guidanceText = `What's next?<br>
+This concludes our initial discussion and recommendations. From now on, our conversation will focus <strong>only on providing explanations and analysis for these 12 movies</strong> to help you decide. <strong>We will not recommend any new films.</strong><br>
+- <strong>Ask us anything:</strong> Feel free to ask for more details on any movie, like its director, themes, or why we think it fits you.<br>
+- <strong>Rate your choices:</strong> When you have enough information, please add 4 to 6 movies to your watchlist on the right and give them a star rating. This will allow you to proceed to the final questionnaire.`;
     
     conversation.push({
       agent_id: "Agent C",

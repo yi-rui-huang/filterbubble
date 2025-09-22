@@ -94,6 +94,16 @@ export default {
     };
   },
   created() {
+    // 1. 从当前 URL 的查询字符串中获取 'condition' 参数
+    const condition = this.$route.query.condition;
+
+    // 2. 检查参数是否存在
+    if (condition) {
+      // 3. 如果存在，就将它保存到 sessionStorage 中
+      sessionStorage.setItem('experimentCondition', condition);
+      console.log(`Experiment condition '${condition}' has been set.`);
+    }
+
     // Generate or retrieve user ID as soon as they land on the entry page
     const userId = getUserId();
     

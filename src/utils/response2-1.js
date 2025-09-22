@@ -2,7 +2,7 @@
  * Response Generator for Multi-Agent Movie Discussion (Static Adversarial Model)
  * * This module generates structured, parallel, and adversarial pitches from three agents.
  * The agents do not communicate but present conflicting persuasive arguments simultaneously.
- * - 12 movies (6 in-profile, 6 out-of-profile)
+ * - 12 movies (2 in-profile genres x 3 movies + 2 out-of-profile genres x 3 movies = 12 total)
  * - 3 agent profiles with different matching dimensions and persuasive stances
  * - User scenario and preferences
  * - Uses LLM API for dynamic response generation
@@ -235,8 +235,8 @@ async function generateConversationScript(agents, inProfileMovies, outOfProfileM
     //加上引导语
     const guidanceText = `What's next?<br>
 This concludes our initial discussion and recommendations. From now on, our conversation will focus <strong>only on providing explanations and analysis for these 12 movies</strong> to help you decide. <strong>We will not recommend any new films.</strong><br>
-- Ask us anything: Feel free to ask for more details on any movie, like its director, themes, or why we think it fits you.<br>
-- Rate your choices: When you have enough information, please add 4 to 6 movies to your watchlist on the right and give them a star rating. This will allow you to proceed to the final questionnaire.`;
+- <strong>Ask us anything:</strong> Feel free to ask for more details on any movie, like its director, themes, or why we think it fits you.<br>
+- <strong>Rate your choices:</strong> When you have enough information, please add 4 to 6 movies to your watchlist on the right and give them a star rating. This will allow you to proceed to the final questionnaire.`;
     
     // Assemble the final conversation with randomized agent order
     const conversation = [
@@ -289,7 +289,7 @@ function getMovieTitle(movie) {
 async function generateAgentBAdversarialPitch(inProfileTitles, userScenario, userProfile, agent) {
   const genres = userProfile.liked_genres || userProfile.interests?.liked_genres || ['your favorite genres'];
   const genreText = Array.isArray(genres) ? genres.join(' and ') : 'your favorite genres';
-  const movies = inProfileTitles.slice(0, 4); // Increased from 3 to 4 movies
+  const movies = inProfileTitles.slice(0, 3); // Agent B pitches the first 3 in-profile movies
   
   // 使用buildAgentIdentity函数构建完整的agent身份信息
   const agentIdentity = buildAgentIdentity(agent);
@@ -327,7 +327,7 @@ Your pitch must:
     // Fallback
     console.error("Error in Agent B Pitch, returning fallback.", error);
     return {
-      pitch_dialogue: `For "${userScenario}", you can't go wrong with what you already love: ${genreText}! I strongly recommend "${movies[0]}", "${movies[1]}", "${movies[2]}", or "${movies[3]}", as they are top-tier examples of the genre. While trying new things can be fun, a movie night is best enjoyed with a guaranteed great film.`,
+      pitch_dialogue: `For "${userScenario}", you can't go wrong with what you already love: ${genreText}! I strongly recommend "${movies[0]}", "${movies[1]}", and "${movies[2]}", as they are top-tier examples of the genre. While trying new things can be fun, a movie night is best enjoyed with a guaranteed great film.`,
       movie_pitches: movies.map(title => ({
         movie_title: title,
         pitch: "Top-tier genre favorite"
@@ -341,7 +341,7 @@ Your pitch must:
  * This function is self-contained and does not depend on other agents' outputs.
  */
 async function generateAgentAAdversarialPitch(outOfProfileTitles, userProfile, agent, userScenario) {
-  const movies = outOfProfileTitles.slice(0, 4);
+  const movies = outOfProfileTitles.slice(0, 3); // Agent A pitches the first 3 out-of-profile movies
 
   // 1. Prepare the full user profile JSON, replacing the old helper function.
   const userProfileString = JSON.stringify({
@@ -360,8 +360,7 @@ Your core belief is that people should explore beyond their comfort zones, and t
   // 2. Update the user prompt to use the new, richer context.
   const userPrompt = `# CONTEXT
 - User's Viewing Scenario: "${userScenario}"
-- User's Full Profile Data (JSON):
-${userProfileString}
+
 
 # YOUR TASK
 Your main task is to generate a compelling pitch dialogue (3-4 sentences).
@@ -415,7 +414,7 @@ Your pitch must:
     // 3. Update the fallback response to remove the dependency on the old variable.
     console.error("Error in Agent A Pitch, returning fallback.", error);
     return {
-      pitch_dialogue: `I know we love our favorites, but hear me out. A lot of viewers with a similar background have been talking about "${movies[0]}", "${movies[1]}", "${movies[2]}", and "${movies[3]}" lately - they're real conversation starters and unexpected gems that create truly memorable nights. Sometimes the best experiences are the ones you don't see coming!`,
+      pitch_dialogue: `I know we love our favorites, but hear me out. A lot of viewers with a similar background have been talking about "${movies[0]}", "${movies[1]}", and "${movies[2]}" lately - they're real conversation starters and unexpected gems that create truly memorable nights. Sometimes the best experiences are the ones you don't see coming!`,
       movie_pitches: movies.map(title => ({
         movie_title: title,
         pitch: "Unexpected conversation starter"
@@ -429,8 +428,9 @@ Your pitch must:
  * This function is self-contained and does not depend on other agents' outputs.
  */
 async function generateAgentCAdversarialPitch(outOfProfileTitles, inProfileTitles, userProfile, agent, userScenario) {
-  const inProfileMovies = inProfileTitles.slice(4, 6);
-  const outOfProfileMovies = outOfProfileTitles.slice(4, 6);
+  // Agent C pitches the remaining movies: 3 in-profile and 3 out-of-profile
+  const inProfileMovies = inProfileTitles.slice(3, 6);
+  const outOfProfileMovies = outOfProfileTitles.slice(3, 6);
   const allMovies = [...inProfileMovies, ...outOfProfileMovies];
 
   // 1. 准备完整的用户信息JSON（这部分你的实现非常完美）
@@ -482,7 +482,7 @@ Your pitch must:
     // 3. 修复Fallback回复，不再依赖外部变量
     console.error("Error in Agent C Pitch, returning fallback.", error);
     return {
-      pitch_dialogue: `There's a valid choice to be made here between the comfort of a familiar favorite and the thrill of discovery. However, for people with an inquisitive nature, the most rewarding path is often the one that challenges us. Films like "${allMovies[0]}", "${allMovies[1]}", "${allMovies[2]}", or "${allMovies[3]}" might just offer that fresh perspective we crave. The question is, are you looking for comfort or growth tonight?`,
+      pitch_dialogue: `There's a valid choice to be made here between the comfort of a familiar favorite and the thrill of discovery. However, for people with an inquisitive nature, the most rewarding path is often the one that challenges us. Films like "${allMovies.join('", "')}" might just offer that fresh perspective we crave. The question is, are you looking for comfort or growth tonight?`,
       movie_pitches: allMovies.map(title => ({
         movie_title: title,
         pitch: "Mind-expanding perspective"

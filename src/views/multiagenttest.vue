@@ -114,6 +114,7 @@
                 <span></span>
                 <span></span>
               </div>
+              <div class="typing-text">{{ currentTip }}</div>
             </div>
           </div>
           
@@ -144,14 +145,14 @@
               {{ remainingMessages }} round conversation remaining before you can proceed
             </p>
             <p class="rating-reminder" v-if="needRatingReminder">
-              Please rate 4-6 movies as your top choices before proceeding ({{ ratedMoviesCount }} rated)
+              Please rate at least 3 movies as your top choices before proceeding ({{ ratedMoviesCount }} rated)
             </p>
           </div>
           <button 
             class="btn next-btn" 
             @click="finishConversation" 
             :disabled="!canProceed"
-            :title="!canProceed ? 'You need to have at least 5 conversation rounds and rate 4-6 movies' : ''"
+            :title="!canProceed ? 'You need to have at least 3 conversation rounds and rate at least 3 movies' : ''"
           >
             Post-study Questionnaire
           </button>
@@ -240,9 +241,9 @@
                 <button 
                   class="btn watchlist-btn" 
                   @click.stop="addToWatchlist(movie)"
-                  :disabled="ratedMoviesCount >= 6"
-                  :class="{ 'disabled': ratedMoviesCount >= 6 }"
-                  :title="ratedMoviesCount >= 6 ? 'You have already rated 6 movies. Cannot add more to watchlist.' : ''"
+                  :disabled="ratedMoviesCount >= 12"
+                  :class="{ 'disabled': ratedMoviesCount >= 12 }"
+                  :title="ratedMoviesCount >= 12 ? 'You have already rated 12 movies. Cannot add more to watchlist.' : ''"
                 >
                   <i class="fas fa-plus"></i> Add to Watchlist
                 </button>
@@ -256,9 +257,9 @@
                     <span 
                       v-for="star in 5" 
                       :key="star"
-                      :class="['star', (movieRatings[movie.title] >= star || movie.userRating >= star) ? 'filled' : '', (ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? 'disabled' : '']"
-                      @click.stop="(ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? null : rateMovie(movie, star)"
-                      :title="(ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? 'You have already rated 6 movies. Cannot rate more movies.' : ''"
+                      :class="['star', (movieRatings[movie.title] >= star || movie.userRating >= star) ? 'filled' : '', (ratedMoviesCount >= 12 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? 'disabled' : '']"
+                      @click.stop="(ratedMoviesCount >= 12 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? null : rateMovie(movie, star)"
+                      :title="(ratedMoviesCount >= 12 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? 'You have already rated 12 movies. Cannot rate more movies.' : ''"
                     >
                       ★
                     </span>
@@ -324,7 +325,16 @@ export default {
       profileId: null, // Store profile ID for conversation recording
       minRequiredMessages: 3, // Minimum required conversation rounds
       movieRatings: {}, // Store user movie ratings
-      moviePitches: {} // Store movie pitches from agents
+      moviePitches: {}, // Store movie pitches from agents
+      typingTips: [
+        'Generating movie analysis, this may take 1-2 minutes.',
+        'The agents are engaged in a heated debate... 🎬',
+        'Tailoring recommendations to your taste...',
+        'Please wait, the discussion is in progress...',
+      ],
+      currentTip: '',
+      tipInterval: null,
+      currentTipIndex: 0
     };
   },
   async mounted() {
@@ -457,9 +467,9 @@ export default {
       // Check if user has enough conversation rounds
       const hasEnoughMessages = this.userMessageCount >= this.minRequiredMessages;
       
-      // Check if user has rated 4-6 movies
+      // Check if user has rated at least 3 movies (3-12 range)
       const ratedMoviesCount = Object.keys(this.movieRatings).length;
-      const hasEnoughRatings = ratedMoviesCount >= 4 && ratedMoviesCount <= 6;
+      const hasEnoughRatings = ratedMoviesCount >= 3 && ratedMoviesCount <= 12;
       
       return hasEnoughMessages && hasEnoughRatings;
     },
@@ -471,7 +481,16 @@ export default {
 
     // Check if rating reminder should be shown
     needRatingReminder() {
-      return this.userMessageCount >= this.minRequiredMessages && this.ratedMoviesCount < 4;
+      return this.userMessageCount >= this.minRequiredMessages && (this.ratedMoviesCount < 3 || this.ratedMoviesCount > 12);
+    }
+  },
+  watch: {
+    isAgentTyping(newVal) {
+      if (newVal) {
+        this.startTypingTips();
+      } else {
+        this.stopTypingTips();
+      }
     }
   },
   methods: {
@@ -485,8 +504,8 @@ export default {
 
       // Check if user has rated enough movies
       const ratedCount = Object.keys(this.movieRatings).length;
-      if (ratedCount < 4 || ratedCount > 6) {
-        alert('Please rate 4-6 movies as your top choices before proceeding to the questionnaire.');
+      if (ratedCount < 3 || ratedCount > 12) {
+        alert('Please rate at least 3 movies as your top choices before proceeding to the questionnaire.');
         return;
       }
 
@@ -723,10 +742,26 @@ export default {
       // 最后的兜底方案：尝试使用filteredAgents索引
       const allAgentKeys = Object.keys(this.filteredAgents);
       const agentIndex = allAgentKeys.indexOf(agentKey);
-      const fallback = [p2Image, p3Image, p4Image, p1Image];
+      const fallback = [p2Image, p3Image, p4Image];
       
       if (agentIndex >= 0) {
         return fallback[agentIndex % fallback.length];
+      }
+      
+      // Enhanced fallback: if agentKey looks like it should be an agent, don't default to moderator
+      if (agentKey && (agentKey.includes('agent') || agentKey.includes('Agent'))) {
+        // Try to extract index from agent key patterns
+        const match = agentKey.match(/(\d+)$/);
+        if (match) {
+          const index = parseInt(match[1]) - 1;
+          if (index >= 0 && index < fallback.length) {
+            console.log(`[DEBUG] Using pattern-based fallback for ${agentKey}: ${fallback[index]}`);
+            return fallback[index];
+          }
+        }
+        // Default to first agent avatar instead of moderator
+        console.log(`[DEBUG] Using first agent avatar for unmatched agent key: ${agentKey}`);
+        return p2Image;
       }
       
       return p1Image;
@@ -1307,6 +1342,8 @@ export default {
 
     // Helper method to find agent key by agent_id from response.js
     findAgentKeyByAgentId(agentId) {
+      console.log(`[DEBUG] Finding agent key for agentId: ${agentId}`);
+      
       // Direct mapping from agent IDs to indices
       const agentIdToIndex = {
         'Agent A': 0,
@@ -1314,12 +1351,14 @@ export default {
         'Agent C': 2
       };
       
-      const index = agentIdToIndex[agentId];
       const agentKeys = Object.keys(this.filteredAgents);
+      console.log(`[DEBUG] Available agent keys:`, agentKeys);
+      
+      const index = agentIdToIndex[agentId];
       
       // Return the key at the corresponding index
       if (index !== undefined && agentKeys[index]) {
-        console.log(`[DEBUG] Mapping ${agentId} to key: ${agentKeys[index]}`);
+        console.log(`[DEBUG] Mapping ${agentId} (index ${index}) to key: ${agentKeys[index]}`);
         return agentKeys[index];
       }
       
@@ -1329,13 +1368,19 @@ export default {
         if (agent.agent_id === agentId || 
             agent.id === agentId ||
             agent.name === agentId) {
-          console.log(`[DEBUG] Found match for ${agentId}: ${key}`);
+          console.log(`[DEBUG] Found direct match for ${agentId}: ${key}`);
           return key;
         }
       }
       
-      // Fallback: return first available agent key
-      console.warn(`[DEBUG] No match found for ${agentId}, using fallback: ${agentKeys[0]}`);
+      // Enhanced fallback: try to map by index even if agent keys are different
+      if (index !== undefined && index < agentKeys.length) {
+        console.log(`[DEBUG] Using index-based fallback for ${agentId} (index ${index}): ${agentKeys[index]}`);
+        return agentKeys[index];
+      }
+      
+      // Final fallback: return first available agent key
+      console.warn(`[DEBUG] No match found for ${agentId}, using final fallback: ${agentKeys[0]}`);
       return agentKeys[0] || 'agent_1';
     },
 
@@ -1470,62 +1515,61 @@ ${text}
                   // 标准化电影标题
                   const normalizedTitle = this.normalizeMovieTitle(movie.title);
                   
-                  // 只处理支持态度的电影
-                  if (movie.attitude === 'support') {
-                    console.log(`代理 ${agentKey} 推荐电影: "${normalizedTitle}"`);
+                  console.log(`[MOVIE_ATTRIBUTION] 代理 ${agentKey} 提到电影: "${normalizedTitle}", 态度: ${movie.attitude}`);
+                  console.log(`[MOVIE_ATTRIBUTION] Agent display name: ${this.getAgentDisplayName(agentKey)}`);
+                  console.log(`[MOVIE_ATTRIBUTION] Agent avatar: ${this.getAgentAvatar(agentKey)}`);
+                  
+                  // 检查电影是否已经在推荐列表中
+                  const existingMovie = this.tempRoundMovies.find(m => 
+                    this.normalizeMovieTitle(m.title).toLowerCase() === normalizedTitle.toLowerCase()
+                  );
+                  
+                  if (existingMovie) {
+                    // 如果已存在，根据态度更新支持代理列表
+                    if (movie.attitude === 'support' && !existingMovie.supportingAgents.includes(agentKey)) {
+                      existingMovie.supportingAgents.push(agentKey);
+                      console.log(`[MOVIE_ATTRIBUTION] 添加 ${agentKey} 到电影 "${normalizedTitle}" 的支持代理列表`);
+                    }
                     
-                    // 检查电影是否已经在推荐列表中
-                    const existingMovie = this.tempRoundMovies.find(m => 
-                      this.normalizeMovieTitle(m.title).toLowerCase() === normalizedTitle.toLowerCase()
-                    );
+                    // 更新recommendedByAgents（记录所有提到该电影的代理及其态度）
+                    if (!existingMovie.recommendedByAgents) {
+                      existingMovie.recommendedByAgents = [];
+                    }
                     
-                    if (existingMovie) {
-                      // 如果已存在，更新支持代理
-                      if (!existingMovie.supportingAgents.includes(agentKey)) {
-                        existingMovie.supportingAgents.push(agentKey);
-                        console.log(`更新电影 "${normalizedTitle}" 的支持代理列表`);
-                      }
-                      
-                      // 更新recommendedByAgents
-                      if (!existingMovie.recommendedByAgents) {
-                        existingMovie.recommendedByAgents = [];
-                      }
-                      
-                      const agentExists = existingMovie.recommendedByAgents.some(a => a.agentType === agentKey);
-                      if (!agentExists) {
-                        existingMovie.recommendedByAgents.push({
-                          agentType: agentKey,
-                          timestamp: new Date(),
-                          reason: '',
-                          attitude: 'support'
-                        });
-                      }
-                    } else {
-                      // 如果不存在，添加到临时电影列表
-                      const newMovie = {
-                        title: normalizedTitle,
-                        recommendedBy: agentKey,
-                        supportingAgents: [agentKey],
-                        recommendedByAgents: [{
-                          agentType: agentKey,
-                          timestamp: new Date(),
-                          reason: '',
-                          attitude: 'support'
-                        }],
-                        recommendCount: 1,
-                        Poster: 'N/A',
-                        Year: '',
-                        imdbRating: '',
-                        imdbID: '',
-                        inWatchlist: false,
-                        userRating: 0
-                      };
-                      
-                      this.tempRoundMovies.push(newMovie);
-                      console.log(`添加新电影 "${normalizedTitle}" 到临时推荐列表`);
+                    const agentExists = existingMovie.recommendedByAgents.some(a => a.agentType === agentKey);
+                    if (!agentExists) {
+                      existingMovie.recommendedByAgents.push({
+                        agentType: agentKey,
+                        timestamp: new Date(),
+                        reason: '',
+                        attitude: movie.attitude
+                      });
+                      console.log(`[MOVIE_ATTRIBUTION] 记录 ${agentKey} 对电影 "${normalizedTitle}" 的态度: ${movie.attitude}`);
                     }
                   } else {
-                    console.log(`代理 ${agentKey} 对电影 "${normalizedTitle}" 的态度: ${movie.attitude}`);
+                    // 如果不存在，添加到临时电影列表
+                    // 第一次提到的电影总是被视为推荐，无论检测到的态度如何
+                    const newMovie = {
+                      title: normalizedTitle,
+                      recommendedBy: agentKey, // 第一个提到的代理
+                      supportingAgents: [agentKey], // 第一个提到的代理自动成为支持者
+                      recommendedByAgents: [{
+                        agentType: agentKey,
+                        timestamp: new Date(),
+                        reason: '',
+                        attitude: movie.attitude // 记录实际检测到的态度
+                      }],
+                      recommendCount: 1,
+                      Poster: 'N/A',
+                      Year: '',
+                      imdbRating: '',
+                      imdbID: '',
+                      inWatchlist: false,
+                      userRating: 0
+                    };
+                    
+                    this.tempRoundMovies.push(newMovie);
+                    console.log(`[MOVIE_ATTRIBUTION] 添加新电影 "${normalizedTitle}" 到临时推荐列表，推荐者: ${agentKey}`);
                   }
                 }
               }
@@ -1611,7 +1655,16 @@ ${text}
         /^(the|a|an)\s+(best|worst|good|bad|great|terrible)\s+(movie|film)$/i,
         /^(movie|film)\s+(night|time|experience)$/i,
         /^(watching|seeing)\s+(movies|films)$/i,
-        /^(I|you|we|they)\s+(love|like|hate|enjoy)\s+(movies|films)$/i
+        /^(I|you|we|they)\s+(love|like|hate|enjoy)\s+(movies|films)$/i,
+        // 添加对通用电影引用的过滤
+        /^(this|that|the|such)\s+(film|movie)$/i,
+        /^(these|those)\s+(films|movies)$/i,
+        /^(another|other)\s+(film|movie)$/i,
+        /^(any|some)\s+(film|movie)$/i,
+        /^(each|every)\s+(film|movie)$/i,
+        /^(first|second|third|last|next)\s+(film|movie)$/i,
+        /^(his|her|their|its)\s+(film|movie)$/i,
+        /^(my|your|our)\s+(film|movie)$/i
       ];
       
       const isInvalid = invalidPatterns.some(pattern => pattern.test(title.trim()));
@@ -1969,7 +2022,8 @@ ${text}
             genres: movie.genres,
             targetGenre: movie.targetGenre,
             runtimeMinutes: movie.runtimeMinutes || '',
-            isAdult: movie.isAdult || '0'
+            isAdult: movie.isAdult || '0',
+            riskLevel: movie.riskLevel || 'unknown'
           };
 
           if (isIncludeType) {
@@ -2201,6 +2255,22 @@ ${text}
         console.error('Error loading recommended movies:', error);
         this.recommendedMovies = [];
       }
+    },
+
+    // Methods for typing tips rotation
+    startTypingTips() {
+      this.currentTipIndex = 0;
+      this.currentTip = this.typingTips[this.currentTipIndex];
+      this.tipInterval = setInterval(() => {
+        this.currentTipIndex = (this.currentTipIndex + 1) % this.typingTips.length;
+        this.currentTip = this.typingTips[this.currentTipIndex];
+      }, 3000); // Change tip every 3 seconds
+    },
+
+    stopTypingTips() {
+      clearInterval(this.tipInterval);
+      this.tipInterval = null;
+      this.currentTip = '';
     },
 
     // Get pitch color class based on agent ID
@@ -3200,4 +3270,15 @@ ${text}
   cursor: not-allowed !important;
   opacity: 0.5;
 }
+.typing-indicator {
+  display: flex;
+  align-items: center;
+}
+
+.typing-indicator .typing-text {
+  margin-left: 10px;
+  font-style: italic;
+  color: #888;
+}
+
 </style>

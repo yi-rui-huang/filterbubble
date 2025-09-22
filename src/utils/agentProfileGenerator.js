@@ -9,10 +9,9 @@
 
 // A comprehensive list of 28 movie genres based on the IMDB classification.
 const ALL_MOVIE_GENRES = [
-    "Action", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary", "Drama",
-    "Family", "Fantasy", "Film-Noir", "Game-Show", "History", "Horror", "Music", "Musical",
-    "Mystery", "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show",
-    "Thriller", "War", "Western", "Adult"
+    'Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 
+      'Drama', 'Family', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 
+      'Mystery', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western'
 ];
   
   // A list of age ranges to ensure generated mismatched demographics are distinct.

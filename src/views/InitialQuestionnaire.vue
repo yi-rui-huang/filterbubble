@@ -173,125 +173,120 @@
         </section>
         
         <!-- Personality Assessment (Big Five) -->
-        <section class="form-section">
-          <h3>Personality Assessment</h3>
-          <p class="section-description">Please indicate how much you agree or disagree with each statement.</p>
-          
-          <!-- Openness to Experience -->
-          <div class="form-group" :class="{ 'incomplete': !responses.openness1 }" ref="question-12">
-            <label class="form-label" for="openness-1">12. I am curious about many different things. <span v-if="responses.openness1" class="completed-indicator">✓</span></label>
-            <div class="radio-group">
-  <label><input type="radio" value="strongly-disagree" v-model="responses.openness1" required> Strongly disagree</label>
-  <label><input type="radio" value="disagree" v-model="responses.openness1" required> Disagree</label>
-  <label><input type="radio" value="neutral" v-model="responses.openness1" required> Neutral</label>
-  <label><input type="radio" value="agree" v-model="responses.openness1" required> Agree</label>
-  <label><input type="radio" value="strongly-agree" v-model="responses.openness1" required> Strongly agree</label>
-</div>
-          </div>
-          
-          <div class="form-group" :class="{ 'incomplete': !responses.openness2 }" ref="question-13">
-            <label class="form-label" for="openness-2">13. I have a vivid imagination. <span v-if="responses.openness2" class="completed-indicator">✓</span></label>
-            <div class="radio-group">
-  <label><input type="radio" value="strongly-disagree" v-model="responses.openness2" required> Strongly disagree</label>
-  <label><input type="radio" value="disagree" v-model="responses.openness2" required> Disagree</label>
-  <label><input type="radio" value="neutral" v-model="responses.openness2" required> Neutral</label>
-  <label><input type="radio" value="agree" v-model="responses.openness2" required> Agree</label>
-  <label><input type="radio" value="strongly-agree" v-model="responses.openness2" required> Strongly agree</label>
-</div>
-          </div>
-          
-          <!-- Conscientiousness -->
-          <div class="form-group" :class="{ 'incomplete': !responses.conscientiousness1 }" ref="question-14">
-            <label class="form-label" for="conscientiousness-1">14. I am always prepared. <span v-if="responses.conscientiousness1" class="completed-indicator">✓</span></label>
-            <div class="radio-group">
-  <label><input type="radio" value="strongly-disagree" v-model="responses.conscientiousness1" required> Strongly disagree</label>
-  <label><input type="radio" value="disagree" v-model="responses.conscientiousness1" required> Disagree</label>
-  <label><input type="radio" value="neutral" v-model="responses.conscientiousness1" required> Neutral</label>
-  <label><input type="radio" value="agree" v-model="responses.conscientiousness1" required> Agree</label>
-  <label><input type="radio" value="strongly-agree" v-model="responses.conscientiousness1" required> Strongly agree</label>
-</div>
-          </div>
-          
-          <div class="form-group" :class="{ 'incomplete': !responses.conscientiousness2 }" ref="question-15">
-            <label class="form-label" for="conscientiousness-2">15. I pay attention to details. <span v-if="responses.conscientiousness2" class="completed-indicator">✓</span></label>
-            <div class="radio-group">
-  <label><input type="radio" value="strongly-disagree" v-model="responses.conscientiousness2" required> Strongly disagree</label>
-  <label><input type="radio" value="disagree" v-model="responses.conscientiousness2" required> Disagree</label>
-  <label><input type="radio" value="neutral" v-model="responses.conscientiousness2" required> Neutral</label>
-  <label><input type="radio" value="agree" v-model="responses.conscientiousness2" required> Agree</label>
-  <label><input type="radio" value="strongly-agree" v-model="responses.conscientiousness2" required> Strongly agree</label>
-</div>
-          </div>
-          
-          <!-- Extraversion -->
-          <div class="form-group" :class="{ 'incomplete': !responses.extraversion1 }" ref="question-16">
-            <label class="form-label" for="extraversion-1">16. I am the life of the party. <span v-if="responses.extraversion1" class="completed-indicator">✓</span></label>
-            <div class="radio-group">
-  <label><input type="radio" value="strongly-disagree" v-model="responses.extraversion1" required> Strongly disagree</label>
-  <label><input type="radio" value="disagree" v-model="responses.extraversion1" required> Disagree</label>
-  <label><input type="radio" value="neutral" v-model="responses.extraversion1" required> Neutral</label>
-  <label><input type="radio" value="agree" v-model="responses.extraversion1" required> Agree</label>
-  <label><input type="radio" value="strongly-agree" v-model="responses.extraversion1" required> Strongly agree</label>
-</div>
-          </div>
-          
-          <div class="form-group" :class="{ 'incomplete': !responses.extraversion2 }" ref="question-17">
-            <label class="form-label" for="extraversion-2">17. I feel comfortable around people. <span v-if="responses.extraversion2" class="completed-indicator">✓</span></label>
-            <div class="radio-group">
-  <label><input type="radio" value="strongly-disagree" v-model="responses.extraversion2" required> Strongly disagree</label>
-  <label><input type="radio" value="disagree" v-model="responses.extraversion2" required> Disagree</label>
-  <label><input type="radio" value="neutral" v-model="responses.extraversion2" required> Neutral</label>
-  <label><input type="radio" value="agree" v-model="responses.extraversion2" required> Agree</label>
-  <label><input type="radio" value="strongly-agree" v-model="responses.extraversion2" required> Strongly agree</label>
-</div>
-          </div>
-          
-          <!-- Agreeableness -->
-          <div class="form-group" :class="{ 'incomplete': !responses.agreeableness1 }" ref="question-18">
-            <label class="form-label" for="agreeableness-1">18. I sympathize with others' feelings. <span v-if="responses.agreeableness1" class="completed-indicator">✓</span></label>
-            <div class="radio-group">
-  <label><input type="radio" value="strongly-disagree" v-model="responses.agreeableness1" required> Strongly disagree</label>
-  <label><input type="radio" value="disagree" v-model="responses.agreeableness1" required> Disagree</label>
-  <label><input type="radio" value="neutral" v-model="responses.agreeableness1" required> Neutral</label>
-  <label><input type="radio" value="agree" v-model="responses.agreeableness1" required> Agree</label>
-  <label><input type="radio" value="strongly-agree" v-model="responses.agreeableness1" required> Strongly agree</label>
-</div>
-          </div>
-          
-          <div class="form-group" :class="{ 'incomplete': !responses.agreeableness2 }" ref="question-19">
-            <label class="form-label" for="agreeableness-2">19. I take time out for others. <span v-if="responses.agreeableness2" class="completed-indicator">✓</span></label>
-            <div class="radio-group">
-  <label><input type="radio" value="strongly-disagree" v-model="responses.agreeableness2" required> Strongly disagree</label>
-  <label><input type="radio" value="disagree" v-model="responses.agreeableness2" required> Disagree</label>
-  <label><input type="radio" value="neutral" v-model="responses.agreeableness2" required> Neutral</label>
-  <label><input type="radio" value="agree" v-model="responses.agreeableness2" required> Agree</label>
-  <label><input type="radio" value="strongly-agree" v-model="responses.agreeableness2" required> Strongly agree</label>
-</div>
-          </div>
-          
-          <!-- Neuroticism -->
-          <div class="form-group" :class="{ 'incomplete': !responses.neuroticism1 }" ref="question-20">
-            <label class="form-label" for="neuroticism-1">20. I get stressed out easily. <span v-if="responses.neuroticism1" class="completed-indicator">✓</span></label>
-            <div class="radio-group">
-  <label><input type="radio" value="strongly-disagree" v-model="responses.neuroticism1" required> Strongly disagree</label>
-  <label><input type="radio" value="disagree" v-model="responses.neuroticism1" required> Disagree</label>
-  <label><input type="radio" value="neutral" v-model="responses.neuroticism1" required> Neutral</label>
-  <label><input type="radio" value="agree" v-model="responses.neuroticism1" required> Agree</label>
-  <label><input type="radio" value="strongly-agree" v-model="responses.neuroticism1" required> Strongly agree</label>
-</div>
-          </div>
-          
-          <div class="form-group" :class="{ 'incomplete': !responses.neuroticism2 }" ref="question-21">
-            <label class="form-label" for="neuroticism-2">21. I worry about things. <span v-if="responses.neuroticism2" class="completed-indicator">✓</span></label>
-            <div class="radio-group">
-  <label><input type="radio" value="strongly-disagree" v-model="responses.neuroticism2" required> Strongly disagree</label>
-  <label><input type="radio" value="disagree" v-model="responses.neuroticism2" required> Disagree</label>
-  <label><input type="radio" value="neutral" v-model="responses.neuroticism2" required> Neutral</label>
-  <label><input type="radio" value="agree" v-model="responses.neuroticism2" required> Agree</label>
-  <label><input type="radio" value="strongly-agree" v-model="responses.neuroticism2" required> Strongly agree</label>
-</div>
-          </div>
-        </section>
+<section class="form-section">
+  <h3>Personality Assessment</h3>
+  <p class="section-description">For the following statements, please indicate how well they describe your personality.</p>
+  
+  <div class="form-group" :class="{ 'incomplete': !responses.extraversion1 }" ref="question-12">
+    <label class="form-label" for="bfi-1">12. I see myself as someone who is reserved. <span v-if="responses.extraversion1" class="completed-indicator">✓</span></label>
+    <div class="radio-group">
+      <label><input type="radio" value="strongly-disagree" v-model="responses.extraversion1" required> Strongly disagree</label>
+      <label><input type="radio" value="disagree" v-model="responses.extraversion1" required> Disagree</label>
+      <label><input type="radio" value="neutral" v-model="responses.extraversion1" required> Neutral</label>
+      <label><input type="radio" value="agree" v-model="responses.extraversion1" required> Agree</label>
+      <label><input type="radio" value="strongly-agree" v-model="responses.extraversion1" required> Strongly agree</label>
+    </div>
+  </div>
+  
+  <div class="form-group" :class="{ 'incomplete': !responses.agreeableness1 }" ref="question-13">
+    <label class="form-label" for="bfi-2">13. I see myself as someone who is generally trusting. <span v-if="responses.agreeableness1" class="completed-indicator">✓</span></label>
+    <div class="radio-group">
+      <label><input type="radio" value="strongly-disagree" v-model="responses.agreeableness1" required> Strongly disagree</label>
+      <label><input type="radio" value="disagree" v-model="responses.agreeableness1" required> Disagree</label>
+      <label><input type="radio" value="neutral" v-model="responses.agreeableness1" required> Neutral</label>
+      <label><input type="radio" value="agree" v-model="responses.agreeableness1" required> Agree</label>
+      <label><input type="radio" value="strongly-agree" v-model="responses.agreeableness1" required> Strongly agree</label>
+    </div>
+  </div>
+
+  <div class="form-group" :class="{ 'incomplete': !responses.conscientiousness2 }" ref="question-14">
+    <label class="form-label" for="bfi-3">14. I see myself as someone who tends to be lazy. <span v-if="responses.conscientiousness2" class="completed-indicator">✓</span></label>
+    <div class="radio-group">
+      <label><input type="radio" value="strongly-disagree" v-model="responses.conscientiousness2" required> Strongly disagree</label>
+      <label><input type="radio" value="disagree" v-model="responses.conscientiousness2" required> Disagree</label>
+      <label><input type="radio" value="neutral" v-model="responses.conscientiousness2" required> Neutral</label>
+      <label><input type="radio" value="agree" v-model="responses.conscientiousness2" required> Agree</label>
+      <label><input type="radio" value="strongly-agree" v-model="responses.conscientiousness2" required> Strongly agree</label>
+    </div>
+  </div>
+
+  <div class="form-group" :class="{ 'incomplete': !responses.neuroticism2 }" ref="question-15">
+    <label class="form-label" for="bfi-4">15. I see myself as someone who is relaxed, handles stress well. <span v-if="responses.neuroticism2" class="completed-indicator">✓</span></label>
+    <div class="radio-group">
+      <label><input type="radio" value="strongly-disagree" v-model="responses.neuroticism2" required> Strongly disagree</label>
+      <label><input type="radio" value="disagree" v-model="responses.neuroticism2" required> Disagree</label>
+      <label><input type="radio" value="neutral" v-model="responses.neuroticism2" required> Neutral</label>
+      <label><input type="radio" value="agree" v-model="responses.neuroticism2" required> Agree</label>
+      <label><input type="radio" value="strongly-agree" v-model="responses.neuroticism2" required> Strongly agree</label>
+    </div>
+  </div>
+
+  <div class="form-group" :class="{ 'incomplete': !responses.openness2 }" ref="question-16">
+    <label class="form-label" for="bfi-5">16. I see myself as someone who has few artistic interests. <span v-if="responses.openness2" class="completed-indicator">✓</span></label>
+    <div class="radio-group">
+      <label><input type="radio" value="strongly-disagree" v-model="responses.openness2" required> Strongly disagree</label>
+      <label><input type="radio" value="disagree" v-model="responses.openness2" required> Disagree</label>
+      <label><input type="radio" value="neutral" v-model="responses.openness2" required> Neutral</label>
+      <label><input type="radio" value="agree" v-model="responses.openness2" required> Agree</label>
+      <label><input type="radio" value="strongly-agree" v-model="responses.openness2" required> Strongly agree</label>
+    </div>
+  </div>
+
+  <div class="form-group" :class="{ 'incomplete': !responses.extraversion2 }" ref="question-17">
+    <label class="form-label" for="bfi-6">17. I see myself as someone who is outgoing, sociable. <span v-if="responses.extraversion2" class="completed-indicator">✓</span></label>
+    <div class="radio-group">
+      <label><input type="radio" value="strongly-disagree" v-model="responses.extraversion2" required> Strongly disagree</label>
+      <label><input type="radio" value="disagree" v-model="responses.extraversion2" required> Disagree</label>
+      <label><input type="radio" value="neutral" v-model="responses.extraversion2" required> Neutral</label>
+      <label><input type="radio" value="agree" v-model="responses.extraversion2" required> Agree</label>
+      <label><input type="radio" value="strongly-agree" v-model="responses.extraversion2" required> Strongly agree</label>
+    </div>
+  </div>
+
+  <div class="form-group" :class="{ 'incomplete': !responses.agreeableness2 }" ref="question-18">
+    <label class="form-label" for="bfi-7">18. I see myself as someone who tends to find fault with others. <span v-if="responses.agreeableness2" class="completed-indicator">✓</span></label>
+    <div class="radio-group">
+      <label><input type="radio" value="strongly-disagree" v-model="responses.agreeableness2" required> Strongly disagree</label>
+      <label><input type="radio" value="disagree" v-model="responses.agreeableness2" required> Disagree</label>
+      <label><input type="radio" value="neutral" v-model="responses.agreeableness2" required> Neutral</label>
+      <label><input type="radio" value="agree" v-model="responses.agreeableness2" required> Agree</label>
+      <label><input type="radio" value="strongly-agree" v-model="responses.agreeableness2" required> Strongly agree</label>
+    </div>
+  </div>
+
+  <div class="form-group" :class="{ 'incomplete': !responses.conscientiousness1 }" ref="question-19">
+    <label class="form-label" for="bfi-8">19. I see myself as someone who does a thorough job. <span v-if="responses.conscientiousness1" class="completed-indicator">✓</span></label>
+    <div class="radio-group">
+      <label><input type="radio" value="strongly-disagree" v-model="responses.conscientiousness1" required> Strongly disagree</label>
+      <label><input type="radio" value="disagree" v-model="responses.conscientiousness1" required> Disagree</label>
+      <label><input type="radio" value="neutral" v-model="responses.conscientiousness1" required> Neutral</label>
+      <label><input type="radio" value="agree" v-model="responses.conscientiousness1" required> Agree</label>
+      <label><input type="radio" value="strongly-agree" v-model="responses.conscientiousness1" required> Strongly agree</label>
+    </div>
+  </div>
+
+  <div class="form-group" :class="{ 'incomplete': !responses.neuroticism1 }" ref="question-20">
+    <label class="form-label" for="bfi-9">20. I see myself as someone who gets nervous easily. <span v-if="responses.neuroticism1" class="completed-indicator">✓</span></label>
+    <div class="radio-group">
+      <label><input type="radio" value="strongly-disagree" v-model="responses.neuroticism1" required> Strongly disagree</label>
+      <label><input type="radio" value="disagree" v-model="responses.neuroticism1" required> Disagree</label>
+      <label><input type="radio" value="neutral" v-model="responses.neuroticism1" required> Neutral</label>
+      <label><input type="radio" value="agree" v-model="responses.neuroticism1" required> Agree</label>
+      <label><input type="radio" value="strongly-agree" v-model="responses.neuroticism1" required> Strongly agree</label>
+    </div>
+  </div>
+
+  <div class="form-group" :class="{ 'incomplete': !responses.openness1 }" ref="question-21">
+    <label class="form-label" for="bfi-10">21. I see myself as someone who has an active imagination. <span v-if="responses.openness1" class="completed-indicator">✓</span></label>
+    <div class="radio-group">
+      <label><input type="radio" value="strongly-disagree" v-model="responses.openness1" required> Strongly disagree</label>
+      <label><input type="radio" value="disagree" v-model="responses.openness1" required> Disagree</label>
+      <label><input type="radio" value="neutral" v-model="responses.openness1" required> Neutral</label>
+      <label><input type="radio" value="agree" v-model="responses.openness1" required> Agree</label>
+      <label><input type="radio" value="strongly-agree" v-model="responses.openness1" required> Strongly agree</label>
+    </div>
+  </div>
+</section>
         
         <div class="form-actions">
           <button type="submit" class="btn" :disabled="isSubmitting">
@@ -555,23 +550,27 @@ export default {
         return map[val] ?? 4;
       };
 
-      // Build TIPI items mapping from our field names
+      // Build TIPI items from BFI-10 responses
       const tipi = {
-        // Extraversion
-        tipi_item_1: likertToTipi(resp.extraversion1), // Extraverted, enthusiastic
-        tipi_item_6: likertToTipi(resp.extraversion2), // Reserved, quiet (R)
-        // Agreeableness
-        tipi_item_7: likertToTipi(resp.agreeableness1), // Sympathetic, warm
-        tipi_item_2: likertToTipi(resp.agreeableness2), // Critical, quarrelsome (R)
-        // Conscientiousness
-        tipi_item_3: likertToTipi(resp.conscientiousness1), // Dependable, self-disciplined
-        tipi_item_8: likertToTipi(resp.conscientiousness2), // Disorganized, careless (R)
-        // Emotional Stability (Neuroticism R)
-        tipi_item_4: likertToTipi(resp.neuroticism1), // Anxious, easily upset (R)
-        tipi_item_9: likertToTipi(resp.neuroticism2), // Calm, emotionally stable
-        // Openness
-        tipi_item_5: likertToTipi(resp.openness1), // Open to new experiences, complex
-        tipi_item_10: likertToTipi(resp.openness2), // Conventional, uncreative (R)
+        // Extraversion: E+ (outgoing) and E- (reserved)
+        tipi_item_1: likertToTipi(resp.extraversion2), // Q17: I see myself as someone who is outgoing, sociable.
+        tipi_item_6: likertToTipi(resp.extraversion1), // Q12: I see myself as someone who is reserved. (R)
+        
+        // Agreeableness: A+ (trusting) and A- (finds fault)
+        tipi_item_2: likertToTipi(resp.agreeableness2), // Q18: I see myself as someone who tends to find fault with others. (R)
+        tipi_item_7: likertToTipi(resp.agreeableness1), // Q13: I see myself as someone who is generally trusting.
+
+        // Conscientiousness: C+ (thorough) and C- (lazy)
+        tipi_item_3: likertToTipi(resp.conscientiousness1), // Q19: I see myself as someone who does a thorough job.
+        tipi_item_8: likertToTipi(resp.conscientiousness2), // Q14: I see myself as someone who tends to be lazy. (R)
+
+        // Neuroticism (Emotional Stability): N+ (nervous) and N- (relaxed)
+        tipi_item_4: likertToTipi(resp.neuroticism1), // Q20: I see myself as someone who gets nervous easily.
+        tipi_item_9: likertToTipi(resp.neuroticism2), // Q15: I see myself as someone who is relaxed, handles stress well. (R)
+
+        // Openness: O+ (active imagination) and O- (few artistic interests)
+        tipi_item_5: likertToTipi(resp.openness1), // Q21: I see myself as someone who has an active imagination.
+        tipi_item_10: likertToTipi(resp.openness2), // Q16: I see myself as someone who has few artistic interests. (R)
       };
 
       // Normalize to generator input

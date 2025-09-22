@@ -111,14 +111,14 @@
               {{ remainingMessages }} round conversation remaining before you can proceed
             </p>
             <p class="rating-reminder" v-if="needRatingReminder">
-              Please rate 4-6 movies as your top choices before proceeding ({{ ratedMoviesCount }} rated)
+              Please rate at least 3 movies as your top choices before proceeding ({{ ratedMoviesCount }} rated)
             </p>
           </div>
           <button 
             class="btn next-btn" 
             @click="finishConversation" 
             :disabled="!canProceed"
-            :title="!canProceed ? 'You need to have enough conversation and rate 4-6 movies' : ''"
+            :title="!canProceed ? 'You need to have enough conversation and rate at least 3 movies' : ''"
           >
             Post-study Questionnaire
           </button>
@@ -248,6 +248,8 @@ import { getProfilesById } from '@/services/profileService';
 import { saveConversationTurn } from '../services/conversationService';
 import { API_KEY, BASE_URL, MODEL, API_TIMEOUT } from '../config.js';
 import { selectMoviesForExperiment } from '../utils/12movies.js';
+// 假设您的组件在 /src/components/YourComponent.vue
+import { calculatePersonalityScores } from '../utils/agentProfileGenerator.js';
 
 export default {
   name: 'FirstRoundConversation',
@@ -271,6 +273,7 @@ export default {
       userProfile: { // 用户画像
         in_profile_genres: ['Animation', 'Sport', 'Family'] // 从用户输入的liked_genres得来
       },
+      userScenario: '', // 用户观影场景
       movieStats: new Map(), // 电影统计数据
       movieStatsObject: {}, // 响应式电影统计对象
       movieDetailsMap: {}, // 电影详情映射
@@ -291,9 +294,9 @@ export default {
       // 检查用户消息数量是否达到最低要求
       const hasEnoughMessages = this.userMessageCount >= this.minRequiredMessages;
       
-      // 检查用户是否评分了4-6部电影
+      // 检查用户是否评分了至少3部电影（3-12部）
       const ratedMoviesCount = Object.keys(this.movieRatings).length;
-      const hasEnoughRatings = ratedMoviesCount >= 4 && ratedMoviesCount <= 6;
+      const hasEnoughRatings = ratedMoviesCount >= 3 && ratedMoviesCount <= 12;
       
       return hasEnoughMessages && hasEnoughRatings;
     },
@@ -305,7 +308,7 @@ export default {
     
     // 检查是否需要显示评分提示
     needRatingReminder() {
-      return this.userMessageCount >= this.minRequiredMessages && (this.ratedMoviesCount < 4 || this.ratedMoviesCount > 6);
+      return this.userMessageCount >= this.minRequiredMessages && (this.ratedMoviesCount < 3 || this.ratedMoviesCount > 12);
     },
     // 按提及次数排序的电影列表
     sortedMovies() {
@@ -858,6 +861,25 @@ ${text}
       }
     },
 
+    // 提取用户观影场景
+    extractUserScenario() {
+      // 从用户的消息中提取观影场景信息
+      const userMessages = this.messages.filter(msg => msg.sender === 'user');
+      if (userMessages.length === 0) {
+        return "General movie recommendations";
+      }
+      
+      // 合并所有用户消息作为场景描述
+      const combinedMessages = userMessages.map(msg => msg.text).join(' ');
+      
+      // 如果用户提供了具体的观影场景信息，使用它；否则使用默认值
+      if (combinedMessages.trim().length > 0) {
+        return combinedMessages.trim();
+      }
+      
+      return "General movie recommendations";
+    },
+
     // 加载电影数据集并使用12movies.js获取推荐
     async loadMovieDatasetAndRecommendations() {
       try {
@@ -865,16 +887,20 @@ ${text}
           await this.loadMovieDataset();
         }
         
+        // 提取用户观影场景
+        this.userScenario = this.extractUserScenario();
+        console.log('用户观影场景:', this.userScenario);
+        
         const recommendations = await selectMoviesForExperiment(
           this.movieDataset,
           this.userProfile,
-          "General movie recommendations" // 默认场景
+          this.userScenario // 使用用户实际的观影场景
         );
         
         console.log('获得推荐电影:', recommendations);
         
         // Save the 12 movies to Firestore recommended_movie_sets collection
-        await this.saveMovieSetToFirestore(recommendations, this.userProfile, "General movie recommendations");
+        await this.saveMovieSetToFirestore(recommendations, this.userProfile, this.userScenario);
         
         // 处理推荐结果
         await this.processMovieRecommendations(recommendations);
@@ -1101,34 +1127,37 @@ ${text}
           // 检查所有TIPI量表项目是否存在
           const hasPersonalityData = Object.keys(personality).some(key => key.startsWith('tipi_item_'));
           
+          const finalScores = calculatePersonalityScores(personality);
+
+            // 💡 Step 2: Now, analyze the final, calculated scores.
+            // A score above 4.5 is a good indicator of having the trait.
+            // A score below 3.5 is a good indicator of lacking the trait.
+
           if (hasPersonalityData) {
+            
             // 分析开放性 (Openness)
-            if ((personality.tipi_item_5 && personality.tipi_item_5 > 4) || 
-                (personality.tipi_item_10 && personality.tipi_item_10 < 4)) {
+            if (finalScores.openness > 4.5) {
               personalityTraits.push('open to new experiences');
             }
             
             // 分析尽责性 (Conscientiousness)
-            if ((personality.tipi_item_3 && personality.tipi_item_3 > 4) || 
-                (personality.tipi_item_8 && personality.tipi_item_8 < 4)) {
+            if (finalScores.conscientiousness > 4.5) {
               personalityTraits.push('conscientious and organized');
             }
             
             // 分析外向性 (Extraversion)
-            if ((personality.tipi_item_1 && personality.tipi_item_1 > 4) || 
-                (personality.tipi_item_6 && personality.tipi_item_6 < 4)) {
+            if (finalScores.extraversion > 4.5) {
               personalityTraits.push('extraverted and enthusiastic');
             }
             
-            // 分析容易相处性 (Agreeableness)
-            if ((personality.tipi_item_7 && personality.tipi_item_7 > 4) || 
-                (personality.tipi_item_2 && personality.tipi_item_2 < 4)) {
+            // 分析宜人性 (Agreeableness)
+            if (finalScores.agreeableness > 4.5) {
               personalityTraits.push('agreeable and warm');
             }
             
-            // 分析神经质性 (Neuroticism)
-            if ((personality.tipi_item_9 && personality.tipi_item_9 > 4) || 
-                (personality.tipi_item_4 && personality.tipi_item_4 < 4)) {
+            // 分析情绪敏感性 (High Neuroticism / Low Emotional Stability)
+            // We check if the emotional_stability score is LOW.
+            if (finalScores.emotional_stability < 3.5) {
               personalityTraits.push('emotionally sensitive');
             }
           }
@@ -1227,7 +1256,7 @@ ${text}
       setTimeout(async () => {
         const instructionText = 'What\'s next?\n' +
                                '1. Ask for more details: Feel free to ask me anything about these movies. This is the explanation round, and I won\'t recommend new films, but I can provide deeper insights to help you choose.\n' +
-                               '2. Rate your top choices: When you feel you have enough information, please select and rate 4 to 6 movies you are most interested in from the list on the right. You can do this by adding them to your watchlist and then clicking the stars.\n\n' +
+                               '2. Rate your top choices: When you feel you have enough information, please select and rate at least 3 movies you are most interested in from the list on the right. You can do this by adding them to your watchlist and then clicking the stars.\n\n' +
                                'Once you\'ve completed the rating, the button to proceed to the final questionnaire will become active.';
         
         // 添加第二条消息：操作指引
@@ -1461,7 +1490,7 @@ ${text}
 You are a friendly, empathetic, and personalized AI movie companion.  
 
 ## Core Purpose  
-Your mission is to create a natural, engaging conversation about movies that feels tailored to the user's unique profile. You are here to **explore ideas with the user** and help them reflect on their own preferences, not to prescribe answers.  
+Your mission is to create a natural response about movies that feels tailored to the user's unique profile. You are here to **explore ideas with the user** and help them reflect on their own preferences, not to prescribe answers.  
 
 ## Critical Rule  
  **You must NEVER give direct recommendations, suggestions, or lists of movies to watch.**   
@@ -1974,7 +2003,8 @@ Consider the user profile information above when generating your response.`;
             genres: movie.genres,
             targetGenre: movie.targetGenre,
             runtimeMinutes: movie.runtimeMinutes || '',
-            isAdult: movie.isAdult || '0'
+            isAdult: movie.isAdult || '0',
+            riskLevel: movie.riskLevel || 'unknown'
           };
 
           if (isIncludeType) {
@@ -2042,8 +2072,8 @@ Consider the user profile information above when generating your response.`;
       
       // 检查评分数量是否足够
       const ratedCount = Object.keys(this.movieRatings).length;
-      if (ratedCount < 4 || ratedCount > 6) {
-        alert('Please rate 4-6 movies as your top choices before proceeding to the questionnaire.');
+      if (ratedCount < 3 || ratedCount > 12) {
+        alert('Please rate at least 3 movies as your top choices before proceeding to the questionnaire.');
         return;
       }
       

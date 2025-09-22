@@ -113,6 +113,7 @@
                 <span></span>
                 <span></span>
               </div>
+              <div class="typing-text">{{ currentTip }}</div>
             </div>
           </div>
           
@@ -143,14 +144,14 @@
               {{ remainingMessages }} round conversation remaining before you can proceed
             </p>
             <p class="rating-reminder" v-if="needRatingReminder">
-              Please rate 4-6 movies as your top choices before proceeding ({{ ratedMoviesCount }} rated)
+              Please rate at least 3 movies as your top choices before proceeding ({{ ratedMoviesCount }} rated)
             </p>
           </div>
           <button 
             class="btn next-btn" 
             @click="finishConversation" 
             :disabled="!canProceed"
-            :title="!canProceed ? 'You need to have at least 5 conversation rounds and rate 4-6 movies' : ''"
+            :title="!canProceed ? 'You need to have at least 3 conversation rounds and rate at least 3 movies' : ''"
           >
             Post-study Questionnaire
           </button>
@@ -240,9 +241,9 @@
                 <button 
                   class="btn watchlist-btn" 
                   @click.stop="addToWatchlist(movie)"
-                  :disabled="ratedMoviesCount >= 6"
-                  :class="{ 'disabled': ratedMoviesCount >= 6 }"
-                  :title="ratedMoviesCount >= 6 ? 'You have already rated 6 movies. Cannot add more to watchlist.' : ''"
+                  :disabled="ratedMoviesCount >= 12"
+                  :class="{ 'disabled': ratedMoviesCount >= 12 }"
+                  :title="ratedMoviesCount >= 12 ? 'You have already rated 12 movies. Cannot add more to watchlist.' : ''"
                 >
                   <i class="fas fa-plus"></i> Add to Watchlist
                 </button>
@@ -256,9 +257,9 @@
                     <span 
                       v-for="star in 5" 
                       :key="star"
-                      :class="['star', (movieRatings[movie.title] >= star || movie.userRating >= star) ? 'filled' : '', (ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? 'disabled' : '']"
-                      @click.stop="(ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? null : rateMovie(movie, star)"
-                      :title="(ratedMoviesCount >= 6 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? 'You have already rated 6 movies. Cannot rate more movies.' : ''"
+                      :class="['star', (movieRatings[movie.title] >= star || movie.userRating >= star) ? 'filled' : '', (ratedMoviesCount >= 12 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? 'disabled' : '']"
+                      @click.stop="(ratedMoviesCount >= 12 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? null : rateMovie(movie, star)"
+                      :title="(ratedMoviesCount >= 12 && !(movieRatings[movie.title] > 0 || movie.userRating > 0)) ? 'You have already rated 12 movies. Cannot rate more movies.' : ''"
                     >
                       ★
                     </span>
@@ -324,7 +325,14 @@ export default {
       profileId: null, // Store the profile ID for conversation recording
       minRequiredMessages: 3, // Minimum required conversation rounds
       movieRatings: {}, // Store user movie ratings
-      moviePitches: {} // Store AI-generated one-sentence movie pitches
+      moviePitches: {}, // Store AI-generated one-sentence movie pitches
+      typingTips: [
+        'Generating movie analysis, this may take 1-2 minutes.',
+        'Please wait, the discussion is in progress...',
+      ],
+      currentTip: '',
+      tipInterval: null,
+      currentTipIndex: 0
     };
   },
   async mounted() {
@@ -457,9 +465,9 @@ export default {
       // Check if user has enough conversation rounds
       const hasEnoughMessages = this.userMessageCount >= this.minRequiredMessages;
       
-      // Check if user has rated between 4-6 movies
+      // Check if user has rated at least 3 movies (3-12 range)
       const ratedMoviesCount = Object.keys(this.movieRatings).length;
-      const hasEnoughRatings = ratedMoviesCount >= 4 && ratedMoviesCount <= 6;
+      const hasEnoughRatings = ratedMoviesCount >= 3 && ratedMoviesCount <= 12;
       
       return hasEnoughMessages && hasEnoughRatings;
     },
@@ -471,7 +479,16 @@ export default {
 
     // Check if rating reminder should be shown
     needRatingReminder() {
-      return this.userMessageCount >= this.minRequiredMessages && (this.ratedMoviesCount < 4 || this.ratedMoviesCount > 6);
+      return this.userMessageCount >= this.minRequiredMessages && (this.ratedMoviesCount < 3 || this.ratedMoviesCount > 12);
+    }
+  },
+  watch: {
+    isAgentTyping(newVal) {
+      if (newVal) {
+        this.startTypingTips();
+      } else {
+        this.stopTypingTips();
+      }
     }
   },
   methods: {
@@ -498,8 +515,8 @@ export default {
 
       // Check if user has rated enough movies
       const ratedCount = Object.keys(this.movieRatings).length;
-      if (ratedCount < 4 || ratedCount > 6) {
-        alert('Please rate 4-6 movies as your top choices before proceeding to the questionnaire.');
+      if (ratedCount < 3 || ratedCount > 12) {
+        alert('Please rate at least 3 movies as your top choices before proceeding to the questionnaire.');
         return;
       }
 
@@ -752,6 +769,22 @@ export default {
       if (name.includes('explorer') || name.includes('探索者')) return 'agent-casey';
       
       return '';
+    },
+
+    // Methods for typing tips rotation
+    startTypingTips() {
+      this.currentTipIndex = 0;
+      this.currentTip = this.typingTips[this.currentTipIndex];
+      this.tipInterval = setInterval(() => {
+        this.currentTipIndex = (this.currentTipIndex + 1) % this.typingTips.length;
+        this.currentTip = this.typingTips[this.currentTipIndex];
+      }, 3000); // Change tip every 3 seconds
+    },
+
+    stopTypingTips() {
+      clearInterval(this.tipInterval);
+      this.tipInterval = null;
+      this.currentTip = '';
     },
 
     // Get pitch color class based on agent ID
@@ -2049,7 +2082,8 @@ ${text}
             genres: movie.genres,
             targetGenre: movie.targetGenre,
             runtimeMinutes: movie.runtimeMinutes || '',
-            isAdult: movie.isAdult || '0'
+            isAdult: movie.isAdult || '0',
+            riskLevel: movie.riskLevel || 'unknown'
           };
 
           if (isIncludeType) {
@@ -3299,4 +3333,15 @@ ${text}
   cursor: not-allowed !important;
   opacity: 0.5;
 }
+.typing-indicator {
+  display: flex;
+  align-items: center;
+}
+
+.typing-indicator .typing-text {
+  margin-left: 10px;
+  font-style: italic;
+  color: #888;
+}
+
 </style>

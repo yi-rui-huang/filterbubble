@@ -164,19 +164,27 @@ export default {
   name: 'MovieRecommendationIntro',
   methods: {
     startRecommendation() {
-      // Array of possible conversation pages
-      const conversationPages = [
-        '/multiagentsstatic',
-        '/first-round',
-        '/multiagenttest'
-      ];
-      
-      // Randomly select one of the three pages with equal probability
-      const randomIndex = Math.floor(Math.random() * conversationPages.length);
-      const selectedPage = conversationPages[randomIndex];
-      
-      // Navigate to the randomly selected page
-      this.$router.push(selectedPage);
+      // 1. 从 sessionStorage 中读取我们之前保存的标记
+      const condition = sessionStorage.getItem('experimentCondition');
+
+      let targetPage = ''; // 准备一个变量来存放目标页面
+
+      // 2. 根据标记的值，决定要跳转到哪个页面
+      if (condition === 'A') {
+        targetPage = '/first-round';
+      } else if (condition === 'B') {
+        targetPage = '/multiagentsstatic';
+      } else if (condition === 'C') {
+        targetPage = '/multiagenttest';
+      } else {
+        // 健壮性设计：如果因为某种原因没有获取到标记，可以指定一个默认页面或报错
+        console.error('Experiment condition not found!');
+        // 可以跳转到一个默认条件，或者一个错误提示页面
+        targetPage = '/first-round'; // 例如，默认分配到A组
+      }
+
+      // 3. 执行跳转
+      this.$router.push(targetPage);
     }
   }
 };
