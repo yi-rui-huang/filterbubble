@@ -60,7 +60,7 @@ const routes = [
     path: '/middle-questionnaire',
     name: 'MiddleQuestionnaire',
     component: MiddleQuestionnaire,
-    meta: { requiresUserId: true }
+    meta: { requiresUserId: true, preventBack: true }
   },
   {
     path: '/second-round',
@@ -84,7 +84,7 @@ const routes = [
     path: '/thank-you',
     name: 'ThankYou',
     component: ThankYou,
-    meta: { requiresUserId: true }
+    meta: { requiresUserId: true, preventBack: true }
   },
   {
     path: '/admin',
@@ -181,6 +181,13 @@ router.beforeEach((to, from, next) => {
     // Check if route requires NO user ID (like a fresh start page)
     else if (to.meta.requiresNoUserId && hasUserId()) {
       next({ name: 'InitialQuestionnaire' });
+    }
+    // If the user is trying to leave a route that prevents back navigation, redirect them back to it.
+    else if (from.meta.preventBack && to.name !== from.name) {
+      // This logic is intended to stop the user from clicking the browser's back button.
+      // A more robust implementation is handled within the component itself using popstate events.
+      // This router-level guard is a fallback.
+      next({ name: from.name, replace: true });
     }
     else {
       next();

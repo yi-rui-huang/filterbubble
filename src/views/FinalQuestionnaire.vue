@@ -83,40 +83,32 @@ export default {
       currentQuestionIndex: 0,
       questions: [
         {
-          id: 'positive-feedback',
+          id: 'exploration-impact',
           number: '1',
-          text: 'What did you like most about this experience?',
-          placeholder: 'Please describe what you liked most...',
-          responseKey: 'positiveFeedback'
+          text: 'Describe how this system affected your exploration of different or diverse movie recommendations.',
+          placeholder: 'Please describe how the system influenced your exploration of diverse movies...',
+          responseKey: 'explorationImpact'
         },
         {
-          id: 'negative-feedback',
+          id: 'agent-explanations',
           number: '2',
-          text: 'What, if anything, was confusing or could be improved?',
-          placeholder: 'Please describe any confusion or areas for improvement...',
-          responseKey: 'negativeFeedback'
+          text: 'Share your thoughts on the agents\' explanations of movies and how they influenced your final movie choices.',
+          placeholder: 'Please share your thoughts on how the agents\' explanations influenced your choices...',
+          responseKey: 'agentExplanations'
         },
         {
-          id: 'decision-making-impact',
+          id: 'improvement-suggestions',
           number: '3',
-          text: 'How did the recommendation explanation you received affect your decision-making? Did it make it easier or harder to choose, and why?',
-          placeholder: 'Please describe how the recommendations affected your decision-making...',
-          responseKey: 'decisionMakingImpact'
-        },
-        {
-          id: 'additional-feedback',
-          number: '4',
-          text: 'Do you have any other comments or suggestions for us?',
-          placeholder: 'Please share any additional comments or suggestions...',
-          responseKey: 'additionalFeedback'
+          text: 'What suggestions do you have for improving how the AI agents interact with you or explain their recommendations?',
+          placeholder: 'Please share your suggestions for improving the AI agents\' interactions or explanations...',
+          responseKey: 'improvementSuggestions'
         }
       ],
       responses: {
-        // Multi-agent System Experience Questions
-        positiveFeedback: '',
-        negativeFeedback: '',
-        decisionMakingImpact: '',
-        additionalFeedback: ''
+        // Part 2: Open-Ended Feedback Questions
+        explorationImpact: '',
+        agentExplanations: '',
+        improvementSuggestions: ''
       }
     };
   },

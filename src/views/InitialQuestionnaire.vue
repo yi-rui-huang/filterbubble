@@ -97,27 +97,53 @@
           <h3>Recommendation System Usage</h3>
           
           <div class="form-group" :class="{ 'incomplete': !responses.recSystemUsage }" ref="question-5">
-            <label class="form-label" for="rec-system-usage">5. How much do you rely on recommendation systems (e.g., product recommendations, music recommendations, movie recommendations)? <span v-if="responses.recSystemUsage" class="completed-indicator">✓</span></label>
+            <label class="form-label" for="rec-system-usage">5. How often do you use recommender systems (e.g., Amazon product recommendations, Spotify music recommendations, Netflix movie recommendations)? <span v-if="responses.recSystemUsage" class="completed-indicator">✓</span></label>
             <div class="radio-group">
-  <label><input type="radio" value="barely-rely" v-model="responses.recSystemUsage" required> Barely rely (mainly active searching)</label>
-  <label><input type="radio" value="occasionally-rely" v-model="responses.recSystemUsage" required> Occasionally rely</label>
-  <label><input type="radio" value="moderately-rely" v-model="responses.recSystemUsage" required> Moderately rely (frequently use recommended content)</label>
-  <label><input type="radio" value="heavily-rely" v-model="responses.recSystemUsage" required> Heavily rely (mainly depend on recommended content)</label>
+  <label><input type="radio" value="never" v-model="responses.recSystemUsage" required> Never</label>
+  <label><input type="radio" value="rarely" v-model="responses.recSystemUsage" required> Rarely</label>
+  <label><input type="radio" value="sometimes" v-model="responses.recSystemUsage" required> Sometimes</label>
+  <label><input type="radio" value="often" v-model="responses.recSystemUsage" required> Often</label>
+  <label><input type="radio" value="very-often" v-model="responses.recSystemUsage" required> Very often</label>
 </div>
           </div>
           
-          <div class="form-group" :class="{ 'incomplete': !responses.chatgptUsage }" ref="question-6">
-            <label class="form-label" for="chatgpt-usage">6. Have you used tools like ChatGPT to get content recommendations? <span v-if="responses.chatgptUsage" class="completed-indicator">✓</span></label>
+          <div class="form-group" :class="{ 'incomplete': !responses.attentionCheck }" ref="question-6">
+            <label class="form-label" for="attention-check">6. To show that you are paying attention, please select the "Agree" option for this item. <span v-if="responses.attentionCheck" class="completed-indicator">✓</span></label>
             <div class="radio-group">
-  <label><input type="radio" value="barely-rely" v-model="responses.chatgptUsage" required> Barely rely (mainly active searching)</label>
-  <label><input type="radio" value="occasionally-rely" v-model="responses.chatgptUsage" required> Occasionally rely</label>
-  <label><input type="radio" value="moderately-rely" v-model="responses.chatgptUsage" required> Moderately rely (frequently use recommended content)</label>
-  <label><input type="radio" value="heavily-rely" v-model="responses.chatgptUsage" required> Heavily rely (mainly depend on recommended content)</label>
+  <label><input type="radio" value="strongly-disagree" v-model="responses.attentionCheck" required> Strongly disagree</label>
+  <label><input type="radio" value="disagree" v-model="responses.attentionCheck" required> Disagree</label>
+  <label><input type="radio" value="neutral" v-model="responses.attentionCheck" required> Neutral</label>
+  <label><input type="radio" value="agree" v-model="responses.attentionCheck" required> Agree</label>
+  <label><input type="radio" value="strongly-agree" v-model="responses.attentionCheck" required> Strongly agree</label>
 </div>
           </div>
           
-          <div class="form-group" :class="{ 'incomplete': !responses.filterBubblePerception }" ref="question-7">
-            <label class="form-label" for="filter-bubble-perception">7. When using tools like ChatGPT for recommendations, I feel "trapped" in repetitive content (similar topics/styles), with few new topics or perspectives. <span v-if="responses.filterBubblePerception" class="completed-indicator">✓</span></label>
+          <div class="form-group" :class="{ 'incomplete': !responses.generativeAIUsage }" ref="question-7">
+            <label class="form-label" for="generative-ai-usage">7. Have you ever used generative AI systems to get recommendations? (e.g., using ChatGPT, Claude, Gemini for movie, book, travel, or study material recommendations) <span v-if="responses.generativeAIUsage" class="completed-indicator">✓</span></label>
+            <div class="radio-group">
+  <label><input type="radio" value="yes" v-model="responses.generativeAIUsage" required> Yes</label>
+  <label><input type="radio" value="no" v-model="responses.generativeAIUsage" required> No</label>
+</div>
+            <div v-if="responses.generativeAIUsage" class="conditional-instructions">
+              <p><strong>👉 Instructions:</strong></p>
+              <p>If you answered "Yes", please continue with the following questions.</p>
+              <p>If you answered "No", please skip to Question 14.</p>
+            </div>
+          </div>
+          
+          <div v-if="responses.generativeAIUsage === 'yes'" class="form-group" :class="{ 'incomplete': !responses.chatgptUsage }" ref="question-8">
+            <label class="form-label" for="chatgpt-usage">8. How often did you use generative AI systems like ChatGPT to get recommendations? <span v-if="responses.chatgptUsage" class="completed-indicator">✓</span></label>
+            <div class="radio-group">
+  <label><input type="radio" value="never" v-model="responses.chatgptUsage" required> Never</label>
+  <label><input type="radio" value="rarely" v-model="responses.chatgptUsage" required> Rarely</label>
+  <label><input type="radio" value="sometimes" v-model="responses.chatgptUsage" required> Sometimes</label>
+  <label><input type="radio" value="often" v-model="responses.chatgptUsage" required> Often</label>
+  <label><input type="radio" value="very-often" v-model="responses.chatgptUsage" required> Very often</label>
+</div>
+          </div>
+          
+          <div v-if="responses.generativeAIUsage === 'yes'" class="form-group" :class="{ 'incomplete': !responses.filterBubblePerception }" ref="question-9">
+            <label class="form-label" for="filter-bubble-perception">9. When using tools like ChatGPT for recommendations, the recommendation system makes me feel that my access to diverse information is limited. <span v-if="responses.filterBubblePerception" class="completed-indicator">✓</span></label>
             <div class="radio-group">
   <label><input type="radio" value="strongly-disagree" v-model="responses.filterBubblePerception" required> Strongly disagree</label>
   <label><input type="radio" value="disagree" v-model="responses.filterBubblePerception" required> Disagree</label>
@@ -127,8 +153,8 @@
 </div>
           </div>
           
-          <div class="form-group" :class="{ 'incomplete': !responses.missedInterests }" ref="question-8">
-            <label class="form-label" for="missed-interests">8. When using tools like ChatGPT for recommendations, the recommendation system misses content I might be interested in (e.g., information I've explicitly expressed interest in but wasn't recommended). <span v-if="responses.missedInterests" class="completed-indicator">✓</span></label>
+          <div v-if="responses.generativeAIUsage === 'yes'" class="form-group" :class="{ 'incomplete': !responses.missedInterests }" ref="question-10">
+            <label class="form-label" for="missed-interests">10. When using tools like ChatGPT for recommendations, the recommendation system misses content I might be interested in (e.g., information I've explicitly expressed interest in but wasn't recommended). <span v-if="responses.missedInterests" class="completed-indicator">✓</span></label>
             <div class="radio-group">
   <label><input type="radio" value="strongly-disagree" v-model="responses.missedInterests" required> Strongly disagree</label>
   <label><input type="radio" value="disagree" v-model="responses.missedInterests" required> Disagree</label>
@@ -138,8 +164,8 @@
 </div>
           </div>
           
-          <div class="form-group" :class="{ 'incomplete': !responses.limitedInfo }" ref="question-9">
-            <label class="form-label" for="limited-info">9. When using tools like ChatGPT for recommendations, the recommendation system makes me feel that my access to information is limited. <span v-if="responses.limitedInfo" class="completed-indicator">✓</span></label>
+          <div v-if="responses.generativeAIUsage === 'yes'" class="form-group" :class="{ 'incomplete': !responses.limitedInfo }" ref="question-11">
+            <label class="form-label" for="limited-info">11. When using tools like ChatGPT for recommendations, the recommendation system makes me feel that my access to information is limited. <span v-if="responses.limitedInfo" class="completed-indicator">✓</span></label>
             <div class="radio-group">
   <label><input type="radio" value="strongly-disagree" v-model="responses.limitedInfo" required> Strongly disagree</label>
   <label><input type="radio" value="disagree" v-model="responses.limitedInfo" required> Disagree</label>
@@ -149,8 +175,8 @@
 </div>
           </div>
           
-          <div class="form-group" :class="{ 'incomplete': !responses.unexpectedContent }" ref="question-10">
-            <label class="form-label" for="unexpected-content">10. When using tools like ChatGPT for recommendations, I rarely find unexpected content that goes beyond my interests in the recommendations. <span v-if="responses.unexpectedContent" class="completed-indicator">✓</span></label>
+          <div v-if="responses.generativeAIUsage === 'yes'" class="form-group" :class="{ 'incomplete': !responses.unexpectedContent }" ref="question-12">
+            <label class="form-label" for="unexpected-content">12. When using tools like ChatGPT for recommendations, I rarely find unexpected content that goes beyond my interests in the recommendations. <span v-if="responses.unexpectedContent" class="completed-indicator">✓</span></label>
             <div class="radio-group">
   <label><input type="radio" value="strongly-disagree" v-model="responses.unexpectedContent" required> Strongly disagree</label>
   <label><input type="radio" value="disagree" v-model="responses.unexpectedContent" required> Disagree</label>
@@ -160,8 +186,8 @@
 </div>
           </div>
           
-          <div class="form-group" :class="{ 'incomplete': !responses.diversePerspectives }" ref="question-11">
-            <label class="form-label" for="diverse-perspectives">11. I would like to see more diverse perspectives and viewpoints in recommended content. <span v-if="responses.diversePerspectives" class="completed-indicator">✓</span></label>
+          <div v-if="responses.generativeAIUsage === 'yes'" class="form-group" :class="{ 'incomplete': !responses.diversePerspectives }" ref="question-13">
+            <label class="form-label" for="diverse-perspectives">13. I would like to see more diverse perspectives and viewpoints in recommended content. <span v-if="responses.diversePerspectives" class="completed-indicator">✓</span></label>
             <div class="radio-group">
   <label><input type="radio" value="strongly-disagree" v-model="responses.diversePerspectives" required> Strongly disagree</label>
   <label><input type="radio" value="disagree" v-model="responses.diversePerspectives" required> Disagree</label>
@@ -177,8 +203,8 @@
   <h3>Personality Assessment</h3>
   <p class="section-description">For the following statements, please indicate how well they describe your personality.</p>
   
-  <div class="form-group" :class="{ 'incomplete': !responses.extraversion1 }" ref="question-12">
-    <label class="form-label" for="bfi-1">12. I see myself as someone who is reserved. <span v-if="responses.extraversion1" class="completed-indicator">✓</span></label>
+  <div class="form-group" :class="{ 'incomplete': !responses.extraversion1 }" ref="question-14">
+    <label class="form-label" for="bfi-1">14. I see myself as someone who is reserved. <span v-if="responses.extraversion1" class="completed-indicator">✓</span></label>
     <div class="radio-group">
       <label><input type="radio" value="strongly-disagree" v-model="responses.extraversion1" required> Strongly disagree</label>
       <label><input type="radio" value="disagree" v-model="responses.extraversion1" required> Disagree</label>
@@ -188,8 +214,8 @@
     </div>
   </div>
   
-  <div class="form-group" :class="{ 'incomplete': !responses.agreeableness1 }" ref="question-13">
-    <label class="form-label" for="bfi-2">13. I see myself as someone who is generally trusting. <span v-if="responses.agreeableness1" class="completed-indicator">✓</span></label>
+  <div class="form-group" :class="{ 'incomplete': !responses.agreeableness1 }" ref="question-15">
+    <label class="form-label" for="bfi-2">15. I see myself as someone who is generally trusting. <span v-if="responses.agreeableness1" class="completed-indicator">✓</span></label>
     <div class="radio-group">
       <label><input type="radio" value="strongly-disagree" v-model="responses.agreeableness1" required> Strongly disagree</label>
       <label><input type="radio" value="disagree" v-model="responses.agreeableness1" required> Disagree</label>
@@ -199,8 +225,8 @@
     </div>
   </div>
 
-  <div class="form-group" :class="{ 'incomplete': !responses.conscientiousness2 }" ref="question-14">
-    <label class="form-label" for="bfi-3">14. I see myself as someone who tends to be lazy. <span v-if="responses.conscientiousness2" class="completed-indicator">✓</span></label>
+  <div class="form-group" :class="{ 'incomplete': !responses.conscientiousness2 }" ref="question-16">
+    <label class="form-label" for="bfi-3">16. I see myself as someone who tends to be lazy. <span v-if="responses.conscientiousness2" class="completed-indicator">✓</span></label>
     <div class="radio-group">
       <label><input type="radio" value="strongly-disagree" v-model="responses.conscientiousness2" required> Strongly disagree</label>
       <label><input type="radio" value="disagree" v-model="responses.conscientiousness2" required> Disagree</label>
@@ -210,8 +236,8 @@
     </div>
   </div>
 
-  <div class="form-group" :class="{ 'incomplete': !responses.neuroticism2 }" ref="question-15">
-    <label class="form-label" for="bfi-4">15. I see myself as someone who is relaxed, handles stress well. <span v-if="responses.neuroticism2" class="completed-indicator">✓</span></label>
+  <div class="form-group" :class="{ 'incomplete': !responses.neuroticism2 }" ref="question-17">
+    <label class="form-label" for="bfi-4">17. I see myself as someone who is relaxed, handles stress well. <span v-if="responses.neuroticism2" class="completed-indicator">✓</span></label>
     <div class="radio-group">
       <label><input type="radio" value="strongly-disagree" v-model="responses.neuroticism2" required> Strongly disagree</label>
       <label><input type="radio" value="disagree" v-model="responses.neuroticism2" required> Disagree</label>
@@ -221,8 +247,8 @@
     </div>
   </div>
 
-  <div class="form-group" :class="{ 'incomplete': !responses.openness2 }" ref="question-16">
-    <label class="form-label" for="bfi-5">16. I see myself as someone who has few artistic interests. <span v-if="responses.openness2" class="completed-indicator">✓</span></label>
+  <div class="form-group" :class="{ 'incomplete': !responses.openness2 }" ref="question-18">
+    <label class="form-label" for="bfi-5">18. I see myself as someone who has few artistic interests. <span v-if="responses.openness2" class="completed-indicator">✓</span></label>
     <div class="radio-group">
       <label><input type="radio" value="strongly-disagree" v-model="responses.openness2" required> Strongly disagree</label>
       <label><input type="radio" value="disagree" v-model="responses.openness2" required> Disagree</label>
@@ -232,8 +258,8 @@
     </div>
   </div>
 
-  <div class="form-group" :class="{ 'incomplete': !responses.extraversion2 }" ref="question-17">
-    <label class="form-label" for="bfi-6">17. I see myself as someone who is outgoing, sociable. <span v-if="responses.extraversion2" class="completed-indicator">✓</span></label>
+  <div class="form-group" :class="{ 'incomplete': !responses.extraversion2 }" ref="question-19">
+    <label class="form-label" for="bfi-6">19. I see myself as someone who is outgoing, sociable. <span v-if="responses.extraversion2" class="completed-indicator">✓</span></label>
     <div class="radio-group">
       <label><input type="radio" value="strongly-disagree" v-model="responses.extraversion2" required> Strongly disagree</label>
       <label><input type="radio" value="disagree" v-model="responses.extraversion2" required> Disagree</label>
@@ -243,8 +269,8 @@
     </div>
   </div>
 
-  <div class="form-group" :class="{ 'incomplete': !responses.agreeableness2 }" ref="question-18">
-    <label class="form-label" for="bfi-7">18. I see myself as someone who tends to find fault with others. <span v-if="responses.agreeableness2" class="completed-indicator">✓</span></label>
+  <div class="form-group" :class="{ 'incomplete': !responses.agreeableness2 }" ref="question-20">
+    <label class="form-label" for="bfi-7">20. I see myself as someone who tends to find fault with others. <span v-if="responses.agreeableness2" class="completed-indicator">✓</span></label>
     <div class="radio-group">
       <label><input type="radio" value="strongly-disagree" v-model="responses.agreeableness2" required> Strongly disagree</label>
       <label><input type="radio" value="disagree" v-model="responses.agreeableness2" required> Disagree</label>
@@ -254,8 +280,8 @@
     </div>
   </div>
 
-  <div class="form-group" :class="{ 'incomplete': !responses.conscientiousness1 }" ref="question-19">
-    <label class="form-label" for="bfi-8">19. I see myself as someone who does a thorough job. <span v-if="responses.conscientiousness1" class="completed-indicator">✓</span></label>
+  <div class="form-group" :class="{ 'incomplete': !responses.conscientiousness1 }" ref="question-21">
+    <label class="form-label" for="bfi-8">21. I see myself as someone who does a thorough job. <span v-if="responses.conscientiousness1" class="completed-indicator">✓</span></label>
     <div class="radio-group">
       <label><input type="radio" value="strongly-disagree" v-model="responses.conscientiousness1" required> Strongly disagree</label>
       <label><input type="radio" value="disagree" v-model="responses.conscientiousness1" required> Disagree</label>
@@ -265,8 +291,8 @@
     </div>
   </div>
 
-  <div class="form-group" :class="{ 'incomplete': !responses.neuroticism1 }" ref="question-20">
-    <label class="form-label" for="bfi-9">20. I see myself as someone who gets nervous easily. <span v-if="responses.neuroticism1" class="completed-indicator">✓</span></label>
+  <div class="form-group" :class="{ 'incomplete': !responses.neuroticism1 }" ref="question-22">
+    <label class="form-label" for="bfi-9">22. I see myself as someone who gets nervous easily. <span v-if="responses.neuroticism1" class="completed-indicator">✓</span></label>
     <div class="radio-group">
       <label><input type="radio" value="strongly-disagree" v-model="responses.neuroticism1" required> Strongly disagree</label>
       <label><input type="radio" value="disagree" v-model="responses.neuroticism1" required> Disagree</label>
@@ -276,8 +302,8 @@
     </div>
   </div>
 
-  <div class="form-group" :class="{ 'incomplete': !responses.openness1 }" ref="question-21">
-    <label class="form-label" for="bfi-10">21. I see myself as someone who has an active imagination. <span v-if="responses.openness1" class="completed-indicator">✓</span></label>
+  <div class="form-group" :class="{ 'incomplete': !responses.openness1 }" ref="question-23">
+    <label class="form-label" for="bfi-10">23. I see myself as someone who has an active imagination. <span v-if="responses.openness1" class="completed-indicator">✓</span></label>
     <div class="radio-group">
       <label><input type="radio" value="strongly-disagree" v-model="responses.openness1" required> Strongly disagree</label>
       <label><input type="radio" value="disagree" v-model="responses.openness1" required> Disagree</label>
@@ -321,6 +347,8 @@ export default {
 
         // Recommendation System Usage
         recSystemUsage: '',
+        attentionCheck: '',
+        generativeAIUsage: '',
         chatgptUsage: '',
         filterBubblePerception: '',
         missedInterests: '',
@@ -351,22 +379,27 @@ export default {
       if (this.responses.favoriteMovieTypes.length >= 4) completed.push(3);
       if (this.responses.movieWatchingFrequency) completed.push(4);
       if (this.responses.recSystemUsage) completed.push(5);
-      if (this.responses.chatgptUsage) completed.push(6);
-      if (this.responses.filterBubblePerception) completed.push(7);
-      if (this.responses.missedInterests) completed.push(8);
-      if (this.responses.limitedInfo) completed.push(9);
-      if (this.responses.unexpectedContent) completed.push(10);
-      if (this.responses.diversePerspectives) completed.push(11);
-      if (this.responses.openness1) completed.push(12);
-      if (this.responses.openness2) completed.push(13);
-      if (this.responses.conscientiousness1) completed.push(14);
-      if (this.responses.conscientiousness2) completed.push(15);
-      if (this.responses.extraversion1) completed.push(16);
-      if (this.responses.extraversion2) completed.push(17);
-      if (this.responses.agreeableness1) completed.push(18);
-      if (this.responses.agreeableness2) completed.push(19);
-      if (this.responses.neuroticism1) completed.push(20);
-      if (this.responses.neuroticism2) completed.push(21);
+      if (this.responses.attentionCheck) completed.push(6);
+      if (this.responses.generativeAIUsage) completed.push(7);
+      // Questions 8-13 are only required if generativeAIUsage is 'yes'
+      if (this.responses.generativeAIUsage === 'yes') {
+        if (this.responses.chatgptUsage) completed.push(8);
+        if (this.responses.filterBubblePerception) completed.push(9);
+        if (this.responses.missedInterests) completed.push(10);
+        if (this.responses.limitedInfo) completed.push(11);
+        if (this.responses.unexpectedContent) completed.push(12);
+        if (this.responses.diversePerspectives) completed.push(13);
+      }
+      if (this.responses.extraversion1) completed.push(14);
+      if (this.responses.agreeableness1) completed.push(15);
+      if (this.responses.conscientiousness2) completed.push(16);
+      if (this.responses.neuroticism2) completed.push(17);
+      if (this.responses.openness2) completed.push(18);
+      if (this.responses.extraversion2) completed.push(19);
+      if (this.responses.agreeableness2) completed.push(20);
+      if (this.responses.conscientiousness1) completed.push(21);
+      if (this.responses.neuroticism1) completed.push(22);
+      if (this.responses.openness1) completed.push(23);
       return completed;
     }
   },
@@ -390,22 +423,27 @@ export default {
       if (this.responses.favoriteMovieTypes.length < 4) return 3;
       if (!this.responses.movieWatchingFrequency) return 4;
       if (!this.responses.recSystemUsage) return 5;
-      if (!this.responses.chatgptUsage) return 6;
-      if (!this.responses.filterBubblePerception) return 7;
-      if (!this.responses.missedInterests) return 8;
-      if (!this.responses.limitedInfo) return 9;
-      if (!this.responses.unexpectedContent) return 10;
-      if (!this.responses.diversePerspectives) return 11;
-      if (!this.responses.openness1) return 12;
-      if (!this.responses.openness2) return 13;
-      if (!this.responses.conscientiousness1) return 14;
-      if (!this.responses.conscientiousness2) return 15;
-      if (!this.responses.extraversion1) return 16;
-      if (!this.responses.extraversion2) return 17;
-      if (!this.responses.agreeableness1) return 18;
-      if (!this.responses.agreeableness2) return 19;
-      if (!this.responses.neuroticism1) return 20;
-      if (!this.responses.neuroticism2) return 21;
+      if (!this.responses.attentionCheck) return 6;
+      if (!this.responses.generativeAIUsage) return 7;
+      // Questions 8-13 are only required if generativeAIUsage is 'yes'
+      if (this.responses.generativeAIUsage === 'yes') {
+        if (!this.responses.chatgptUsage) return 8;
+        if (!this.responses.filterBubblePerception) return 9;
+        if (!this.responses.missedInterests) return 10;
+        if (!this.responses.limitedInfo) return 11;
+        if (!this.responses.unexpectedContent) return 12;
+        if (!this.responses.diversePerspectives) return 13;
+      }
+      if (!this.responses.extraversion1) return 14;
+      if (!this.responses.agreeableness1) return 15;
+      if (!this.responses.conscientiousness2) return 16;
+      if (!this.responses.neuroticism2) return 17;
+      if (!this.responses.openness2) return 18;
+      if (!this.responses.extraversion2) return 19;
+      if (!this.responses.agreeableness2) return 20;
+      if (!this.responses.conscientiousness1) return 21;
+      if (!this.responses.neuroticism1) return 22;
+      if (!this.responses.openness1) return 23;
       return null; // All questions completed
     },
     
@@ -469,7 +507,11 @@ export default {
         const { generateAgentProfiles } = await import('../utils/agentProfileGenerator.js');
         const generatedProfiles = generateAgentProfiles(userInput);
 
-        // 4) Save agent profiles to Firestore so other pages can use them
+        // 4) Save raw questionnaire responses to Firebase
+        const { logQuestionnaireResponses } = await import('../services/loggingService.js');
+        await logQuestionnaireResponses('initial_questionnaire', this.responses);
+
+        // 5) Save agent profiles to Firestore so other pages can use them
         const { saveProfiles, getOrCreateUserId } = await import('../services/profileService.js');
         const userId = getOrCreateUserId();
         const profileId = await saveProfiles(userInput, generatedProfiles, userId);
@@ -759,7 +801,25 @@ export default {
   margin-top: 3rem;
   display: flex;
   justify-content: center;
-  padding: 1rem 0;
+  margin-bottom: 20px;
+}
+
+.conditional-instructions {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #f8f9fa;
+  border-left: 4px solid #007bff;
+  border-radius: 4px;
+}
+
+.conditional-instructions p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.conditional-instructions p:first-child {
+  font-weight: 600;
+  color: #007bff;
 }
 
 .form-actions .btn {

@@ -294,7 +294,8 @@ export async function generateAgentConversation(movieData, agentProfiles, userPr
     const guidanceText = `What's next?<br>
 This concludes our initial discussion and recommendations. From now on, our conversation will focus <strong>only on providing explanations and analysis for these 12 movies</strong> to help you decide. <strong>We will not recommend any new films.</strong><br>
 - <strong>Ask us anything:</strong> Feel free to ask for more details on any movie, like its director, themes, or why we think it fits you.<br>
-- <strong>Rate your choices:</strong> When you have enough information, please add 4 to 6 movies to your watchlist on the right and give them a star rating. This will allow you to proceed to the final questionnaire.`;
+- <strong>Rate your top choices:</strong> When you have enough information, please add the movies you find most appealing to your watchlist. You must then give each selected movie a rating from 1 to 5 stars to show how much you would like to watch it 
+(1 = not very interested, 5 = very interested). Please rate at least 3 movies (and up to 12) in total. This will allow you to proceed to the final questionnaire.`;
     
     conversation.push({
       agent_id: "Agent C",

@@ -17,7 +17,11 @@
           influence information exposure.
         </p>
         
-        <div class="study-summary">
+        <div class="verification-code">
+          <h3>Your verification code is: A3B7C9</h3>
+        </div>
+        
+        <!-- <div class="study-summary">
           <h3>Study Summary</h3>
           <p>
             In this study, you completed:
@@ -28,9 +32,9 @@
             <li>A post-study questionnaire to gather your immediate feedback on that session.</li>
             <li>A final, open-ended questionnaire to understand your overall thoughts on the entire process.</li>
           </ul>
-        </div>
+        </div> -->
         
-        <div class="next-steps">
+        <!-- <div class="next-steps">
           <h3>What Happens Next?</h3>
           <p>
             Your responses have been recorded and will be analyzed as part of our research on filter
@@ -38,17 +42,17 @@
           </p>
           <p>
             If you have any questions about the study or would like to receive updates on our research
-            findings, please contact the research team at <a href="mailto:research@filterbubble.example.com">research@filterbubble.example.com</a>.
+            findings, please contact the research team at <a href="mailto:yh460@duke.edu">yh460@duke.edu</a>.
           </p>
-        </div>
+        </div> -->
         
-        <div class="feedback-confirmation">
+        <!-- <div class="feedback-confirmation">
           <h3>Your Feedback Matters</h3>
           <p>
             Your insights and feedback are invaluable to our research. Thank you for taking the time to
             share your thoughts and experiences with us.
           </p>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -64,6 +68,29 @@ export default {
     logUserEvent('study_completed', {
       timestamp: new Date().toISOString()
     });
+  },
+  mounted() {
+    // Prevent users from going back from the thank you page
+    this.preventBackNavigation();
+  },
+  beforeUnmount() {
+    // Clean up event listeners
+    this.cleanupBackNavigation();
+  },
+  methods: {
+    preventBackNavigation() {
+      history.pushState(null, null, location.href);
+      this.handlePopState = (event) => {
+        history.pushState(null, null, location.href);
+        alert('The study has been completed. You cannot return to the previous page.');
+      };
+      window.addEventListener('popstate', this.handlePopState);
+    },
+    cleanupBackNavigation() {
+      if (this.handlePopState) {
+        window.removeEventListener('popstate', this.handlePopState);
+      }
+    }
   }
 };
 </script>

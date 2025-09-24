@@ -80,7 +80,7 @@
                 <span></span>
                 <span></span>
               </div>
-              <!-- <div class="typing-label" v-if="isExplanationGenerating">生成电影解释中...</div> -->
+              <div class="typing-text">{{ currentTip }}</div>
             </div>
           </div>
           
@@ -280,7 +280,16 @@ export default {
       recommendationsGenerated: false, // 标记是否已生成推荐
       profileId: null, // 存储用户配置文件ID
       dynamicProfiles: null, // 存储从数据库读取的用户配置
-      existingConversations: [] // 存储已有的对话记录
+      existingConversations: [], // 存储已有的对话记录
+      typingTips: [
+        'Generating movie analysis, this may take 1-2 minutes.',
+        'The AI is analyzing your preferences...',
+        'Preparing personalized recommendations...',
+        'Please wait, processing your request...',
+      ],
+      currentTip: '',
+      tipInterval: null,
+      currentTipIndex: 0
     };
   },
   computed: {
@@ -315,6 +324,22 @@ export default {
       // 将对象转换为数组并排序
       return Object.entries(this.movieStatsObject)
         .sort((a, b) => b[1] - a[1]); // 按计数降序排序
+    }
+  },
+  watch: {
+    isAgentTyping(newVal) {
+      if (newVal) {
+        this.startTypingTips();
+      } else {
+        this.stopTypingTips();
+      }
+    },
+    isExplanationGenerating(newVal) {
+      if (newVal) {
+        this.startTypingTips();
+      } else {
+        this.stopTypingTips();
+      }
     }
   },
   async created() {
@@ -420,6 +445,22 @@ export default {
     }
   },
   methods: {
+    // Methods for typing tips rotation
+    startTypingTips() {
+      this.currentTipIndex = 0;
+      this.currentTip = this.typingTips[this.currentTipIndex];
+      this.tipInterval = setInterval(() => {
+        this.currentTipIndex = (this.currentTipIndex + 1) % this.typingTips.length;
+        this.currentTip = this.typingTips[this.currentTipIndex];
+      }, 3000); // Change tip every 3 seconds
+    },
+
+    stopTypingTips() {
+      clearInterval(this.tipInterval);
+      this.tipInterval = null;
+      this.currentTip = '';
+    },
+
     // 使用API提取电影名称
     async extractMoviesWithAPI(text, agentType = 'gpt') {
       // 使用从config.js导入的API配置
@@ -1255,8 +1296,9 @@ ${text}
       // 稍微延迟后发送第二条消息：操作指引
       setTimeout(async () => {
         const instructionText = 'What\'s next?\n' +
+                                'From now on, our conversation will focus only on providing explanations and analysis for these 12 movies to help you decide. We will not recommend any new films.\n\n' +
                                '1. Ask for more details: Feel free to ask me anything about these movies. This is the explanation round, and I won\'t recommend new films, but I can provide deeper insights to help you choose.\n' +
-                               '2. Rate your top choices: When you feel you have enough information, please select and rate at least 3 movies you are most interested in from the list on the right. You can do this by adding them to your watchlist and then clicking the stars.\n\n' +
+                               '2. Rate your top choices: When you feel you have enough information, please add the movies you find most appealing to your watchlist. You must then give each selected movie a rating from 1 to 5 stars to show how much you would like to watch it (1 = not very interested, 5 = very interested). Please rate at least 3 movies (and up to 12) in total.\n\n' +
                                'Once you\'ve completed the rating, the button to proceed to the final questionnaire will become active.';
         
         // 添加第二条消息：操作指引
@@ -2125,9 +2167,9 @@ Consider the user profile information above when generating your response.`;
         });
         
         // 注意：在这里不调用completeCurrentSystem()，因为完成标记应该在问卷提交时进行
-        // 强制导航到FirstRoundQuestionnaire，而不是使用getCurrentQuestionnaireRoute()
-        console.log('从 FirstRoundConversation 导航到 FirstRoundQuestionnaire');
-        this.$router.push('/first-round-questionnaire');
+        // 强制导航到MiddleQuestionnaire
+        console.log('从 FirstRoundConversation 导航到 MiddleQuestionnaire');
+        this.$router.push('/middle-questionnaire');
       } catch (error) {
         console.error('Error completing first round:', error);
         this.isSubmitting = false;
@@ -3172,4 +3214,15 @@ body {
   cursor: not-allowed !important;
   opacity: 0.5;
 }
+.typing-indicator {
+  display: flex;
+  align-items: center;
+}
+
+.typing-indicator .typing-text {
+  margin-left: 10px;
+  font-style: italic;
+  color: #888;
+}
+
 </style>
