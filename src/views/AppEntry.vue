@@ -83,8 +83,8 @@ We have developed a conversational movie recommendation system that features AI 
 </template>
 
 <script>
-import { getUserId } from '../utils/userIdentifier';
-import { logSystemEvent, logUserEvent } from '../services/loggingService';
+import { getUserId, getProlificId, setProlificId } from '../utils/userIdentifier';
+import { logSystemEvent, logUserEvent, logProlificParticipant } from '../services/loggingService';
 
 export default {
   name: 'AppEntry',
@@ -107,13 +107,53 @@ export default {
     // Generate or retrieve user ID as soon as they land on the entry page
     const userId = getUserId();
     
+    // 获取 Prolific ID（从 URL 参数或 localStorage）
+    const prolificId = getProlificId();
+    
+    // 记录参与者信息到 Firebase（无论是否有 Prolific ID）
+    if (prolificId) {
+      console.log(`Prolific ID detected: ${prolificId}`);
+      this.logProlificParticipantData(prolificId, userId, 'prolific');
+    } else {
+      console.log('No Prolific ID found - proceeding as anonymous participant');
+      // 即使没有 Prolific ID，也记录参与者信息，标记为匿名参与者
+      this.logProlificParticipantData(null, userId, 'anonymous');
+    }
+    
     // Log entry to the application
     logSystemEvent('study_entry', {
       userId,
+      prolificId: prolificId || null,
       timestamp: new Date().toISOString()
     });
   },
   methods: {
+    async logProlificParticipantData(prolificId, userId, participantType) {
+      try {
+        const participantData = {
+          userAgent: navigator.userAgent,
+          screenResolution: `${screen.width}x${screen.height}`,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          language: navigator.language,
+          referrer: document.referrer || null,
+          participantType: participantType, // 'prolific' 或 'anonymous'
+          hasValidProlificId: !!prolificId
+        };
+
+        const result = await logProlificParticipant(prolificId, participantData);
+        
+        if (result.success) {
+          console.log(`${participantType} participant data logged successfully`);
+        } else {
+          console.warn(`Failed to log ${participantType} participant data:`, result.error);
+          // 即使记录失败，也不阻止用户继续实验
+        }
+      } catch (error) {
+        console.error(`Error logging ${participantType} participant data:`, error);
+        // 容错：即使出错也不阻止实验进行
+      }
+    },
+    
     startStudy() {
       if (!this.consentGiven) {
         return;

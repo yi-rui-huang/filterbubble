@@ -1,5 +1,5 @@
 import { getFirebaseDb, isFirestoreAvailable, getFirebaseErrorMessage, isNetworkConnected } from './firebase';
-import { getUserId } from '../utils/userIdentifier';
+import { getUserId, getProlificId } from '../utils/userIdentifier';
 import { collection, addDoc, serverTimestamp, writeBatch, doc } from 'firebase/firestore';
 
 // 跟踪 Firebase 连接状态
@@ -519,6 +519,86 @@ export async function forceSyncPendingLogs() {
       success: false, 
       message: '同步失败', 
       error: error.toString() 
+    };
+  }
+}
+
+/**
+ * 记录 Prolific 参与者信息到 Firebase
+ * @param {string|null} prolificId - Prolific 参与者 ID（可以为 null）
+ * @param {Object} additionalData - 额外的参与者数据
+ * @returns {Promise<Object>} 记录结果
+ */
+export async function logProlificParticipant(prolificId, additionalData = {}) {
+  try {
+    const userId = getUserId();
+    const timestamp = new Date().toISOString();
+    
+    const participantDoc = {
+      userId,
+      prolificId: prolificId || null, // 允许 null 值
+      registrationTime: timestamp,
+      serverTimestamp: serverTimestamp(),
+      ...additionalData
+    };
+    
+    // 检查网络连接和 Firebase 可用性
+    const isNetworkAvailable = isNetworkConnected();
+    const isFirebaseReady = checkFirebaseAvailability();
+    
+    // 如果网络不可用或 Firebase 不可用，添加到待处理队列
+    if (!isNetworkAvailable || !isFirebaseReady) {
+      pendingLogs.push({
+        collectionName: 'prolific_participants',
+        data: participantDoc,
+        addedAt: timestamp
+      });
+      
+      savePendingLogs();
+      
+      return { 
+        success: false, 
+        error: isNetworkAvailable ? 'Firebase unavailable' : 'Network unavailable', 
+        localLogged: true,
+        pendingSync: true
+      };
+    }
+    
+    // 尝试写入 Firebase
+    const db = getFirebaseDb();
+    const docRef = await addDoc(collection(db, 'prolific_participants'), participantDoc);
+    
+    const participantType = prolificId ? 'Prolific' : 'Anonymous';
+    console.log(`${participantType} participant logged: ${prolificId || 'N/A'}, User ID: ${userId}, Doc ID: ${docRef.id}`);
+    
+    return { success: true, participantId: docRef.id };
+  } catch (error) {
+    console.error('Failed to log Prolific participant:', error);
+    
+    // 添加到待处理队列
+    const userId = getUserId();
+    const participantDoc = {
+      userId,
+      prolificId: prolificId || null, // 确保一致性
+      registrationTime: new Date().toISOString(),
+      ...additionalData,
+      failedToLog: true
+    };
+    
+    pendingLogs.push({
+      collectionName: 'prolific_participants',
+      data: participantDoc,
+      addedAt: new Date().toISOString(),
+      error: error.message
+    });
+    
+    savePendingLogs();
+    
+    return { 
+      success: false, 
+      error: error.toString(),
+      localLogged: true,
+      pendingSync: true
     };
   }
 }
