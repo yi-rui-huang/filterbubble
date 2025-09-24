@@ -762,7 +762,7 @@
         </section> 
         
         <div class="form-actions">
-          <button type="submit" class="btn" :disabled="isSubmitting">
+          <button type="submit" class="btn" :disabled="isSubmitting" @click="handleSubmitClick">
             {{ isSubmitting ? 'Submitting...' : 'Submit' }}
           </button>
         </div>
@@ -844,7 +844,8 @@ export default {
   },
   created() {
     // Log page view
-    logUserEvent('view_middle_questionnaire');
+    console.log('MiddleQuestionnaire created, testing Firebase connection...');
+    this.testFirebaseConnection();
   },
   mounted() {
     // 防止用户通过浏览器后退按钮返回到之前的页面
@@ -855,26 +856,75 @@ export default {
     this.cleanupBackNavigation();
   },
   methods: {
+    async testFirebaseConnection() {
+      try {
+        console.log('Testing Firebase connection...');
+        const result = await logUserEvent('view_middle_questionnaire');
+        console.log('Firebase test result:', result);
+      } catch (error) {
+        console.error('Firebase test failed:', error);
+      }
+    },
+    handleSubmitClick(event) {
+      console.log('=== Submit button clicked ===');
+      event.preventDefault();
+      this.submitQuestionnaire();
+    },
     async submitQuestionnaire() {
+      console.log('=== Submit questionnaire method called ===');
+      console.log('Current responses:', this.responses);
+      
+      // Check if all required fields are filled
+      const requiredFields = Object.keys(this.responses);
+      const emptyFields = requiredFields.filter(field => this.responses[field] === null || this.responses[field] === undefined);
+      
+      if (emptyFields.length > 0) {
+        console.log('Empty fields found:', emptyFields);
+        alert(`Please answer all questions before submitting. Missing: ${emptyFields.join(', ')}`);
+        return;
+      }
+      
       this.isSubmitting = true;
+      console.log('Starting submission process...');
       
       try {
         // Log form submission start
-        logUserEvent('middle_questionnaire_submit_attempt');
+        console.log('Logging submission attempt...');
+        const logResult = await logUserEvent('middle_questionnaire_submit_attempt');
+        console.log('Log result:', logResult);
         
         // Submit questionnaire responses to Firebase
+        console.log('Submitting questionnaire responses...');
         const success = await logQuestionnaireResponses('middle', this.responses);
+        console.log('Questionnaire submission result:', success);
         
-        if (success) {
+        if (success && success.success !== false) {
           // Log successful submission
-          logUserEvent('middle_questionnaire_submitted', {
+          console.log('Logging successful submission...');
+          await logUserEvent('middle_questionnaire_submitted', {
             timestamp: new Date().toISOString()
           });
           
           // 直接跳转到最终问卷页面
           console.log('MiddleQuestionnaire 直接跳转到 FinalQuestionnaire');
-          this.$router.push('/final-questionnaire');
+          try {
+            console.log('Attempting router.push to /final-questionnaire');
+            const result = await this.$router.push('/final-questionnaire');
+            console.log('Navigation successful, result:', result);
+          } catch (navError) {
+            console.error('Navigation failed:', navError);
+            console.log('Trying router.replace instead...');
+            try {
+              await this.$router.replace('/final-questionnaire');
+              console.log('Router.replace successful');
+            } catch (replaceError) {
+              console.error('Router.replace also failed:', replaceError);
+              console.log('Using window.location as fallback');
+              window.location.href = '/final-questionnaire';
+            }
+          }
         } else {
+          console.error('Submission failed:', success);
           alert('There was an error submitting your responses. Please try again.');
           this.isSubmitting = false;
         }
@@ -1016,7 +1066,7 @@ export default {
 }
 
 .form-actions .btn:hover {
-  background-color: #357abD;
+  background-color: #357abd;
 }
 
 .form-actions .btn:disabled {

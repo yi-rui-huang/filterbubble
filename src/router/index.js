@@ -184,10 +184,20 @@ router.beforeEach((to, from, next) => {
     }
     // If the user is trying to leave a route that prevents back navigation, redirect them back to it.
     else if (from.meta.preventBack && to.name !== from.name) {
+      // Allow forward navigation to specific routes from MiddleQuestionnaire
+      if (from.name === 'MiddleQuestionnaire' && to.name === 'FinalQuestionnaire') {
+        next();
+      }
+      // Allow forward navigation to ThankYou from any preventBack route
+      else if (to.name === 'ThankYou') {
+        next();
+      }
       // This logic is intended to stop the user from clicking the browser's back button.
       // A more robust implementation is handled within the component itself using popstate events.
       // This router-level guard is a fallback.
-      next({ name: from.name, replace: true });
+      else {
+        next({ name: from.name, replace: true });
+      }
     }
     else {
       next();
