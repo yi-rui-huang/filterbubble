@@ -43,7 +43,7 @@ We have developed a conversational movie recommendation system that features AI 
       <div class="duration-section">
         <h2 class="card-title">DURATION:</h2>
         <p>
-          This study will take about 15 minutes to complete (including time for filling out required and optional questionnaires).
+          This study will take about 20 minutes to complete (including time for filling out required and optional questionnaires).
         </p>
       </div>
       
