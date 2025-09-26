@@ -1061,7 +1061,7 @@ export default {
       
       // Validate input to prevent code injection
       if (!this.validateUserInput(this.userInput.trim())) {
-        this.inputError = '请输入有效的文字，不允许输入代码或特殊字符';
+        this.inputError = 'Please enter valid text. Codes and special characters are not allowed.';
         return;
       }
 
