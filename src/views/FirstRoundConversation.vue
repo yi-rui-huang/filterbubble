@@ -84,6 +84,7 @@
             </div>
           </div>
           
+          <div v-if="inputError" class="input-error-message">{{ inputError }}</div>
           <div class="input-area">
             <textarea 
               v-model="userInput" 
@@ -94,7 +95,6 @@
               ref="messageInput"
               @input="inputError = ''"
             ></textarea>
-            <div v-if="inputError" class="input-error-message">{{ inputError }}</div>
             <button 
               class="btn send-btn" 
               @click="sendMessage" 
@@ -1816,6 +1816,14 @@ Consider the user profile information above when generating your response.`;
       try {
         const userMessage = this.userInput.trim();
         
+        // Validate input to prevent code injection FIRST
+        if (!this.validateUserInput(userMessage)) {
+          this.inputError = 'Please enter valid text. Codes and special characters are not allowed.';
+          this.isSubmitting = false;
+          // Don't clear userInput so user can modify their message
+          return;
+        }
+        
         // 记录用户发送消息事件
         try {
           await logUserEvent('user_message_sent', {
@@ -1838,12 +1846,6 @@ Consider the user profile information above when generating your response.`;
         
         // 清空输入框
         this.userInput = '';
-        
-        // Validate input to prevent code injection
-        if (!this.validateUserInput(userMessage)) {
-          this.inputError = 'Please enter valid text. Codes and special characters are not allowed.';
-          return;
-        }
         
         await this.logConversationToFirestore('user', userMessage);
         if (this.messages.length >= this.maxMessages * 2) {
@@ -2275,9 +2277,12 @@ body {
 .input-error-message {
   color: #ff3860;
   font-size: 0.85rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0.5rem;
+  margin: 0 15px 5px 15px;
   text-align: left;
+  background-color: #fff5f5;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border-left: 3px solid #ff3860;
 }
 /* Page Layout */
 .page-container {

@@ -118,6 +118,7 @@
             </div>
           </div>
           
+          <div v-if="inputError" class="input-error-message">{{ inputError }}</div>
           <div class="input-area">
             <textarea 
               v-model="userInput" 
@@ -128,7 +129,6 @@
               ref="messageInput"
               @input="inputError = ''"
             ></textarea>
-            <div v-if="inputError" class="input-error-message">{{ inputError }}</div>
             <button 
               class="btn send-btn" 
               @click="sendMessage" 
@@ -1047,6 +1047,7 @@ export default {
       // Validate input to prevent code injection
       if (!this.validateUserInput(this.userInput.trim())) {
         this.inputError = 'Please enter valid text. Codes and special characters are not allowed.';
+        this.isSubmitting = false;
         return;
       }
 
@@ -2525,9 +2526,12 @@ ${text}
 .input-error-message {
   color: #ff3860;
   font-size: 0.85rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0.5rem;
+  margin: 0 15px 5px 15px;
   text-align: left;
+  background-color: #fff5f5;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border-left: 3px solid #ff3860;
 }
 
 /* Message styles */
