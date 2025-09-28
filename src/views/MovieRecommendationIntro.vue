@@ -50,7 +50,7 @@
         <div class="instruction-card">
           <h3 class="step-title">
             <span class="step-badge">Step 1</span>
-            Describe Your Movie-Watching Scenario (Your First Turn)
+            Describe Your Movie-Watching Scenario【In One Go】
           </h3>
           
           <div class="instruction-content">
@@ -58,7 +58,7 @@
               <h4>What do you need to do?</h4>
               <p>
                 After entering the dialogue box on the next page, please use natural language to input 
-                your <strong>"movie-watching scenario information"</strong>.
+                your <strong>"movie-watching scenario information"</strong>.<strong>The system will generate your final recommendations based solely on this one description. You will not be able to modify the scenario or ask for a new list afterwards.</strong>
               </p>
             </div>
 
