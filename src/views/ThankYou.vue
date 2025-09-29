@@ -18,7 +18,7 @@
         </p>
         
         <div class="verification-code">
-          <h3>Your verification code is:CRSR5GDA</h3>
+          <h3>Your verification code is:C12DOIS8</h3>
         </div>
         
         <!-- <div class="study-summary">
